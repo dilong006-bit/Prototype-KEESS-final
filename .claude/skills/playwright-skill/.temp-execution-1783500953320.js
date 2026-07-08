@@ -27,14 +27,13 @@ function getContextOptionsWithHeaders(options = {}) {
     
 const browser = await chromium.launch({ headless: true });
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
-await page.goto('http://localhost:3000/leadership', { waitUntil: 'networkidle' });
-await page.waitForTimeout(700);
-await page.locator('.ld-hero button', { hasText: '도입 문의' }).click();
-await page.waitForTimeout(400);
-await page.getByRole('button', { name: '문의 폼으로 이동' }).click();
-await page.waitForTimeout(1600);
-const inView = await page.evaluate(() => { const el = document.getElementById('inq'); const r = el.getBoundingClientRect(); return {top: Math.round(r.top), inView: r.top < window.innerHeight*0.6 && r.bottom > 0, scrollY: Math.round(window.scrollY)}; });
-console.log('after 1.6s:', JSON.stringify(inView));
+await page.goto('http://localhost:3000/hrd', { waitUntil: 'networkidle' });
+await page.waitForTimeout(600);
+const href = await page.locator('.nav .menu a', { hasText: 'AX·AI 전환' }).getAttribute('href');
+console.log('AX·AI link href:', href);
+await page.locator('.nav .menu a', { hasText: 'AX·AI 전환' }).click();
+await page.waitForURL('**/ax-ai', { timeout: 12000 }).catch(e=>console.log('waitURL err'));
+console.log('final url:', page.url());
 await browser.close();
 
   } catch (error) {
