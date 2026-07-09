@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import SubNav from '@/components/common/SubNav';
 import { useContentModal } from './ContentModals';
+import { CourseExplorer } from './Explorer';
 import {
   HERO, AXISNAV, AX1, AX2, AX3, AX4, AX5, AX6, DOWNLOAD, FINAL,
 } from '@/data/content';
@@ -203,6 +204,27 @@ export default function Sections() {
           <div className="substep">{AX6.partnerSub}</div>
           <div className="plogos">{AX6.partners.map((p) => <div className="plogo" key={p}>{p}</div>)}</div>
           <div className="counter"><b>{AX6.counter.b}</b><span>{AX6.counter.span}</span></div>
+        </div>
+      </section>
+
+      {/* ── 대표 과정 조회 (F2 · #featured) ── */}
+      <section className="section" id="featured" style={{ background: 'var(--surface)', borderTop: '1px solid var(--line)' }}>
+        <div className="wrap">
+          <div className="axhead"><div>
+            <span className="ct-eyebrow r"><IcSearch /> Featured Lineup</span>
+            <h2>대표 과정, 3개 축 18선</h2>
+            <p className="lead">8,426개 과정 중, 조직에 바로 통하는 대표 과정을 3개 축으로 골랐습니다.</p>
+          </div></div>
+          <div className="pillar-intro r">
+            {[
+              { key: 'ax', label: 'AX·AI 전환', desc: 'AI를 배우는 데서 멈추지 않고, 일하는 방식을 바꿉니다.' },
+              { key: 'job', label: '직무특화', desc: '직무의 언어로 배우는 실무 AI·전문 역량.' },
+              { key: 'biz', label: '비즈니스 스킬', desc: '전 직군이 공유하는 일의 기본기.' },
+            ].map((p) => (
+              <div className={`pintro pil-${p.key}`} key={p.key}><div className="pt">{p.label}</div><p>{p.desc}</p></div>
+            ))}
+          </div>
+          <div className="feat-exp r"><CourseExplorer openConsult={openConsult} /></div>
         </div>
       </section>
 

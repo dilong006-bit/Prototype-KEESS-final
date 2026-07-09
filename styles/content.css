@@ -304,3 +304,33 @@
 .okmsg .ic{width:56px;height:56px;border-radius:50%;background:color-mix(in srgb,var(--p4) 12%,#fff);color:var(--p4);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 14px}
 .okmsg h3{font-size:18px;font-weight:800}
 .okmsg .lead{font-size:14px;color:var(--muted);max-width:40ch}
+
+/* ── 대표 과정 조회 재설계 (3필러 · F1~F13) ─────────────────────────── */
+.pil-ax{--pil:var(--p1)}
+.pil-job{--pil:var(--p3)}
+.pil-biz{--pil:var(--p4)}
+/* #featured 섹션 · 3필러 인트로 */
+.pillar-intro{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+@media(max-width:760px){.pillar-intro{grid-template-columns:1fr}}
+.pintro{background:#fff;border:1px solid var(--line);border-left:4px solid var(--pil);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow-1)}
+.pintro .pt{font-size:14.5px;font-weight:800;color:var(--pil)}
+.pintro p{font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.55}
+.feat-exp{margin-top:24px}
+/* 탭 — 필러 포인트색 (--tab-accent 인라인) */
+.exp-tab.on{background:var(--tab-accent,var(--p4));color:#fff;border-color:var(--tab-accent,var(--p4))}
+/* 검색 바 (필터 드롭다운 없음) */
+.cexp-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px}
+.cexp-bar .search{display:flex;align-items:center;gap:8px;flex:1;min-width:220px;border:1px solid var(--line);border-radius:11px;padding:0 12px;background:#fff}
+.cexp-bar .search svg{width:16px;height:16px;color:var(--muted);flex:none}
+.cexp-bar .search input{flex:1;border:none;outline:none;padding:11px 0;font-family:inherit;font-size:14px;background:none}
+.cexp-bar .count{font-size:12.5px;color:var(--muted)}.cexp-bar .count b{color:var(--ink);font-weight:800}
+.cexp-bar .reset{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 14px;font-size:12.5px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit}
+.cexp-bar .reset:hover{border-color:var(--ink);color:var(--ink)}
+/* 카드 — 소속 필러 1색 */
+.ccard .thumb .featbdg{position:absolute;top:10px;right:11px;font-size:10px;font-weight:800;color:var(--ink);background:#fff;border-radius:6px;padding:3px 8px;box-shadow:var(--shadow-1)}
+.ccard .bdg.lv{background:color-mix(in srgb,var(--pil) 12%,#fff);color:color-mix(in srgb,#000 15%,var(--pil))}
+.ccard .bdg.gov{background:color-mix(in srgb,var(--gov) 24%,#fff);color:color-mix(in srgb,#000 48%,var(--gov))}
+.ccard:hover{border-color:color-mix(in srgb,var(--pil) 35%,#fff)}
+/* 상세 — 강사 소속 */
+.sme-affil{color:var(--muted);font-weight:400;font-size:12.5px}
+.cdetail-head .mb span:last-child{background:rgba(255,255,255,.28)}
