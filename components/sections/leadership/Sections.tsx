@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { scrollToId } from '@/lib/utils';
 import Img from '@/components/common/Img';
 import SubNav from '@/components/common/SubNav';
 import Orbit from './Orbit';
@@ -14,14 +15,6 @@ import {
 function Rich({ text }: { text: string }) {
   const parts = text.split('**');
   return <>{parts.map((p, i) => (i % 2 ? <b key={i}>{p}</b> : <span key={i}>{p}</span>))}</>;
-}
-
-function scrollTo(id: string) {
-  const el = document.getElementById(id);
-  if (el) {
-    const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    el.scrollIntoView({ behavior: rm ? 'auto' : 'smooth' });
-  }
 }
 
 export default function Sections() {
@@ -41,7 +34,7 @@ export default function Sections() {
               <p className="sub">{HERO.sub}</p>
               <div className="act">
                 <button className="btn btn-ink" onClick={openInq}>{HERO.ctaPrimary}</button>
-                <button className="btn btn-glass" onClick={() => scrollTo('journey')}>{HERO.ctaSecondary}</button>
+                <button className="btn btn-glass" onClick={() => scrollToId('journey')}>{HERO.ctaSecondary}</button>
               </div>
               <div className="ld-strip">{HERO.strip.map((s) => <span key={s}>{s}</span>)}</div>
             </div>
@@ -178,7 +171,7 @@ export default function Sections() {
           <div className="gf-cta r">
             <div className="gfcta-t">{GROWTHFIT.ctaTitle}</div>
             <div className="gfcta-s">{GROWTHFIT.ctaSub}</div>
-            <button className="btn" onClick={() => scrollTo('inq')}>{GROWTHFIT.cta}</button>
+            <button className="btn" onClick={() => scrollToId('inq')}>{GROWTHFIT.cta}</button>
           </div>
         </div>
       </section>

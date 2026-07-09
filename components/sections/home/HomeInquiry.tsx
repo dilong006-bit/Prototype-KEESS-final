@@ -1,9 +1,9 @@
 'use client';
 
+import { EMAIL_RE } from '@/lib/utils';
 import { useRef, useState } from 'react';
 import { INQ } from '@/data/home';
 
-const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const ALLOWED = ['zip', 'pdf', 'hwp', 'ppt', 'pptx', 'doc', 'docx', 'xls', 'xlsx', 'jpg', 'jpeg', 'png', 'gif'];
 const MAX = 10 * 1024 * 1024;
 
@@ -61,7 +61,7 @@ export default function HomeInquiry() {
       next[k] = bad;
       if (bad) ok = false;
     });
-    const emailOK = emailRe.test((v.email || '').trim());
+    const emailOK = EMAIL_RE.test((v.email || '').trim());
     next.email = !emailOK;
     if (!emailOK) ok = false;
     setErrs(next);

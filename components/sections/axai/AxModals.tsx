@@ -1,5 +1,6 @@
 'use client';
 
+import { EMAIL_RE } from '@/lib/utils';
 import { createContext, useContext, useState } from 'react';
 import Modal from '@/components/common/Modal';
 import { INQ_MODAL, GUIDE_MODAL } from '@/data/axai';
@@ -11,7 +12,6 @@ interface AxModalCtx {
 const Ctx = createContext<AxModalCtx>({ openInq: () => {}, openGuide: () => {} });
 export const useAxModal = () => useContext(Ctx);
 
-const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function InquiryBody({ onClose }: { onClose: () => void }) {
   const [v, setV] = useState({ sector: '', company: '', name: '', email: '', size: '', phone: '', msg: '' });
@@ -28,7 +28,7 @@ function InquiryBody({ onClose }: { onClose: () => void }) {
       const bad = !(v[k] || '').trim();
       next[k] = bad; if (bad) ok = false;
     });
-    const eok = emailRe.test((v.email || '').trim());
+    const eok = EMAIL_RE.test((v.email || '').trim());
     next.email = !eok; if (!eok) ok = false;
     setErrs(next);
     if (!ok) return;
@@ -76,7 +76,7 @@ function GuideBody({ onClose }: { onClose: () => void }) {
     const next: Record<string, boolean> = {};
     let ok = true;
     (['company', 'name'] as const).forEach((k) => { const bad = !(v[k] || '').trim(); next[k] = bad; if (bad) ok = false; });
-    const eok = emailRe.test((v.email || '').trim());
+    const eok = EMAIL_RE.test((v.email || '').trim());
     next.email = !eok; if (!eok) ok = false;
     setErrs(next);
     if (!consent) { setConsentErr(true); ok = false; } else setConsentErr(false);

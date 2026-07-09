@@ -1,5 +1,6 @@
 'use client';
 
+import { EMAIL_RE } from '@/lib/utils';
 import { createContext, useContext, useState } from 'react';
 import Modal from '@/components/common/Modal';
 import Explorer from './Explorer';
@@ -9,7 +10,6 @@ interface Ctx { openExplorer: () => void; openConsult: (axis?: string) => void; 
 const ModalCtx = createContext<Ctx>({ openExplorer: () => {}, openConsult: () => {}, openDownload: () => {} });
 export const useContentModal = () => useContext(ModalCtx);
 
-const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function triggerDL() {
   const a = document.createElement('a');
@@ -29,7 +29,7 @@ function ConsultBody({ axis, onClose }: { axis?: string; onClose: () => void }) 
     const next: Record<string, boolean> = {};
     let ok = true;
     (['name', 'org'] as const).forEach((k) => { const bad = !(v[k] || '').trim(); next[k] = bad; if (bad) ok = false; });
-    const eok = emailRe.test((v.mail || '').trim());
+    const eok = EMAIL_RE.test((v.mail || '').trim());
     next.mail = !eok; if (!eok) ok = false;
     setErrs(next);
     if (!ok) return;
@@ -58,7 +58,7 @@ function DownloadBody() {
     const next: Record<string, boolean> = {};
     let ok = true;
     (['name', 'org'] as const).forEach((k) => { const bad = !(v[k] || '').trim(); next[k] = bad; if (bad) ok = false; });
-    const eok = emailRe.test((v.mail || '').trim());
+    const eok = EMAIL_RE.test((v.mail || '').trim());
     next.mail = !eok; if (!eok) ok = false;
     setErrs(next);
     if (!ok) return;

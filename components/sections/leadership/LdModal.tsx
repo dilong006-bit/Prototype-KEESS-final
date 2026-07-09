@@ -1,19 +1,13 @@
 'use client';
 
 import { createContext, useContext, useState } from 'react';
+import { scrollToId } from '@/lib/utils';
 import Modal from '@/components/common/Modal';
 import { MODAL } from '@/data/leadership';
 
 const Ctx = createContext<{ openInq: () => void }>({ openInq: () => {} });
 export const useLdModal = () => useContext(Ctx);
 
-function scrollToInq() {
-  const el = document.getElementById('inq');
-  if (el) {
-    const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    el.scrollIntoView({ behavior: rm ? 'auto' : 'smooth' });
-  }
-}
 
 export default function LdModalProvider({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -26,7 +20,7 @@ export default function LdModalProvider({ children }: { children: React.ReactNod
           className="btn btn-ink"
           type="button"
           style={{ marginTop: 20 }}
-          onClick={() => { setOpen(false); setTimeout(scrollToInq, 60); }}
+          onClick={() => { setOpen(false); setTimeout(() => scrollToId('inq'), 60); }}
         >
           {MODAL.cta}
         </button>

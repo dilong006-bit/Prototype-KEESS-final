@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { scrollToId } from '@/lib/utils';
 import Link from 'next/link';
 import Img from '@/components/common/Img';
 import SubNav from '@/components/common/SubNav';
@@ -11,14 +12,6 @@ import {
   HERO, ARCH, STUDIO, DEMO, AI, MODULES, TRUST, GOV, INQ, SUBNAV,
 } from '@/data/hrd';
 
-function scrollTo(id: string) {
-  const el = document.getElementById(id);
-  if (el) {
-    const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    el.scrollIntoView({ behavior: rm ? 'auto' : 'smooth' });
-  }
-}
-
 export default function Sections() {
   const { openInq } = useHdModal();
   // 정부지원 CTA → 문의 프리셀렉트 (F7)
@@ -27,14 +20,14 @@ export default function Sections() {
   const goToInq = (area: string) => {
     setPreselect(area);
     setNonce((n) => n + 1);
-    scrollTo('inq');
+    scrollToId('inq');
   };
 
   // /hrd#gov 등 해시 도착 시 스크롤
   useEffect(() => {
     const id = window.location.hash.replace('#', '');
     if (id && document.getElementById(id)) {
-      setTimeout(() => scrollTo(id), 120);
+      setTimeout(() => scrollToId(id), 120);
     }
   }, []);
 
@@ -50,7 +43,7 @@ export default function Sections() {
           <p className="hb-sub">{HERO.sub}</p>
           <div className="act">
             <button className="btn btn-ink" onClick={openInq}>{HERO.ctaPrimary}</button>
-            <button className="btn btn-glass" onClick={() => scrollTo('demo')}>{HERO.ctaSecondary}</button>
+            <button className="btn btn-glass" onClick={() => scrollToId('demo')}>{HERO.ctaSecondary}</button>
           </div>
           <div className="hb-metrics">
             {HERO.metrics.map((m) => (
@@ -75,7 +68,7 @@ export default function Sections() {
                 <h3>{c.h3}</h3>
                 <p>{c.p}</p>
                 {c.chips && <div className="bchips">{c.chips.map((ch) => <span key={ch}>{ch}</span>)}</div>}
-                {c.demoLink && <span className="bcta" onClick={() => scrollTo('demo')}>데모 →</span>}
+                {c.demoLink && <span className="bcta" onClick={() => scrollToId('demo')}>데모 →</span>}
               </div>
             ))}
           </div>

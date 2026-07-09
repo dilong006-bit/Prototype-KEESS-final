@@ -1,5 +1,6 @@
 'use client';
 
+import { EMAIL_RE } from '@/lib/utils';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useModal } from '@/lib/useModal';
 import { REPORT_SEED, REPORT_STATUS, REPORT_MASTER_PW, type ReportRecord } from '@/data/report';
@@ -9,7 +10,6 @@ const reports: ReportRecord[] = [...REPORT_SEED];
 
 type Tab = 'info' | 'report' | 'lookup';
 
-const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 function genNo() {
   const d = new Date();
   const p = (x: number) => ('0' + x).slice(-2);
@@ -168,7 +168,7 @@ export default function ReportModal({ open, onClose, initialTab = 'info' }: Repo
     // 이메일: 값 있을 때만 형식검증
     const email = (form.email || '').trim();
     if (email) {
-      const eok = emailRe.test(email);
+      const eok = EMAIL_RE.test(email);
       next.email = !eok;
       if (!eok) { ok = false; miss.push('이메일 형식'); }
     } else next.email = false;
