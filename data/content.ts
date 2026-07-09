@@ -30,7 +30,7 @@ export const AXISNAV = [
 ];
 
 export const AX1 = {
-  no: '01', kicker: 'Job Competency', title: '직무역량, 6개 직무군을 한 장에',
+  no: '01', kicker: 'Job Competency', title: '직무별 필요한 교육을, 한눈에',
   lead: 'DX부터 생산·품질까지, 현업 직무 그대로 역량을 묶었습니다.',
   tag: '직무 전문 1,007+ · 직무공통 2,574',
   jobs: [
@@ -166,8 +166,8 @@ export const DOWNLOAD = {
 };
 
 export const FINAL = {
-  titleLead: '어느 체계든,',
-  titleLine2: '필요한 걸 말씀해 주세요',
+  titleLead: '우리 조직에 맞는 교육을,',
+  titleLine2: '함께 설계합니다',
   sub: '조직 과제에 맞춰 8,426개에서 고르고, 필요하면 직접 만듭니다.',
   ctaPrimary: '콘텐츠 도입 문의',
   ctaSecondary: '대표 과정 찾기',
