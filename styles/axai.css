@@ -7,7 +7,7 @@
 .ax-eyebrow-tight{margin-bottom:2px}
 
 /* ── 히어로 (홈 톤 정합 다크 --p1 그라데이션) ─────────────────────────── */
-.ax-hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden;color:#fff;
+.ax-hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;color:#fff;
   background:linear-gradient(150deg,color-mix(in srgb,#000 42%,var(--p1)),var(--p1) 60%,color-mix(in srgb,#000 58%,var(--p1)))}
 .ax-hero::before{content:"";position:absolute;inset:0;z-index:0;opacity:.5;
   background:radial-gradient(60% 60% at 78% 18%,color-mix(in srgb,var(--p1) 55%,#fff) 0%,transparent 60%)}

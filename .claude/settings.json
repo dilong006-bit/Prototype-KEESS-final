@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -n \"역량 체계$\\\\|본체가 됩니다.$\\\\|임원, 역할\\\\|성장단계 로드맵\" data/leadership.ts)"
+    ]
+  }
+}

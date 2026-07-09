@@ -1,4 +1,4 @@
-// P2 리더십·조직 — 카피/데이터 verbatim (keess_P2_leadership_B_framework_v1.0)
+// P2 리더십·조직, 카피/데이터 verbatim (keess_P2_leadership_B_framework_v1.0)
 // 색·버튼변형 미이식. 오빗/레이더 스케일은 --p2 파생(color-mix)만.
 
 export const HERO = {
@@ -33,7 +33,7 @@ export const PAIN = {
 export const JOURNEY = {
   eyebrow: '교육체계 · 한눈에',
   title: '먼저, 리더십 체계를 한눈에 봅니다',
-  lead: '신입부터 최고경영진까지 성장단계 로드맵. B안은 체계 소개를 압축하고, 아래 **6대 역량 트랙을 본체**로 제시합니다. (카피 교체가능)',
+  lead: '신입부터 최고경영진까지 성장단계 로드맵. B안은 체계 소개를 압축하고, 아래 **6대 역량 트랙을 본체**로 제시합니다.',
   stages: [
     { jn: 'STAGE 1', js: '신입', jr: 'Entry' },
     { jn: 'STAGE 2', js: '주니어', jr: 'Junior' },
@@ -54,9 +54,9 @@ export const JOURNEY = {
 };
 
 export const TRACKS_SECTION = {
-  eyebrow: '6 LEADERSHIP TRACKS · 역량 체계 (본체)',
+  eyebrow: '6 LEADERSHIP TRACKS · 역량 체계',
   title: 'KG에듀원 고유 6대 리더십 역량 체계',
-  lead: '무엇을 기를지 정의하는 6개 트랙. 각 트랙은 세부 역량으로 구성되어 성장단계별 여정의 본체가 됩니다. **(콘텐츠개발팀 v3.0 기준 · 카피 교체가능)**',
+  lead: '무엇을 기를지 정의하는 6개 트랙. 각 트랙은 세부 역량으로 구성되어 성장단계별 여정의 본체가 됩니다.',
   cards: [
     { ti: 'S', tk: 'TRACK 01', h4: 'Self', p: '스스로를 이끄는 리더의 출발점', tags: ['자기주도성', '회복탄력성', '성장마인드셋', '자기관리'] },
     { ti: 'P', tk: 'TRACK 02', h4: 'People', p: '사람을 성장시키는 리더', tags: ['코칭', '피드백', '동기부여', '갈등관리', '세대이해'] },
@@ -76,22 +76,22 @@ export const FRAMEWORK = {
   desc: '리더십 코어를 중심으로 6개 역량이 궤도를 이룹니다. 중심-구성 관계로 체계를 표현합니다.',
 };
 
-// 오빗 노드 (TRACKS) — 노드 색상은 --p2 파생 mix(라이트→다크)로 정의
+// 오빗 노드 (TRACKS), 노드 색상은 --p2 파생 mix(라이트→다크)로 정의
 export interface Track { k: string; t: string; d: string; a: string[]; ko: string; nm: string; mix: number }
 export const TRACKS: Track[] = [
-  { k: 'TRACK 01', t: 'Self Leadership', d: '스스로를 이끄는 리더의 출발점 — 자기 이해와 회복탄력성을 바탕으로 지속 성장하는 역량.', a: ['자기주도성', '회복탄력성', '성장마인드셋', '자기관리'], ko: '셀프 리더십', nm: 'Self', mix: 100 },
-  { k: 'TRACK 02', t: 'People Leadership', d: '사람을 성장시키는 리더 — 코칭과 피드백으로 구성원의 잠재력을 끌어냅니다.', a: ['코칭', '피드백', '동기부여', '갈등관리', '세대이해'], ko: '피플 리더십', nm: 'People', mix: 88 },
-  { k: 'TRACK 03', t: 'Performance Leadership', d: '성과를 만드는 리더 — 목표에서 실행까지 조직의 결과를 책임집니다.', a: ['목표관리', '성과관리', '의사결정', '실행력', '문제해결'], ko: '성과 리더십', nm: 'Perf.', mix: 78 },
-  { k: 'TRACK 04', t: 'Change Leadership', d: '변화를 이끄는 리더 — 혁신과 디지털 전환으로 조직을 진화시킵니다.', a: ['변화관리', '혁신', '애자일', '디지털전환', '조직개선'], ko: '변화 리더십', nm: 'Change', mix: 62 },
-  { k: 'TRACK 05', t: 'Hyper Leadership', d: '연결하는 리더 — 협업과 영향력으로 경계를 넘는 성과를 만듭니다.', a: ['협업', '영향력', '네트워크', '크로스펑셔널', '이해관계자관리'], ko: '하이퍼 리더십', nm: 'Hyper', mix: 50 },
-  { k: 'TRACK 06', t: 'Culture Leadership', d: '문화를 세우는 리더 — 심리적 안전감과 학습문화로 지속가능한 조직을 만듭니다.', a: ['심리적안전감', '조직문화', '다양성', '포용성', '학습문화'], ko: '컬처 리더십', nm: 'Culture', mix: 38 },
+  { k: 'TRACK 01', t: 'Self Leadership', d: '스스로를 이끄는 리더의 출발점, 자기 이해와 회복탄력성을 바탕으로 지속 성장하는 역량.', a: ['자기주도성', '회복탄력성', '성장마인드셋', '자기관리'], ko: '셀프 리더십', nm: 'Self', mix: 100 },
+  { k: 'TRACK 02', t: 'People Leadership', d: '사람을 성장시키는 리더, 코칭과 피드백으로 구성원의 잠재력을 끌어냅니다.', a: ['코칭', '피드백', '동기부여', '갈등관리', '세대이해'], ko: '피플 리더십', nm: 'People', mix: 88 },
+  { k: 'TRACK 03', t: 'Performance Leadership', d: '성과를 만드는 리더, 목표에서 실행까지 조직의 결과를 책임집니다.', a: ['목표관리', '성과관리', '의사결정', '실행력', '문제해결'], ko: '성과 리더십', nm: 'Perf.', mix: 78 },
+  { k: 'TRACK 04', t: 'Change Leadership', d: '변화를 이끄는 리더, 혁신과 디지털 전환으로 조직을 진화시킵니다.', a: ['변화관리', '혁신', '애자일', '디지털전환', '조직개선'], ko: '변화 리더십', nm: 'Change', mix: 62 },
+  { k: 'TRACK 05', t: 'Hyper Leadership', d: '연결하는 리더, 협업과 영향력으로 경계를 넘는 성과를 만듭니다.', a: ['협업', '영향력', '네트워크', '크로스펑셔널', '이해관계자관리'], ko: '하이퍼 리더십', nm: 'Hyper', mix: 50 },
+  { k: 'TRACK 06', t: 'Culture Leadership', d: '문화를 세우는 리더, 심리적 안전감과 학습문화로 지속가능한 조직을 만듭니다.', a: ['심리적안전감', '조직문화', '다양성', '포용성', '학습문화'], ko: '컬처 리더십', nm: 'Culture', mix: 38 },
 ];
 
 export const OFFLINE = {
   eyebrow: 'LEADERSHIP TRACK · 성장 시점 선택',
   title: '성장 시점을 선택하면, 맞는 트랙이 열립니다',
   badge: '오프라인',
-  lead: '입사·승진·팀장·임원 — 역할이 바뀌는 시점을 고르면 해당 트랙이 열립니다. **온라인 여정으로 이어가거나, 오프라인 집합교육으로 진행**할 수 있습니다. (HRD솔루션팀 · 초기 수급 자료 기준)',
+  lead: '입사·승진·팀장·임원, 역할이 바뀌는 시점을 고르면 해당 트랙이 열립니다. **온라인 여정으로 이어가거나, 오프라인 집합교육으로 진행**할 수 있습니다.',
 };
 
 export interface Prog { ph: string; key: string; nm: string; en: string; sub: { t: string; d: string; caps: string[] }[] }
@@ -135,8 +135,8 @@ export const FACULTY = {
 export const GROWTHFIT = {
   eyebrow: 'ORGANIZATION DIAGNOSIS · B2-3',
   title: '우리 조직은 지금, 어떻게 성장하고 있나요?',
-  lead: '조직전환 연구소 **Growth-Fit**은 구성원의 경험을 데이터로 진단해 성장 동인을 찾습니다. 48개 문항·6개 축으로, 강점은 확산하고 우선 지원 영역은 HRD 과제로 연결합니다. (진단 문항 상세 확보 후 확장)',
-  radarNote: '※ 6 Core Dimensions 프로파일 예시 — 실제 진단 시 조직별 리포트 제공',
+  lead: '조직전환 연구소 **Growth-Fit**은 구성원의 경험을 데이터로 진단해 성장 동인을 찾습니다. 48개 문항·6개 축으로, 강점은 확산하고 우선 지원 영역은 HRD 과제로 연결합니다.',
+  radarNote: '※ 6 Core Dimensions 프로파일 예시, 실제 진단 시 조직별 리포트 제공',
   radarLabels: ['Vision', 'Result', 'Trust', 'Value', 'Agility', 'Infra'],
   dims: [
     { b: 'Vision & Direction', s: '조직의 방향성·목표 정렬 경험' },

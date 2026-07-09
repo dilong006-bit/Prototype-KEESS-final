@@ -175,7 +175,7 @@ export const GAP = {
     { label: '현업 적용도', pre: 35, post: 78 },
     { label: '업무 생산성', pre: 48, post: 82 },
   ],
-  cap: '* 개념 도식 — 실제 수치는 AX 성과 리포트로 제공됩니다.',
+  cap: '* 개념 도식, 실제 수치는 AX 성과 리포트로 제공됩니다.',
 };
 
 export const COURSES = {
