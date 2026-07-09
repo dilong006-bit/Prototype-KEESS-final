@@ -40,7 +40,6 @@ export default function Sections() {
               <div className="ax-strip">{HERO.strip.map((s) => <span key={s}>{s}</span>)}</div>
             </div>
             <div className="ax-visual" role="img" aria-label="AX 전환 교육 비주얼">
-              <div className="pat" />
               {HERO.floats.map((f, i) => (
                 <div className={`ax-float f${i + 1}`} key={f.label}><div className="fv"><CountNum value={f.count} /></div><div className="fl">{f.label}</div></div>
               ))}
@@ -218,7 +217,7 @@ function Scenario({ openInq }: { openInq: () => void }) {
               <h3>{s.t}</h3>
               <p>{s.p}</p>
               <div className="pchips">{s.chips.map((c) => <span key={c}>{c}</span>)}</div>
-              <div className="pcta"><button className="btn" onClick={openInq}>{s.cta}</button></div>
+              <div className="pcta"><button className="btn" onClick={openInq}>{s.cta} <Arrow /></button></div>
             </div>
           </div>
         </div>
@@ -254,7 +253,7 @@ function Framework() {
       <div className="wrap">
         <p className="eyebrow r">{FRAMEWORK.eyebrow}</p>
         <h2 className="sec-title r" style={{ marginTop: 14 }}>{FRAMEWORK.title}</h2>
-        <p className="sec-sub r">{FRAMEWORK.sub}</p>
+        <p className="sec-sub r" style={{ whiteSpace: 'pre-line' }}>{FRAMEWORK.sub}</p>
         <div className="dx r">
           <div className="dxq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></svg>{FRAMEWORK.dxTitle}</div>
           <div className="dx-chips">
