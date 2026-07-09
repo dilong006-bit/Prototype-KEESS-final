@@ -18,11 +18,11 @@ const IcDown = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" 
 const HEX_ICONS = [IcGrid, IcGlobe, IcCode, IcLayers, IcShield, IcCam];
 const AX_ICONS = [IcGrid, IcGlobe, IcCode, IcLayers, IcShield, IcCam];
 
-function AxHead({ no, kicker, icon: Icon, title, lead, tag, extra }: { no: string; kicker: string; icon: () => JSX.Element; title: React.ReactNode; lead?: string; tag?: string; extra?: React.ReactNode }) {
+function AxHead({ kicker, icon: Icon, title, lead, tag, extra }: { no?: string; kicker: string; icon: () => JSX.Element; title: React.ReactNode; lead?: string; tag?: string; extra?: React.ReactNode }) {
   return (
     <div className="axhead">
       <div>
-        <span className="ct-eyebrow r"><span className="no">{no}</span><Icon /> {kicker}</span>
+        <span className="ct-eyebrow r"><Icon /> {kicker}</span>
         <h2>{title}</h2>
         {lead && <p className="lead">{lead}</p>}
       </div>
@@ -58,7 +58,7 @@ export default function Sections() {
                   const Icon = HEX_ICONS[i];
                   return (
                     <a className={`hx${h.law ? ' law' : ''}${h.net ? ' net' : ''}`} href={h.href} key={h.n}>
-                      <Icon /><span className="n">{h.n}</span><span className="t">{h.t}</span>
+                      <span className="hx-ic"><Icon /></span><span className="t">{h.t}</span>
                     </a>
                   );
                 })}
