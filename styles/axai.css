@@ -175,7 +175,7 @@
 @media(max-width:640px){.vs-cell{padding:12px 13px;font-size:13px}}
 
 /* ── GAP 바 ──────────────────────────────────────────────────────────── */
-.gapbox{margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:var(--shadow-1);display:flex;flex-direction:column;gap:16px;max-width:760px}
+.gapbox{margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:var(--shadow-1);display:flex;flex-direction:column;gap:16px}
 .gap-row{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center}
 @media(max-width:560px){.gap-row{grid-template-columns:1fr}}
 .gap-row .gl{font-size:13.5px;font-weight:700;color:var(--ink)}
