@@ -15,6 +15,8 @@ const IcShield = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor
 const IcCam = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="7" width="18" height="13" rx="2" /><circle cx="12" cy="13.5" r="3.5" /><path d="M8 7l1.5-3h5L16 7" /></svg>;
 const IcSearch = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4-4" /></svg>;
 const IcDown = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v12M7 11l5 5 5-5M4 20h16" /></svg>;
+const IcList = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01" /></svg>;
+const IcSheet = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="3" width="16" height="18" rx="2" /><path d="M4 9h16M4 15h16M10 3v18" /></svg>;
 // 직무군 개별 아이콘 (프로토타입 정합 — 6개 직무 구분)
 const IcTarget = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1.4" fill="currentColor" /></svg>;
 const IcSpeaker = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 11v2a1 1 0 001 1h2l4 4V6L6 10H4a1 1 0 00-1 1z" /><path d="M15 8a5 5 0 010 8M18 5a9 9 0 010 14" /></svg>;
@@ -131,7 +133,7 @@ export default function Sections() {
                 </div>
               ))}
             </div>
-            <div className="rmaxis"><span>{AX3.axisL}</span><span className="r">{AX3.axisR}</span></div>
+            <div className="rmaxis"><span>{AX3.axisL}</span><span className="rmaxis-track" aria-hidden="true" /><span className="r">{AX3.axisR}</span></div>
           </div>
         </div>
       </section>
@@ -209,7 +211,7 @@ export default function Sections() {
         <div className="wrap">
           <div className="dl r">
             <div>
-              <span className="ct-eyebrow" style={{ color: 'var(--p4)' }}><IcGrid /> {DOWNLOAD.eyebrow}</span>
+              <span className="ct-eyebrow" style={{ color: 'var(--p4)' }}><IcList /> {DOWNLOAD.eyebrow}</span>
               <h2>{DOWNLOAD.titleLead}<br /><span className="hl">{DOWNLOAD.titleEmph}</span>{DOWNLOAD.titleTail}</h2>
               <p className="lead">{DOWNLOAD.lead}</p>
               <Link className="dl-cross" href={DOWNLOAD.crossLink.href}><IcShield /> {DOWNLOAD.crossLink.label}</Link>
@@ -219,7 +221,7 @@ export default function Sections() {
               </div>
             </div>
             <div className="dl-file" aria-label="과정 리스트 구성">
-              <div className="fh"><span className="xls">XLS</span><div><b>{DOWNLOAD.file.name}</b><span>{DOWNLOAD.file.basis}</span></div></div>
+              <div className="fh"><span className="xls" aria-label="Excel"><IcSheet /></span><div><b>{DOWNLOAD.file.name}</b><span>{DOWNLOAD.file.basis}</span></div></div>
               <div className="dl-stats">
                 {DOWNLOAD.stats.map((s) => <div className={`dst${s.hi ? ' hi' : ''}`} key={s.s}><b>{s.b}</b><span>{s.s}</span></div>)}
               </div>

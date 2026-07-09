@@ -105,15 +105,18 @@
 .rmpt .nm{font-size:14px;font-weight:800;margin-top:2px}
 .rmcols{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 @media(max-width:640px){.rmcols{grid-template-columns:1fr}}
-.rmcard{background:#fff;border:1px solid var(--line);border-top:3px solid var(--p4);border-radius:14px;padding:18px;box-shadow:var(--shadow-1)}
-.rmcard .sk{display:flex;flex-wrap:wrap;gap:6px}
+.rmcard{background:#fff;border:1px solid var(--line);border-top:3px solid var(--p4);border-radius:14px;padding:18px;box-shadow:var(--shadow-1);display:flex;flex-direction:column}
+.rmcard .sk{display:flex;flex-wrap:wrap;gap:6px;flex:1;align-content:flex-start}
 .rmcard .sk span{font-size:12px;font-weight:600;background:var(--surface);border-radius:999px;padding:5px 11px}
 .rmcard .ct{margin-top:14px;border-top:1px dashed var(--line);padding-top:12px}
 .rmcard .cl{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:800;color:var(--p4)}
 .rmcard .cl svg{width:16px;height:16px}
 .rmcard .cb{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .rmcard .cb span{font-size:11.5px;font-weight:700;color:var(--p4);background:color-mix(in srgb,var(--p4) 10%,#fff);border-radius:8px;padding:4px 9px}
-.rmaxis{display:flex;justify-content:space-between;margin-top:14px;font-size:12px;font-weight:700;color:var(--muted)}
+.rmaxis{display:flex;align-items:center;gap:12px;margin-top:16px;font-size:12px;font-weight:700;color:var(--muted)}
+.rmaxis span:first-child,.rmaxis .r{flex:none;white-space:nowrap}
+.rmaxis .rmaxis-track{flex:1;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--line),var(--p4));position:relative}
+.rmaxis .rmaxis-track::after{content:"";position:absolute;right:0;top:50%;transform:translateY(-50%);border-left:7px solid var(--p4);border-top:5px solid transparent;border-bottom:5px solid transparent}
 .rmaxis .r{color:var(--p4)}
 
 /* ── ax4 성장 프레임워크 ───────────────────────────────────────────── */
@@ -215,7 +218,8 @@
 .dl-meta{font-size:12px;color:#a8a3b8}
 .dl-file{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:var(--shadow-1)}
 .dl-file .fh{display:flex;align-items:center;gap:14px}
-.dl-file .xls{width:44px;height:44px;border-radius:11px;background:#1E6B41;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.dl-file .xls{width:44px;height:44px;border-radius:11px;background:#1E6B41;color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.dl-file .xls svg{width:23px;height:23px}
 .dl-file .fh b{font-size:15px;font-weight:800}
 .dl-file .fh span{display:block;font-size:12px;color:var(--muted);margin-top:3px}
 .dl-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}

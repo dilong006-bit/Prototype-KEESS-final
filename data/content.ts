@@ -69,7 +69,7 @@ export const AX3 = {
     { st: 'STAGE 2', nm: '실무 활용', sk: ['데이터 분석', '업무 자동화', '노코드 RAG'], cert: ['ADsP', 'SQLD'] },
     { st: 'STAGE 3', nm: '전문·개발', sk: ['생성형 AI 개발(LLM)', 'LangChain·RAG', '디지털 보안'], cert: ['정보처리기사', '빅데이터분석기사', 'AI 자격'] },
   ],
-  axisL: '디지털 리터러시', axisR: '역량 심화 · 자격 취득 →',
+  axisL: '디지털 리터러시', axisR: '역량 심화 · 자격 취득',
 };
 
 export const AX4 = {
