@@ -91,7 +91,8 @@ export default function ContentModalProvider({ children }: { children: React.Rea
   const [exp, setExp] = useState(false);
   const [consult, setConsult] = useState<{ open: boolean; axis?: string }>({ open: false });
   const [dl, setDl] = useState(false);
-  const openConsult = (axis?: string) => setConsult({ open: true, axis });
+  // 상담 모달을 열 때 탐색기는 닫아 중첩 포커스 트랩 방지 (course detail → 도입 문의)
+  const openConsult = (axis?: string) => { setExp(false); setConsult({ open: true, axis }); };
 
   return (
     <ModalCtx.Provider value={{ openExplorer: () => setExp(true), openConsult, openDownload: () => setDl(true) }}>
