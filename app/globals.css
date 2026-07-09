@@ -59,3 +59,8 @@ button{font-family:inherit;cursor:pointer}
 
 /* 포커스 가시성 (a11y) */
 :focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:4px}
+main:focus{outline:none}
+
+/* 본문 바로가기 (WCAG 2.4.1 · 포커스 시에만 표시) */
+.skip-link{position:fixed;top:10px;left:10px;z-index:200;background:var(--ink);color:#fff;font-size:14px;font-weight:700;padding:11px 18px;border-radius:10px;transform:translateY(-160%);transition:transform .2s var(--ease);box-shadow:var(--shadow-2)}
+.skip-link:focus{transform:none;outline:2px solid #fff;outline-offset:2px}

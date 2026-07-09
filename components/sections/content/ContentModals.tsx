@@ -40,10 +40,10 @@ function ConsultBody({ axis, onClose }: { axis?: string; onClose: () => void }) 
   return (
     <div>
       {axis && <div className="ctx">문의 대상: {axis}</div>}
-      <div className={fld('name')}><label>담당자명 <span className="req">*</span></label><input placeholder="홍길동" value={v.name} onChange={upd('name')} /><span className="err">담당자명을 입력해 주세요.</span></div>
-      <div className={fld('org')}><label>회사/기관 <span className="req">*</span></label><input placeholder="회사명" value={v.org} onChange={upd('org')} /><span className="err">회사/기관을 입력해 주세요.</span></div>
-      <div className={fld('mail')}><label>이메일 <span className="req">*</span></label><input type="email" placeholder="name@company.com" value={v.mail} onChange={upd('mail')} /><span className="err">올바른 이메일을 입력해 주세요.</span></div>
-      <div className="field"><label>필요한 콘텐츠·과제</label><textarea rows={3} placeholder="예: 전 직원 법정의무 + 실무자 생성형 AI + 기업 맞춤 제작" value={v.msg} onChange={upd('msg')} /></div>
+      <div className={fld('name')}><label>담당자명 <span className="req">*</span></label><input aria-label="담당자명" placeholder="홍길동" value={v.name} onChange={upd('name')} /><span className="err">담당자명을 입력해 주세요.</span></div>
+      <div className={fld('org')}><label>회사/기관 <span className="req">*</span></label><input aria-label="회사/기관" placeholder="회사명" value={v.org} onChange={upd('org')} /><span className="err">회사/기관을 입력해 주세요.</span></div>
+      <div className={fld('mail')}><label>이메일 <span className="req">*</span></label><input aria-label="이메일" type="email" placeholder="name@company.com" value={v.mail} onChange={upd('mail')} /><span className="err">올바른 이메일을 입력해 주세요.</span></div>
+      <div className="field"><label>필요한 콘텐츠·과제</label><textarea aria-label="필요한 콘텐츠·과제" rows={3} placeholder="예: 전 직원 법정의무 + 실무자 생성형 AI + 기업 맞춤 제작" value={v.msg} onChange={upd('msg')} /></div>
       <button className="btn btn-ink" style={{ width: '100%', marginTop: 18 }} onClick={submit}>문의 보내기</button>
     </div>
   );
@@ -77,9 +77,9 @@ function DownloadBody() {
   return (
     <div>
       <div className="ctx">{DOWNLOAD_MODAL.ctxNote}</div>
-      <div className={fld('name')}><label>담당자명 <span className="req">*</span></label><input placeholder="홍길동" value={v.name} onChange={upd('name')} /><span className="err">담당자명을 입력해 주세요.</span></div>
-      <div className={fld('org')}><label>회사/기관 <span className="req">*</span></label><input placeholder="회사명" value={v.org} onChange={upd('org')} /><span className="err">회사/기관을 입력해 주세요.</span></div>
-      <div className={fld('mail')}><label>이메일 <span className="req">*</span></label><input type="email" placeholder="name@company.com" value={v.mail} onChange={upd('mail')} /><span className="err">올바른 이메일을 입력해 주세요.</span></div>
+      <div className={fld('name')}><label>담당자명 <span className="req">*</span></label><input aria-label="담당자명" placeholder="홍길동" value={v.name} onChange={upd('name')} /><span className="err">담당자명을 입력해 주세요.</span></div>
+      <div className={fld('org')}><label>회사/기관 <span className="req">*</span></label><input aria-label="회사/기관" placeholder="회사명" value={v.org} onChange={upd('org')} /><span className="err">회사/기관을 입력해 주세요.</span></div>
+      <div className={fld('mail')}><label>이메일 <span className="req">*</span></label><input aria-label="이메일" type="email" placeholder="name@company.com" value={v.mail} onChange={upd('mail')} /><span className="err">올바른 이메일을 입력해 주세요.</span></div>
       <button className="btn btn-ink" style={{ width: '100%', marginTop: 18 }} onClick={submit}>
         <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v12M7 11l5 5 5-5M4 20h16" /></svg> {DOWNLOAD_MODAL.submit}
       </button>

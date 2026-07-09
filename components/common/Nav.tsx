@@ -125,7 +125,7 @@ export default function Nav({ current, consultHref = '#inq' }: NavProps) {
         </div>
       </header>
 
-      <nav className={`mmenu${menuOpen ? ' open' : ''}`} id="mmenu" aria-label="모바일 메뉴">
+      <nav className={`mmenu${menuOpen ? ' open' : ''}`} id="mmenu" aria-label="모바일 메뉴" aria-hidden={!menuOpen}>
         {NAV_ITEMS.map((item) => (
           <Link
             key={item.key}

@@ -18,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${pretendard.variable} ${gowun.variable}`}>
       <body>
+        <a href="#main" className="skip-link">본문 바로가기</a>
         {children}
         <Footer />
         <ToTop />

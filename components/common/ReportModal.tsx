@@ -316,33 +316,33 @@ export default function ReportModal({ open, onClose, initialTab = 'info' }: Repo
                   <div className="pv-fs">
                     <div className="pv-fs-head"><span className="pv-fs-t"><svg className="pvi-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>신고자 정보</span><span className="pv-fs-d">입력 정보는 비공개 처리됩니다</span></div>
                     <div className="pv-frow">
-                      <div className={fld('name')}><label>성함 <span className="req">*</span></label><input id="pv-name" type="text" value={form.name} onChange={upd('name')} /><span className="err">필수 항목을 확인해 주세요.</span></div>
-                      <div className={fld('phone')}><label>전화번호 <span className="req">*</span></label><input id="pv-phone" type="tel" inputMode="numeric" placeholder="010-0000-0000" value={form.phone} onChange={onPhone} />{phoneHint && <span className="phone-hint">숫자만 입력할 수 있어요.</span>}<span className="err">필수 항목을 확인해 주세요.</span></div>
+                      <div className={fld('name')}><label>성함 <span className="req">*</span></label><input id="pv-name" aria-label="성함" type="text" value={form.name} onChange={upd('name')} /><span className="err">필수 항목을 확인해 주세요.</span></div>
+                      <div className={fld('phone')}><label>전화번호 <span className="req">*</span></label><input id="pv-phone" aria-label="전화번호" type="tel" inputMode="numeric" placeholder="010-0000-0000" value={form.phone} onChange={onPhone} />{phoneHint && <span className="phone-hint">숫자만 입력할 수 있어요.</span>}<span className="err">필수 항목을 확인해 주세요.</span></div>
                     </div>
                     <div className="pv-frow">
-                      <div className={fld('pw')}><label>접수 비밀번호 <span className="req">*</span></label><input id="pv-pw" type="password" value={form.pw} onChange={upd('pw')} /><span className="fnote">상세 조회 시 사용됩니다</span><span className="err">필수 항목을 확인해 주세요.</span></div>
-                      <div className={fld('pw2')}><label>비밀번호 확인</label><input id="pv-pw2" type="password" value={form.pw2} onChange={upd('pw2')} /><span className="err">필수 항목을 확인해 주세요.</span></div>
+                      <div className={fld('pw')}><label>접수 비밀번호 <span className="req">*</span></label><input id="pv-pw" aria-label="접수 비밀번호" type="password" value={form.pw} onChange={upd('pw')} /><span className="fnote">상세 조회 시 사용됩니다</span><span className="err">필수 항목을 확인해 주세요.</span></div>
+                      <div className={fld('pw2')}><label>비밀번호 확인</label><input id="pv-pw2" aria-label="비밀번호 확인" type="password" value={form.pw2} onChange={upd('pw2')} /><span className="err">필수 항목을 확인해 주세요.</span></div>
                     </div>
                     <div className="pv-frow">
-                      <div className={fld('email')}><label>이메일</label><input id="pv-email" type="email" placeholder="name@company.com" value={form.email} onChange={upd('email')} /><span className="err">필수 항목을 확인해 주세요.</span></div>
-                      <div className="field"><label>신고자 신분</label><div className="sel"><select id="pv-role" value={form.role} onChange={upd('role')}><option value="">선택</option><option>훈련생</option><option>훈련강사</option><option>훈련기관 관계자</option><option>기업 관계자</option><option>기타</option></select></div></div>
+                      <div className={fld('email')}><label>이메일</label><input id="pv-email" aria-label="이메일" type="email" placeholder="name@company.com" value={form.email} onChange={upd('email')} /><span className="err">필수 항목을 확인해 주세요.</span></div>
+                      <div className="field"><label>신고자 신분</label><div className="sel"><select id="pv-role" aria-label="신고자 신분" value={form.role} onChange={upd('role')}><option value="">선택</option><option>훈련생</option><option>훈련강사</option><option>훈련기관 관계자</option><option>기업 관계자</option><option>기타</option></select></div></div>
                     </div>
                   </div>
 
                   <div className="pv-fs">
                     <span className="pv-fs-t"><svg className="pvi-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M5 4h13a1 1 0 0 1 1 1v15H6a2 2 0 0 1-2-2V5a1 1 0 0 1 1-1z"/><path d="M5 17h14"/></svg>훈련 정보</span>
                     <div className="pv-frow">
-                      <div className="field"><label>훈련 구분</label><div className="sel"><select id="pv-ttype" value={form.ttype} onChange={upd('ttype')}><option value="">선택</option><option>사업주훈련</option><option>디지털아카이브</option><option>기업훈련카드</option><option>국민내일배움카드</option><option>기타</option></select></div></div>
-                      <div className="field"><label>훈련 과정명</label><input id="pv-course" type="text" value={form.course} onChange={upd('course')} /></div>
+                      <div className="field"><label>훈련 구분</label><div className="sel"><select id="pv-ttype" aria-label="훈련 구분" value={form.ttype} onChange={upd('ttype')}><option value="">선택</option><option>사업주훈련</option><option>디지털아카이브</option><option>기업훈련카드</option><option>국민내일배움카드</option><option>기타</option></select></div></div>
+                      <div className="field"><label>훈련 과정명</label><input id="pv-course" aria-label="훈련 과정명" type="text" value={form.course} onChange={upd('course')} /></div>
                     </div>
-                    <div className="field"><label>훈련 기관</label><input id="pv-org" type="text" value={form.org} onChange={upd('org')} /></div>
+                    <div className="field"><label>훈련 기관</label><input id="pv-org" aria-label="훈련 기관" type="text" value={form.org} onChange={upd('org')} /></div>
                   </div>
 
                   <div className="pv-fs">
                     <span className="pv-fs-t"><svg className="pvi-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h8"/><path d="M16.5 3.5a2 2 0 0 1 3 3L8 18l-4 1 1-4z"/></svg>신고 내용</span>
-                    <div className="field"><label>신고 대상</label><div className="sel"><select id="pv-target" value={form.target} onChange={upd('target')}><option value="">선택</option><option>훈련생</option><option>훈련강사</option><option>훈련내용</option><option>기타</option></select></div></div>
-                    <div className={fld('title')}><label>제목 <span className="req">*</span></label><input id="pv-title" type="text" value={form.title} onChange={upd('title')} /><span className="err">필수 항목을 확인해 주세요.</span></div>
-                    <div className={fld('content')}><label>내용 <span className="req">*</span></label><textarea id="pv-content" rows={4} placeholder="신고 내용을 구체적으로 작성해 주세요." value={form.content} onChange={upd('content')} /><span className="err">필수 항목을 확인해 주세요.</span></div>
+                    <div className="field"><label>신고 대상</label><div className="sel"><select id="pv-target" aria-label="신고 대상" value={form.target} onChange={upd('target')}><option value="">선택</option><option>훈련생</option><option>훈련강사</option><option>훈련내용</option><option>기타</option></select></div></div>
+                    <div className={fld('title')}><label>제목 <span className="req">*</span></label><input id="pv-title" aria-label="제목" type="text" value={form.title} onChange={upd('title')} /><span className="err">필수 항목을 확인해 주세요.</span></div>
+                    <div className={fld('content')}><label>내용 <span className="req">*</span></label><textarea id="pv-content" aria-label="내용" rows={4} placeholder="신고 내용을 구체적으로 작성해 주세요." value={form.content} onChange={upd('content')} /><span className="err">필수 항목을 확인해 주세요.</span></div>
                   </div>
 
                   <div className="consent-group" style={{ marginTop: 8 }}>
@@ -382,8 +382,8 @@ export default function ReportModal({ open, onClose, initialTab = 'info' }: Repo
               <>
                 <div id="pv-lookup-form">
                   <div className="pv-fs"><div className="pv-frow">
-                    <div className={`field${lkErr.name ? ' invalid' : ''}`}><label>이름 <span className="req">*</span></label><input id="pv-lk-name" type="text" placeholder="홍길동" value={lkName} onChange={(e) => setLkName(e.target.value)} /><span className="err">필수 항목을 확인해 주세요.</span></div>
-                    <div className={`field${lkErr.phone ? ' invalid' : ''}`}><label>연락처 <span className="req">*</span></label><input id="pv-lk-phone" type="tel" inputMode="numeric" placeholder="010-1234-5678" value={lkPhone} onChange={onLkPhone} />{lkPhoneHint && <span className="phone-hint">숫자만 입력할 수 있어요.</span>}<span className="err">필수 항목을 확인해 주세요.</span></div>
+                    <div className={`field${lkErr.name ? ' invalid' : ''}`}><label>이름 <span className="req">*</span></label><input id="pv-lk-name" aria-label="이름" type="text" placeholder="홍길동" value={lkName} onChange={(e) => setLkName(e.target.value)} /><span className="err">필수 항목을 확인해 주세요.</span></div>
+                    <div className={`field${lkErr.phone ? ' invalid' : ''}`}><label>연락처 <span className="req">*</span></label><input id="pv-lk-phone" aria-label="연락처" type="tel" inputMode="numeric" placeholder="010-1234-5678" value={lkPhone} onChange={onLkPhone} />{lkPhoneHint && <span className="phone-hint">숫자만 입력할 수 있어요.</span>}<span className="err">필수 항목을 확인해 주세요.</span></div>
                   </div></div>
                   <button className="btn btn-ink" id="pv-lookup-btn" type="button" style={{ width: '100%', marginTop: 6 }} onClick={doLookup}>신고 내역 조회</button>
                 </div>

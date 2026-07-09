@@ -28,7 +28,7 @@ export default function Sections() {
   const { openInq } = useLdModal();
 
   return (
-    <main>
+    <main id="main" tabIndex={-1}>
       {/* ── HERO ── */}
       <section className="ld-hero" id="hero">
         <Img className="hero-img" src={HERO.img} eager />
@@ -278,14 +278,14 @@ function Inquiry() {
   return (
     <form onSubmit={submit}>
       <div className="frow">
-        <div className={fld('company')}><label>회사명 <span className="req">*</span></label><input placeholder="예) KG에듀원" value={v.company} onChange={upd('company')} /><span className="err">회사명을 입력해 주세요.</span></div>
-        <div className={fld('name')}><label>담당자 <span className="req">*</span></label><input placeholder="성함" value={v.name} onChange={upd('name')} /><span className="err">담당자명을 입력해 주세요.</span></div>
+        <div className={fld('company')}><label>회사명 <span className="req">*</span></label><input aria-label="회사명" placeholder="예) KG에듀원" value={v.company} onChange={upd('company')} /><span className="err">회사명을 입력해 주세요.</span></div>
+        <div className={fld('name')}><label>담당자 <span className="req">*</span></label><input aria-label="담당자" placeholder="성함" value={v.name} onChange={upd('name')} /><span className="err">담당자명을 입력해 주세요.</span></div>
       </div>
       <div className="frow">
-        <div className={fld('contact')}><label>연락처 <span className="req">*</span></label><input placeholder="010-0000-0000" value={v.contact} onChange={upd('contact')} /><span className="err">연락처를 입력해 주세요.</span></div>
-        <div className="field"><label>관심 영역</label><select value={v.interest} onChange={upd('interest')}>{INQ.interests.map((o) => <option key={o}>{o}</option>)}</select></div>
+        <div className={fld('contact')}><label>연락처 <span className="req">*</span></label><input aria-label="연락처" placeholder="010-0000-0000" value={v.contact} onChange={upd('contact')} /><span className="err">연락처를 입력해 주세요.</span></div>
+        <div className="field"><label>관심 영역</label><select aria-label="관심 영역" value={v.interest} onChange={upd('interest')}>{INQ.interests.map((o) => <option key={o}>{o}</option>)}</select></div>
       </div>
-      <div className="field"><label>문의 내용</label><textarea rows={3} placeholder="대상·인원·목표를 간단히 적어주세요" value={v.msg} onChange={upd('msg')} /></div>
+      <div className="field"><label>문의 내용</label><textarea aria-label="문의 내용" rows={3} placeholder="대상·인원·목표를 간단히 적어주세요" value={v.msg} onChange={upd('msg')} /></div>
       <button className="btn btn-ink" type="submit" style={{ width: '100%', marginTop: 20 }}>도입 문의 보내기</button>
     </form>
   );

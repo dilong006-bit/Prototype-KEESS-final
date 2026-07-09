@@ -49,16 +49,16 @@ function InquiryBody({ onClose }: { onClose: () => void }) {
   return (
     <div>
       <p className="sec-sub" style={{ marginTop: 0, marginBottom: 6 }}>{INQ_MODAL.sub}</p>
-      <div className={fld('sector')}><label>부문 <span className="req">*</span></label><select value={v.sector} onChange={upd('sector')}><option value="">선택</option>{INQ_MODAL.sectors.map((o) => <option key={o}>{o}</option>)}</select><span className="err">부문을 선택해 주세요.</span></div>
-      <div className={fld('company')}><label>회사·기관명 <span className="req">*</span></label><input value={v.company} onChange={upd('company')} /><span className="err">회사·기관명을 입력해 주세요.</span></div>
-      <div className={fld('name')}><label>담당자명 <span className="req">*</span></label><input value={v.name} onChange={upd('name')} /><span className="err">담당자명을 입력해 주세요.</span></div>
-      <div className={fld('email')}><label>이메일 <span className="req">*</span></label><input type="email" value={v.email} onChange={upd('email')} /><span className="err">올바른 이메일을 입력해 주세요.</span></div>
-      <div className={fld('size')}><label>교육 대상 규모 <span className="req">*</span></label><select value={v.size} onChange={upd('size')}><option value="">선택</option>{INQ_MODAL.sizes.map((o) => <option key={o}>{o}</option>)}</select><span className="err">규모를 선택해 주세요.</span></div>
+      <div className={fld('sector')}><label>부문 <span className="req">*</span></label><select aria-label="부문" value={v.sector} onChange={upd('sector')}><option value="">선택</option>{INQ_MODAL.sectors.map((o) => <option key={o}>{o}</option>)}</select><span className="err">부문을 선택해 주세요.</span></div>
+      <div className={fld('company')}><label>회사·기관명 <span className="req">*</span></label><input aria-label="회사·기관명" value={v.company} onChange={upd('company')} /><span className="err">회사·기관명을 입력해 주세요.</span></div>
+      <div className={fld('name')}><label>담당자명 <span className="req">*</span></label><input aria-label="담당자명" value={v.name} onChange={upd('name')} /><span className="err">담당자명을 입력해 주세요.</span></div>
+      <div className={fld('email')}><label>이메일 <span className="req">*</span></label><input aria-label="이메일" type="email" value={v.email} onChange={upd('email')} /><span className="err">올바른 이메일을 입력해 주세요.</span></div>
+      <div className={fld('size')}><label>교육 대상 규모 <span className="req">*</span></label><select aria-label="교육 대상 규모" value={v.size} onChange={upd('size')}><option value="">선택</option>{INQ_MODAL.sizes.map((o) => <option key={o}>{o}</option>)}</select><span className="err">규모를 선택해 주세요.</span></div>
       <div className="field"><label>관심 영역</label><div className="chips">{INQ_MODAL.interests.map((it) => (
         <span key={it} className={`mchip${interests[it] ? ' on' : ''}`} onClick={() => setInterests((s) => ({ ...s, [it]: !s[it] }))}>{it}</span>
       ))}</div></div>
-      <div className="field"><label>연락처</label><input value={v.phone} onChange={upd('phone')} /></div>
-      <div className="field"><label>문의 내용</label><textarea rows={3} value={v.msg} onChange={upd('msg')} /></div>
+      <div className="field"><label>연락처</label><input aria-label="연락처" value={v.phone} onChange={upd('phone')} /></div>
+      <div className="field"><label>문의 내용</label><textarea aria-label="문의 내용" rows={3} value={v.msg} onChange={upd('msg')} /></div>
       <button className="btn btn-ink" type="button" style={{ width: '100%', marginTop: 18 }} onClick={submit}>상담 신청</button>
     </div>
   );
@@ -102,9 +102,9 @@ function GuideBody({ onClose }: { onClose: () => void }) {
       <ul className="pv-list" style={{ marginTop: 0, marginBottom: 14 }}>
         {GUIDE_MODAL.value.map((x) => <li key={x}>{x}</li>)}
       </ul>
-      <div className={fld('company')}><label>회사·기관명 <span className="req">*</span></label><input value={v.company} onChange={upd('company')} /><span className="err">회사·기관명을 입력해 주세요.</span></div>
-      <div className={fld('name')}><label>담당자명 <span className="req">*</span></label><input value={v.name} onChange={upd('name')} /><span className="err">담당자명을 입력해 주세요.</span></div>
-      <div className={fld('email')}><label>이메일 <span className="req">*</span></label><input type="email" value={v.email} onChange={upd('email')} /><span className="err">올바른 이메일을 입력해 주세요.</span></div>
+      <div className={fld('company')}><label>회사·기관명 <span className="req">*</span></label><input aria-label="회사·기관명" value={v.company} onChange={upd('company')} /><span className="err">회사·기관명을 입력해 주세요.</span></div>
+      <div className={fld('name')}><label>담당자명 <span className="req">*</span></label><input aria-label="담당자명" value={v.name} onChange={upd('name')} /><span className="err">담당자명을 입력해 주세요.</span></div>
+      <div className={fld('email')}><label>이메일 <span className="req">*</span></label><input aria-label="이메일" type="email" value={v.email} onChange={upd('email')} /><span className="err">올바른 이메일을 입력해 주세요.</span></div>
       <div className="consent-group">
         <div className={`consent${consentErr ? ' invalid' : ''}`}>
           <label className="consent-main"><input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} /><span><b className="c-tag req-tag">필수</b> {GUIDE_MODAL.consent}</span></label>

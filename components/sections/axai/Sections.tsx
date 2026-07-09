@@ -23,7 +23,7 @@ export default function Sections() {
   const { openInq, openGuide } = useAxModal();
 
   return (
-    <main>
+    <main id="main" tabIndex={-1}>
       {/* ── HERO (다크 톤 정합) ── */}
       <section className="ax-hero" id="hero">
         <div className="wrap">

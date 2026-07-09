@@ -22,6 +22,7 @@ export default function HomePage() {
       <Nav current="home" consultHref="#inq" />
       <RevealInit />
 
+      <div id="main" tabIndex={-1} />
       <HeroCarousel />
 
       {/* 인트로 — 조직을 먼저 진단 */}

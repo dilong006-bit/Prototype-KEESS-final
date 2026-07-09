@@ -36,7 +36,7 @@ export default function Sections() {
   const { openExplorer, openConsult, openDownload } = useContentModal();
 
   return (
-    <main>
+    <main id="main" tabIndex={-1}>
       {/* ── HERO ── */}
       <section className="ct-hero section" id="hero">
         <div className="wrap">
