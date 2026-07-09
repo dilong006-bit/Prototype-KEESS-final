@@ -15,6 +15,13 @@ const IcShield = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor
 const IcCam = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="7" width="18" height="13" rx="2" /><circle cx="12" cy="13.5" r="3.5" /><path d="M8 7l1.5-3h5L16 7" /></svg>;
 const IcSearch = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4-4" /></svg>;
 const IcDown = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v12M7 11l5 5 5-5M4 20h16" /></svg>;
+// 직무군 개별 아이콘 (프로토타입 정합 — 6개 직무 구분)
+const IcTarget = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1.4" fill="currentColor" /></svg>;
+const IcSpeaker = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 11v2a1 1 0 001 1h2l4 4V6L6 10H4a1 1 0 00-1 1z" /><path d="M15 8a5 5 0 010 8M18 5a9 9 0 010 14" /></svg>;
+const IcPeople = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="8" r="3" /><path d="M3 20a6 6 0 0112 0" /><circle cx="17" cy="9" r="2.4" /><path d="M15 20a5 5 0 019-3" /></svg>;
+const IcBars = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 20V4" /><path d="M4 20h16" /><rect x="7" y="12" width="3" height="5" /><rect x="12" y="8" width="3" height="9" /><rect x="17" y="5" width="3" height="12" /></svg>;
+const IcBox = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z" /><path d="M4 7.5l8 4.5 8-4.5M12 12v9" /></svg>;
+const JOB_ICONS = [IcGrid, IcTarget, IcSpeaker, IcPeople, IcBars, IcBox];
 const HEX_ICONS = [IcGrid, IcGlobe, IcCode, IcLayers, IcShield, IcCam];
 const AX_ICONS = [IcGrid, IcGlobe, IcCode, IcLayers, IcShield, IcCam];
 
@@ -75,12 +82,15 @@ export default function Sections() {
         <div className="wrap">
           <AxHead no={AX1.no} kicker={AX1.kicker} icon={AX_ICONS[0]} title={AX1.title} lead={AX1.lead} tag={AX1.tag} />
           <div className="jobgrid">
-            {AX1.jobs.map((j) => (
-              <div className="jobcard" key={j.h3}>
-                <div className="top"><div className="ib"><IcGrid /></div><h3>{j.h3}</h3></div>
-                <div className="sk">{j.sk.map((s) => <span key={s}>{s}</span>)}</div>
-              </div>
-            ))}
+            {AX1.jobs.map((j, i) => {
+              const JI = JOB_ICONS[i] || IcGrid;
+              return (
+                <div className="jobcard" key={j.h3}>
+                  <div className="top"><div className="ib"><JI /></div><h3>{j.h3}</h3></div>
+                  <div className="sk">{j.sk.map((s) => <span key={s}>{s}</span>)}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
