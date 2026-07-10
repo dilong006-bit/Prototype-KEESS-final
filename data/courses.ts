@@ -1,4 +1,4 @@
-// P4 '대표 과정 조회' — 3필러(ax/job/biz) × 6 = 18 대표과정 (featured)
+// P4 '대표 과정 조회', 3필러(ax/job/biz) × 6 = 18 대표과정 (featured)
 // 정본: KEESS_대표과정조회_지식베이스_v1.0 §4. 가격/교육비 필드 없음(Design.md §9).
 // 필러색은 포인트 전용(탭·배지·썸네일·상세헤더), 카드 1개엔 소속 필러 1색만.
 
@@ -53,7 +53,7 @@ export const COURSES: Course[] = [
   // ── AX·AI 전환 (ax) ──────────────────────────────────────────────
   {
     id: 'ax1', pillar: 'ax', pillar_label: 'AX·AI 전환', featured: true, rank: 1,
-    title: '[리더의 AI 워크북] 배치하라 — 팀 최적화 6단계 프롬프팅',
+    title: '[리더의 AI 워크북] 배치하라, 팀 최적화 6단계 프롬프팅',
     sme: '이서한', sme_affil: '성신여대 겸임교수 · 전 삼성주도 강의교수', target: '리더·임원', level: '실무',
     duration: dur(6, 6), hours: 6, curriculum_count: 6, refund: '미정', refund_note: null,
     category_path: 'AX·AI 전환 > 리더십', book_provided: false, tools: ['ChatGPT'],
@@ -174,7 +174,7 @@ export const COURSES: Course[] = [
   },
   {
     id: 'job5', pillar: 'job', pillar_label: '직무특화', featured: true, rank: 5,
-    title: '휴머니타드 간호 실무 — 환자 중심의 간호 이해와 실무',
+    title: '휴머니타드 간호 실무, 환자 중심의 간호 이해와 실무',
     sme: '김장운', sme_affil: '감정릭 응급보호사교육원 강사 / 유튜브 도인의 응급TV', target: '의료 종사자', level: '실무',
     duration: dur(null, 30), hours: null, curriculum_count: 30, refund: '환급', refund_note: null,
     category_path: '의료제약 > 의료일반', book_provided: false, tools: [],
@@ -186,7 +186,7 @@ export const COURSES: Course[] = [
   },
   {
     id: 'job6', pillar: 'job', pillar_label: '직무특화', featured: true, rank: 6,
-    title: '흑백해커 — 이븐하게 배우는 디지털 보안 상식',
+    title: '흑백해커, 이븐하게 배우는 디지털 보안 상식',
     sme: '이재승', sme_affil: '연세대 법학 박사·서울시립대 정보보호학과 / 한국인터넷진흥원장 등', target: '전사 공통', level: '입문',
     duration: dur(null, 8), hours: null, curriculum_count: 8, refund: '환급', refund_note: null,
     category_path: '산업직무 > IT > IT비즈니스전략', book_provided: false, tools: [],
@@ -211,7 +211,7 @@ export const COURSES: Course[] = [
   },
   {
     id: 'biz2', pillar: 'biz', pillar_label: '비즈니스 스킬', featured: true, rank: 2,
-    title: '성과를 만드는 루틴X러닝 — 자기관리와 성장의 기술',
+    title: '성과를 만드는 루틴X러닝, 자기관리와 성장의 기술',
     sme: null, sme_affil: null, target: '전사 공통', level: '실무',
     duration: dur(null, 8), hours: null, curriculum_count: 8, refund: '비환급', refund_note: null,
     category_path: '비즈니스 스킬 > 자기관리', book_provided: false, tools: [],
@@ -223,7 +223,7 @@ export const COURSES: Course[] = [
   },
   {
     id: 'biz3', pillar: 'biz', pillar_label: '비즈니스 스킬', featured: true, rank: 3,
-    title: '김경일 교수의 지혜로운 직장생활 — 관계가 어려워도 괜찮아',
+    title: '김경일 교수의 지혜로운 직장생활, 관계가 어려워도 괜찮아',
     sme: '김경일', sme_affil: '아주대 심리학과 교수·전 게임문화재단 이사장 / 저서 「김경일의 지혜로운 인간생활」', target: '전사 공통', level: '입문',
     duration: dur(null, 9), hours: null, curriculum_count: 9, refund: '미정', refund_note: null,
     category_path: '경영일반 > 비즈니스스킬 > 커뮤니케이션', book_provided: false, tools: [],
@@ -247,7 +247,7 @@ export const COURSES: Course[] = [
   },
   {
     id: 'biz5', pillar: 'biz', pillar_label: '비즈니스 스킬', featured: true, rank: 5,
-    title: '직장인 필이기 — 문서의 신 백승권이 알려주는 오피스 문해력',
+    title: '직장인 필이기, 문서의 신 백승권이 알려주는 오피스 문해력',
     sme: '백승권', sme_affil: 'CCC 커뮤니케이션 컨설팅&클리닉 대표·전 청와대 홍보수석실 행정관 / 저서 「오피스 문해력」', target: '전사 공통', level: '실무',
     duration: dur(null, 8), hours: null, curriculum_count: 8, refund: '비환급', refund_note: null,
     category_path: '비즈니스 스킬 > 문서/보고', book_provided: false, tools: [],

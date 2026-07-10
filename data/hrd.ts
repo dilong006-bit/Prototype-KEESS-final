@@ -1,4 +1,4 @@
-// P3 HRD 통합 솔루션 — 카피/데이터 verbatim (keess_P3_hrd_B_platform_v2.0)
+// P3 HRD 통합 솔루션, 카피/데이터 verbatim (keess_P3_hrd_B_platform_v2.0)
 // 색·버튼변형 미이식. 바이올렛은 --p3, 정부지원 포인트는 --gov(Design.md 확정 토큰).
 
 export const HERO = {
@@ -25,7 +25,7 @@ export const ARCH = {
     { cls: 'c-sys', bk: 'B3-1 · 시스템', h3: '맞춤형 HRD 연수원', p: 'LMS + 전용 APP · 온·오프 하이브리드 · ISMS · 동시접속 2만', chips: ['WEB·Mobile UI 통일', 'iOS·Android·PUSH', '365일 24h'] },
     { cls: 'c-ops', bk: 'B3-2 · 운영', h3: 'HRD 운영 위탁', p: 'HOW 7축 · 30+사 실적' },
     { cls: 'c-studio hi', bk: 'B3-3 · 제작 ★', h3: '콘텐츠 스튜디오', p: '자체 3개소 · 촬영·제작팀 · 자체 IP' },
-    { cls: 'c-kgesa wide', bk: 'B3-4 · 차세대 (KGESA)', h3: '노코드 사이트 빌더', p: '운영자가 테마·위젯을 조작하면 학습자 화면이 실시간 완성 — 개발 요청 제로', demoLink: true },
+    { cls: 'c-kgesa wide', bk: 'B3-4 · 차세대 (KGESA)', h3: '노코드 사이트 빌더', p: '운영자가 테마·위젯을 조작하면 학습자 화면이 실시간 완성, 개발 요청 제로', demoLink: true },
   ],
   svcHead: { eyebrow: 'SERVICE MODEL', title: '복잡한 건 시스템이, 담당자는 클릭만', sub: '기획·구성부터 성과 관리까지, 어려운 일은 시스템이 처리하고, 담당자는 클릭으로 끝냅니다.' },
   svc: [
@@ -131,7 +131,7 @@ export const GOV = {
   cards: [
     { gk: 'WHO · 지원 대상', b: '고용보험 가입 사업주', p: '재직근로자·채용예정자 대상 훈련이면, 기업 규모와 무관하게 신청할 수 있습니다.', hi: false },
     { gk: 'HOW MUCH · 환급 규모', b: '훈련비 최대 90% 환급', bnum: '90%', em: '우선지원기업 기준', p: '기업 규모·과정 유형에 따라 지원율이 달라집니다. 정확한 환급액은 상담 시 산정해 드립니다.', hi: true },
-    { gk: 'WHAT WE DO · KG에듀원 대행', b: '신청부터 정산까지 대행', p: '인정신청·실시신고·비용신청·지원금 정산 — 담당자는 교육에만 집중하세요.', hi: false },
+    { gk: 'WHAT WE DO · KG에듀원 대행', b: '신청부터 정산까지 대행', p: '인정신청·실시신고·비용신청·지원금 정산, 담당자는 교육에만 집중하세요.', hi: false },
   ],
   steps: [
     { gsn: 'STEP 1', b: '훈련과정 인정신청', p: '위탁 7일 · 자체 5일 전' },
@@ -149,7 +149,7 @@ export const GOV = {
 
 export const INQ = {
   title: 'HRD 통합 솔루션,\n진단부터 시작하세요',
-  sub: '하나의 아키텍처로 — 조직에 맞는 HRD 플랫폼을 함께 설계합니다. 도입 문의를 남겨주시면 담당자가 연락드립니다.',
+  sub: '하나의 아키텍처로, 조직에 맞는 HRD 플랫폼을 함께 설계합니다. 도입 문의를 남겨주시면 담당자가 연락드립니다.',
   interests: ['HRD 통합 솔루션(P3)', 'AX·AI 전환(P1)', '콘텐츠 솔루션(P4)', '정부지원 환급'],
   successTitle: '문의가 접수되었습니다',
   successMsg: '담당자가 확인 후 연락드리겠습니다.',
