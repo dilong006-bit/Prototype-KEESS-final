@@ -3,6 +3,7 @@
 
 export const HERO = {
   eyebrow: '콘텐츠 솔루션',
+  img: '/images/p4-hero.jpg',
   h1Lead: '기업에 필요한 ',
   h1Emph: '모든 교육',
   h1Tail: '을,',

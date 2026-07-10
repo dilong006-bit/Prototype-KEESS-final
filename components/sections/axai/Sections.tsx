@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import CountNum from '@/components/common/CountNum';
 import SubNav from '@/components/common/SubNav';
+import Img from '@/components/common/Img';
 import { useAxModal } from './AxModals';
 import {
   HERO, BENTO, SCENARIO, SCEN, STEP5, FRAMEWORK, FW, LV_CLASS,
@@ -27,6 +28,8 @@ export default function Sections() {
     <main id="main" tabIndex={-1}>
       {/* ── HERO (다크 톤 정합) ── */}
       <section className="ax-hero" id="hero">
+        <Img className="hero-img" src={HERO.img} eager />
+        <div className="hero-scrim" />
         <div className="wrap">
           <div className="ax-hero-grid">
             <div className="ax-hero-copy">

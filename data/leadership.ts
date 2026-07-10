@@ -8,7 +8,7 @@ export const HERO = {
   sub: 'KG에듀원 고유의 6대 리더십 역량 체계로, 무엇을 기를지 명확히 정의하고 진단에서 조직문화 정착까지 설계합니다.',
   ctaPrimary: '도입 문의',
   ctaSecondary: '리더십 체계 보기',
-  img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop',
+  img: '/images/p2-hero.jpg',
   strip: ['성장단계 6단계 로드맵', '6대 리더십 역량', '온·오프라인 통합'],
   floats: [
     { fv: '6단계', fl: '성장 여정' },

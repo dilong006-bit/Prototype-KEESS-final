@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import SubNav from '@/components/common/SubNav';
+import Img from '@/components/common/Img';
 import { useContentModal } from './ContentModals';
 import { CourseExplorer } from './Explorer';
 import {
@@ -49,6 +50,8 @@ export default function Sections() {
     <main id="main" tabIndex={-1}>
       {/* ── HERO ── */}
       <section className="ct-hero section" id="hero">
+        <Img className="hero-img" src={HERO.img} eager />
+        <div className="hero-scrim" />
         <div className="wrap">
           <div className="ct-hero-in">
             <div>

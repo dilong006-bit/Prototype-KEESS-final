@@ -3,6 +3,7 @@
 
 export const HERO = {
   tag: 'P1 · AX·AI 전환 · End-to-End Partner',
+  img: '/images/p1-hero.jpg',
   h1Lead: 'AI를 배우는 데서 멈추지 않습니다.',
   h1Emph: '일하는 방식을 바꿉니다.',
   sub: '진단부터 성과 창출까지, 맞춤형 교육과 실행을 연결하는 KG에듀원 End-to-End 기업 AX Transformation Partner.',

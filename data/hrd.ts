@@ -6,7 +6,7 @@ export const HERO = {
   h1Lead: 'HRD 운영의 모든 것을,',
   h1Emph: '하나의 플랫폼에서',
   sub: '시스템 · 운영 · 콘텐츠 제작을 단일 아키텍처로 연결합니다. 구축부터 차세대 시스템까지, 벤더를 늘리지 않고 통합 제공합니다.',
-  img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop',
+  img: '/images/p3-hero.jpg',
   ctaPrimary: '도입 문의',
   ctaSecondary: '차세대 데모 둘러보기 →',
   metrics: [
