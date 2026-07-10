@@ -145,11 +145,11 @@ export const AX6 = {
 // ===== 다운로드 (B안 신규 · F9 라이트 게이트) =====
 export const DOWNLOAD = {
   eyebrow: 'Download · 전체 과정 리스트',
-  titleLead: '필요한 과정을 한눈에,',
-  titleEmph: '전체 리스트로',
-  titleTail: ' 받아보세요',
-  lead: '직무·어학·자격·법정·신규까지, 매월 갱신되는 전체 과정 리스트를 엑셀 한 파일로 제공합니다.',
-  crossLink: { label: '환급 가능 과정 495개 포함 · 정부지원 환급 안내 →', href: '/hrd#gov' },
+  titleLead: '원하는 과정을',
+  titleEmph: '전체 리스트',
+  titleTail: '에서 바로 찾아보세요',
+  lead: '직무·어학·자격·법정교육부터 매월 새롭게 추가되는 과정까지 최신 과정 정보를 엑셀 파일 하나에 정리했습니다.',
+  crossLink: { label: '정부지원 환급 안내 →', href: '/hrd#gov' },
   cta: '과정 리스트 다운로드 (Excel)',
   meta: '.xlsx · 매월 갱신 · 정기개강일 포함',
   file: { name: 'KG에듀원 과정 리스트', basis: '2026년 8월 개강 기준 · 8,000여 과정' },
