@@ -26,7 +26,10 @@
    Base reset (원본 프로토타입 공통 base)
    ========================================================================= */
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:118px}
+/* 앵커 랜딩 오프셋: sticky(nav72+subnav53=125) 바로 아래로 섹션 콘텐츠(eyebrow)를 프레이밍.
+   섹션 top padding(PC 120 / MOB 74)을 감안해 eyebrow가 subnav 하단 ~30px에 놓이도록 반응형 설정. */
+html{scroll-behavior:smooth;scroll-padding-top:35px}
+@media(max-width:720px){html{scroll-padding-top:81px}}
 body{
   font-family:var(--font-pretendard),"Pretendard Variable",Pretendard,system-ui,sans-serif;
   background:var(--bg);color:var(--ink);line-height:1.6;letter-spacing:-.01em;

@@ -216,7 +216,7 @@ export default function Sections() {
         <div className="wrap iwrap">
           <div className="r">
             <h2>{INQ.title}</h2>
-            <p className="isub">{INQ.sub}</p>
+            <p className="isub" style={{ whiteSpace: 'pre-line' }}>{INQ.sub}</p>
           </div>
           <div className="iform r">
             <Inquiry preselect={preselect} nonce={nonce} />

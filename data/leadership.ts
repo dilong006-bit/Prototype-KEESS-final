@@ -163,7 +163,7 @@ export const GROWTHFIT = {
 
 export const WHY = {
   eyebrow: 'WHY KG',
-  title: '단발성 교육이 아닌, 성장하는 체계입니다',
+  title: '이번 교육이, 다음 리더를 만듭니다',
   cards: [
     { wn: '01', h4: '진단에서 시작', p: '리더십·조직문화·AI리터러시 진단으로 현재를 파악하고 여정을 설계합니다.' },
     { wn: '02', h4: '성장단계 정합', p: '신입부터 C-Level까지, 직급이 아닌 성장단계에 맞춘 리더십을 제공합니다.' },
