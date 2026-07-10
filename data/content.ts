@@ -60,8 +60,8 @@ export const AX2 = {
 };
 
 export const AX3 = {
-  no: '03', kicker: 'IT & Certification', title: 'IT·자격, 기초에서 전문까지, 자격과 함께',
-  lead: '단계마다 필요한 기술과 딸 수 있는 자격을 같이 봅니다.',
+  no: '03', kicker: 'IT & Certification', title: 'IT·자격, 기초부터 전문 역량까지 단계별로',
+  lead: '기초 학습부터 실무 활용, 전문 자격 준비까지 현재 수준과 목표에 맞는 과정을 살펴보세요.',
   tag: '자격증 494 보유',
   sub: '단계별 역량과 자격',
   stages: [
@@ -73,7 +73,7 @@ export const AX3 = {
 };
 
 export const AX4 = {
-  no: '04', kicker: 'Common & Growth', title: '비즈니스·리더십, 개인에서 조직까지',
+  no: '04', kicker: 'Common & Growth', title: '비즈니스·리더십, 개인의 성장을 조직의 성과로',
   lead: '혼자 잘하는 법에서 팀을 이끄는 법, 조직을 바꾸는 법까지.',
   tag: '비즈니스 공통역량',
   axis: '영향 범위 · 개인 → 조직',

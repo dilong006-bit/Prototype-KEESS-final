@@ -122,7 +122,7 @@ export default function Explorer({ open, onClose, openConsult }: { open: boolean
   const title = (
     <span className="exp-head">
       <span className="cat">Featured Lineup</span>
-      <span>가장 먼저 살펴봐야 할 대표 과정</span>
+      <span>조직의 교육 과제에 바로 연결할 대표 과정</span>
       <span className="mb">8,426개 중 대표 선별</span>
     </span>
   );

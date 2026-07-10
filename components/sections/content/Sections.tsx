@@ -212,8 +212,8 @@ export default function Sections() {
         <div className="wrap">
           <div className="axhead"><div>
             <span className="ct-eyebrow r"><IcSearch /> Featured Lineup</span>
-            <h2>가장 먼저 살펴봐야 할 대표 과정</h2>
-            <p className="lead">8,426개 과정 중, 조직에 바로 통하는 대표 과정을 3개 축으로 골랐습니다.</p>
+            <h2>조직의 교육 과제에 바로 연결할 대표 과정</h2>
+            <p className="lead">8,426개 과정 가운데 조직의 주요 교육 과제에 연결할 대표 과정을 세 가지 테마로 소개합니다.</p>
           </div></div>
           <div className="pillar-intro r">
             {[
