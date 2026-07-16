@@ -297,7 +297,7 @@ export default function HomeInquiry() {
                   <div className="field">
                     <label htmlFor="f-trainees">예상 교육인원</label>
                     <select id="f-trainees" name="expectedTrainees" value={v.trainees} onChange={upd('trainees')}>
-                      <option value="">예상 교육인원</option>
+                      <option value="">선택</option>
                       {INQ.trainees.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
                     </select>
                   </div>
