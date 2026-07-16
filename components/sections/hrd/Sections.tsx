@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { scrollToId } from '@/lib/utils';
+import { goToInquiry, scrollToId } from '@/lib/utils';
 import Link from 'next/link';
 import Img from '@/components/common/Img';
 import SubNav from '@/components/common/SubNav';
@@ -9,7 +9,7 @@ import KgesaDemo from './KgesaDemo';
 import ModuleTabs from './ModuleTabs';
 import { useHdModal } from './HdModal';
 import {
-  HERO, ARCH, STUDIO, DEMO, AI, MODULES, TRUST, GOV, INQ, SUBNAV,
+  HERO, ARCH, STUDIO, DEMO, AI, MODULES, GOV, INQ, SUBNAV,
 } from '@/data/hrd';
 
 export default function Sections() {
@@ -20,7 +20,7 @@ export default function Sections() {
   const goToInq = (area: string) => {
     setPreselect(area);
     setNonce((n) => n + 1);
-    scrollToId('inq');
+    goToInquiry('inq');
   };
 
   // /hrd#gov 등 해시 도착 시 스크롤
@@ -155,28 +155,6 @@ export default function Sections() {
         </div>
       </section>
 
-      {/* ── 운영 규모 (dark) ── */}
-      <section className="section sec-dark" id="trust">
-        <div className="wrap">
-          <p className="eyebrow r">{TRUST.eyebrow}</p>
-          <h2 className="sec-title r" style={{ marginTop: 14 }}>{TRUST.title}</h2>
-          <div className="metric-row r">
-            {TRUST.metrics.map((m) => (
-              <div className="mc" key={m.l}><div className="mv">{m.v}{m.unit && <span>{m.unit}</span>}</div><div className="ml">{m.l}{m.em && <em>{m.em}</em>}</div></div>
-            ))}
-          </div>
-          <p className="lw-label r">{TRUST.logoLabel}</p>
-          <div className="logo-wall r">
-            {TRUST.logos.map((l) => <span key={l.t}>{l.t}{l.em && <em>{l.em}</em>}</span>)}
-          </div>
-          <p className="lw-label r">{TRUST.certLabel} <em style={{ fontStyle: 'normal', color: 'color-mix(in srgb, var(--p3) 45%, #fff)' }}>{TRUST.certLabelEm}</em></p>
-          <div className="cert-row r">
-            {TRUST.certs.map((c) => <span className="cert" key={c}>{c}</span>)}
-          </div>
-          <p className="cert-note r">{TRUST.certNote}</p>
-        </div>
-      </section>
-
       {/* ── 정부지원 환급 (B안 특화) ── */}
       <section className="section" id="gov">
         <div className="wrap">
@@ -203,7 +181,9 @@ export default function Sections() {
           <div className="gov-cta r">
             <div className="gc-copy">
               <b>{GOV.ctaCopy}</b>
-              <span>{GOV.ctaSub} <Link className="gc-link" href={GOV.crossLink.href}>{GOV.crossLink.label}</Link></span>
+              <span>{GOV.ctaSub}</span>
+              {/* K4: 환급 링크는 상담 문구에 이어 붙지 않도록 별도 줄로 분리 */}
+              <Link className="gc-link" href={GOV.crossLink.href}>{GOV.crossLink.label}</Link>
             </div>
             <button className="btn" onClick={() => goToInq(GOV.preselect)}>{GOV.cta}</button>
           </div>

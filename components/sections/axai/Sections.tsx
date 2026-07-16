@@ -1,13 +1,13 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import Link from 'next/link';
 import CountNum from '@/components/common/CountNum';
 import SubNav from '@/components/common/SubNav';
 import Img from '@/components/common/Img';
-import { useAxModal } from './AxModals';
 import {
   HERO, BENTO, SCENARIO, SCEN, STEP5, FRAMEWORK, FW, LV_CLASS,
-  JOBS, JOBLV, STAGE_NAMES, STAGE_MIX, JOBPOS, WHY, GAP, COURSES, CASES, FINAL, SUBNAV,
+  JOBS, JOBLV, STAGE_NAMES, STAGE_MIX, JOBPOS, WHY, GAP, COURSES, FINAL, SUBNAV,
 } from '@/data/axai';
 
 const Arrow = () => (
@@ -22,7 +22,7 @@ const BENTO_ICONS: Record<string, React.ReactNode> = {
 };
 
 export default function Sections() {
-  const { openInq, openGuide } = useAxModal();
+
 
   return (
     <main id="main" tabIndex={-1}>
@@ -37,8 +37,7 @@ export default function Sections() {
               <h1><span className="dim">{HERO.h1Lead}</span> <span className="hl">{HERO.h1Emph}</span></h1>
               <p className="sub">{HERO.sub}</p>
               <div className="act">
-                <button className="btn btn-ink" onClick={openInq}>{HERO.ctaPrimary} <Arrow /></button>
-                <button className="btn btn-glass" onClick={openGuide}>{HERO.ctaSecondary}</button>
+                <Link className="btn btn-ink" href="/#inq">{HERO.cta} <Arrow /></Link>
               </div>
               <div className="ax-strip">{HERO.strip.map((s) => <span key={s}>{s}</span>)}</div>
             </div>
@@ -84,7 +83,7 @@ export default function Sections() {
         </div>
       </section>
 
-      <Scenario openInq={openInq} />
+      <Scenario />
 
       {/* ── 5 STEP ── */}
       <section className="section" id="service">
@@ -146,25 +145,6 @@ export default function Sections() {
         </div>
       </section>
 
-      {/* ── CASES ── */}
-      <section className="section">
-        <div className="wrap">
-          <p className="eyebrow r">{CASES.eyebrow}</p>
-          <h2 className="sec-title r" style={{ marginTop: 14 }}>{CASES.title}</h2>
-          <div className="case-grid stagger">
-            {CASES.items.map((c) => (
-              <div className="case" key={c.title}>
-                <div className="ct"><div className="pat" /><span className="ax-badge">{c.badge}</span></div>
-                <div className="cb"><h4>{c.title}</h4>
-                  <div className="meta">{c.meta.map((m, i) => <div key={i}><div className="mv">{m.v}</div><div className="ml">{m.l}</div></div>)}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <p className="r" style={{ marginTop: 14, fontSize: 12.5, color: '#a8a3b8' }}>{CASES.note}</p>
-        </div>
-      </section>
-
       {/* ── FINAL ── */}
       <section className="section" id="inq">
         <div className="wrap">
@@ -172,8 +152,7 @@ export default function Sections() {
             <h2>{FINAL.title}</h2>
             <p>{FINAL.sub}</p>
             <div className="act">
-              <button className="btn btn-ink" onClick={openInq}>{FINAL.ctaPrimary} <Arrow /></button>
-              <button className="btn btn-glass" onClick={openGuide}>{FINAL.ctaSecondary}</button>
+              <Link className="btn btn-ink" href="/#inq">{FINAL.cta} <Arrow /></Link>
             </div>
           </div>
         </div>
@@ -183,7 +162,7 @@ export default function Sections() {
 }
 
 // ── Scenario (목표 선택 → 패널) ──
-function Scenario({ openInq }: { openInq: () => void }) {
+function Scenario() {
   const [key, setKey] = useState('diag');
   const s = SCEN[key];
   const optRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -220,7 +199,7 @@ function Scenario({ openInq }: { openInq: () => void }) {
               <h3>{s.t}</h3>
               <p>{s.p}</p>
               <div className="pchips">{s.chips.map((c) => <span key={c}>{c}</span>)}</div>
-              <div className="pcta"><button className="btn" onClick={openInq}>{s.cta} <Arrow /></button></div>
+              <div className="pcta"><Link className="btn" href="/#inq">{s.cta} <Arrow /></Link></div>
             </div>
           </div>
         </div>

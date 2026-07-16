@@ -99,5 +99,15 @@ public/         # fonts(Pretendard self-host)·images·downloads(xlsx)
 - **제출 페이로드 신규 조립**(기존 없음): `InquiryPayload` 타입 + 연동 슬롯 `submitInquiry()`.
   `{ companyName, managerName, email, phone, eduScale(under50|50to300|300to1000|over1000|''), interests[], message, attachment, agreePrivacy, agreeMarketingEmail/Sms/Tel }` — 부문 키·단일 마케팅 키 없음. 백엔드 미연동(§0-6 추후 연동 슬롯).
 - **접근성**: `label htmlFor`+id 연결(aria-label 제거), `aria-required`/`aria-invalid`/`aria-live=polite`, 관심영역 칩 `span`→`button`(`aria-pressed`, Tab·Space 조작 가능).
+- **A안 정본 이식(v2)**: 필수 5개(회사·기관명/담당자명/연락처/직급·직책/이메일)+개인정보 동의, 이메일 분리입력(아이디 @ 도메인 프리셋 + `직접입력` 토글), 회사 규모·예상 교육인원 2 select, 관심영역 5칩(4번째만 `콘텐츠 제작·도입`), 마케팅 부모+3채널. 마케팅 전문 본문은 final 확정본 유지(A안은 임시 문구).
+
+### 6) 구조 개선 + 카피 확정 (최종 기술명세서 v1.0)
+- **공통**: '도입 문의' **확인 팝업 제거** → 클릭 즉시 문의 입력 섹션으로 스무스 스크롤 + **첫 필드 포커스**(`lib/utils.ts: goToInquiry()`).
+- **홈**: References를 **고객사 CI 6분류**(그룹·산학·협회·조합·보험·증권·카드·제조·생산)로 재구성. **CI 롤링 전제 구조**(`.ci-roll` 래퍼 + `.ci-track`), 프로토타입은 **임시 CI 슬롯**(`public/images/ci/ci-placeholder.svg`) + `임시` 배지, "노출 협의 기준" 캡션 유지. → 실제 고객사 CI·분류 매핑은 노출 협의 후 교체.
+- **P1**: 히어로·최하단 CTA 2종(`AX 진단 상담받기`/`AX 도입 가이드 받기`)과 **모달 폼 2종 제거** → 단일 **`교육 상담` → `/#inq`**(P1은 자체 폼이 없어 홈 신청 폼으로 일원화, Nav CTA 포함). '현업에 바로 쓰는 결과물'(도입 사례) 섹션 제거. 성과(`#proof`) 섹션은 유지.
+- **P2·P3**: 관심영역에서 `(P1)~(P4)` 접미 제거 + `법정 필수`·`기타` 추가.
+- **P3**: SOLUTION MODULES `B3-x ·` 접두어·`★` 제거(시스템/운영/제작) · **PROVEN AT SCALE 섹션 제거**(데이터·앵커·SubNav 포함).
+- **P4**: **'대표 과정 찾기' 기능 전면 제거**(히어로·최하단·모달·**FAB**) + **Featured Lineup 섹션 제거** + dead code 정리(`Explorer.tsx`·`data/courses.ts`·`EXPLORER` 상수 삭제). `6개 체계 보기`·`콘텐츠 도입 문의`는 유지.
+- **카피(K1~K5)**: P3 SERVICE MODEL·GOVERNMENT SUPPORT·환급 상담 문구의 어절 끊김 방지(`word-break:keep-all`) · 환급 링크를 상담 문구와 **줄 분리** · P4 Compliance 2024 시리즈 `뽕뽕`→**`뿅뿅` 직장 오락실**(오타 수정).
 
 > 백엔드 미연동(클라이언트 상태 UI) · Design.md 토큰 준수 · 가격/결제 요소 없음.

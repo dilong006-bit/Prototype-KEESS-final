@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import '@/styles/axai.css';
 import Nav from '@/components/common/Nav';
 import RevealInit from '@/components/common/RevealInit';
-import AxModalProvider from '@/components/sections/axai/AxModals';
 import Sections from '@/components/sections/axai/Sections';
 
 export const metadata: Metadata = {
@@ -12,13 +11,12 @@ export const metadata: Metadata = {
 };
 
 export default function AxAiPage() {
+  // P1은 자체 문의 폼이 없다 — 모든 상담 CTA는 홈 신청 폼(/#inq)으로 일원화 (기술명세서 §C-1)
   return (
     <div className="tint-p1">
-      <Nav current="ax-ai" consultHref="#inq" />
+      <Nav current="ax-ai" consultHref="/#inq" />
       <RevealInit />
-      <AxModalProvider>
-        <Sections />
-      </AxModalProvider>
+      <Sections />
     </div>
   );
 }

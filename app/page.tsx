@@ -41,24 +41,31 @@ export default function HomePage() {
 
       <HomeManifesto />
 
-      {/* References */}
+      {/* References — 고객사 CI 6분류 (CI 롤링 전제 트랙 구조 · 프로토타입은 임시 CI) */}
       <section className="section">
         <div className="wrap">
           <p className="eyebrow r">{REFERENCES.eyebrow}</p>
           <h2 className="sec-title r" style={{ marginTop: 12 }}>{REFERENCES.title}</h2>
-          {REFERENCES.blocks.map((b) => (
-            <div className="ref-block r" key={b.label}>
-              <p className="ref-label">{b.label}</p>
-              <div className="ref-grid stagger">
-                {b.items.map((it) => (
-                  <div className="ref" key={it.org}>
-                    <div className="org">{it.org}</div>
-                    <div className="role">{it.role}</div>
+          <div className="ci-cats">
+            {REFERENCES.groups.map((g) => (
+              <div className="ci-cat r" key={g.category}>
+                <p className="ci-cat-label">
+                  {g.category}
+                  <em className="ci-temp">{REFERENCES.tempBadge}</em>
+                </p>
+                <div className="ci-roll">
+                  <div className="ci-track">
+                    {g.logos.map((l, i) => (
+                      <span className="ci-item" key={`${g.category}-${i}`}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={l.imgSrc} alt="" loading="lazy" decoding="async" />
+                      </span>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
           <p className="ref-cap r">{REFERENCES.cap}</p>
         </div>
       </section>

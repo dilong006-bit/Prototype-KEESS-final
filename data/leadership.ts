@@ -174,15 +174,9 @@ export const WHY = {
 export const INQ = {
   title: '리더십 체계,\n진단부터 시작하세요',
   sub: '우리 조직에 맞는 리더십·조직 체계를 함께 설계합니다. 도입 문의를 남겨주시면 담당자가 연락드립니다.',
-  interests: ['리더십·조직(P2)', 'AX·AI 전환(P1)', 'HRD 통합(P3)', '콘텐츠(P4)'],
+  interests: ['리더십·조직', 'AX·AI 전환', 'HRD 통합', '콘텐츠', '법정 필수', '기타'],
   successTitle: '문의가 접수되었습니다',
   successMsg: '담당자가 확인 후 연락드리겠습니다.',
-};
-
-export const MODAL = {
-  title: '도입 문의',
-  body: '아래 문의 폼으로 이동합니다. 우리 조직에 맞는 리더십 체계를 함께 설계해 드리겠습니다.',
-  cta: '문의 폼으로 이동',
 };
 
 export const SUBNAV = [

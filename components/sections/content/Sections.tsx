@@ -4,7 +4,6 @@ import Link from 'next/link';
 import SubNav from '@/components/common/SubNav';
 import Img from '@/components/common/Img';
 import { useContentModal } from './ContentModals';
-import { CourseExplorer } from './Explorer';
 import {
   HERO, AXISNAV, AX1, AX2, AX3, AX4, AX5, AX6, DOWNLOAD, FINAL,
 } from '@/data/content';
@@ -15,7 +14,6 @@ const IcCode = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" 
 const IcLayers = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z" /><path d="M3 13l9 5 9-5M3 16.5l9 5 9-5" /></svg>;
 const IcShield = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" /><path d="M9 12l2 2 4-4" /></svg>;
 const IcCam = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="7" width="18" height="13" rx="2" /><circle cx="12" cy="13.5" r="3.5" /><path d="M8 7l1.5-3h5L16 7" /></svg>;
-const IcSearch = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4-4" /></svg>;
 const IcDown = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v12M7 11l5 5 5-5M4 20h16" /></svg>;
 const IcList = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01" /></svg>;
 const IcSheet = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="3" width="16" height="18" rx="2" /><path d="M4 9h16M4 15h16M10 3v18" /></svg>;
@@ -44,7 +42,7 @@ function AxHead({ kicker, icon: Icon, title, lead, tag, extra }: { no?: string; 
 }
 
 export default function Sections() {
-  const { openExplorer, openConsult, openDownload } = useContentModal();
+  const { openConsult, openDownload } = useContentModal();
 
   return (
     <main id="main" tabIndex={-1}>
@@ -60,7 +58,6 @@ export default function Sections() {
               <p className="lead">{HERO.lead}</p>
               <div className="hero-cta">
                 <a href="#ax1" className="btn btn-ink">6개 체계 보기</a>
-                <button className="btn btn-glass" onClick={openExplorer}><IcSearch /> 대표 과정 찾기</button>
               </div>
               <p className="hero-note">{HERO.note}</p>
             </div>
@@ -210,27 +207,6 @@ export default function Sections() {
         </div>
       </section>
 
-      {/* ── 대표 과정 조회 (F2 · #featured) ── */}
-      <section className="section" id="featured" style={{ background: 'var(--surface)', borderTop: '1px solid var(--line)' }}>
-        <div className="wrap">
-          <div className="axhead"><div>
-            <span className="ct-eyebrow r"><IcSearch /> Featured Lineup</span>
-            <h2>조직의 교육 과제에 바로 연결할 대표 과정</h2>
-            <p className="lead">8,426개 과정 가운데 조직의 주요 교육 과제에 연결할 대표 과정을 세 가지 테마로 소개합니다.</p>
-          </div></div>
-          <div className="pillar-intro r">
-            {[
-              { key: 'ax', label: 'AX·AI 전환', desc: 'AI를 배우는 데서 멈추지 않고, 일하는 방식을 바꿉니다.' },
-              { key: 'job', label: '직무특화', desc: '직무의 언어로 배우는 실무 AI·전문 역량.' },
-              { key: 'biz', label: '비즈니스 스킬', desc: '전 직군이 공유하는 일의 기본기.' },
-            ].map((p) => (
-              <div className={`pintro pil-${p.key}`} key={p.key}><div className="pt">{p.label}</div><p>{p.desc}</p></div>
-            ))}
-          </div>
-          <div className="feat-exp r"><CourseExplorer openConsult={openConsult} /></div>
-        </div>
-      </section>
-
       {/* ── 다운로드 (B안 · F9) ── */}
       <section className="section" id="download">
         <div className="wrap">
@@ -264,14 +240,10 @@ export default function Sections() {
             <p>{FINAL.sub}</p>
             <div className="fbtns">
               <button className="btn btn-ink" onClick={() => openConsult()}>{FINAL.ctaPrimary}</button>
-              <button className="btn btn-glass" onClick={openExplorer}>{FINAL.ctaSecondary}</button>
             </div>
           </div>
         </div>
       </section>
-
-      {/* 플로팅 탐색기 (원본 FAB 유지) */}
-      <button className="fab" onClick={openExplorer}><IcSearch /> 대표 과정 찾기</button>
     </main>
   );
 }

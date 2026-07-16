@@ -92,7 +92,7 @@ export const AX5 = {
   tag: '법정의무 · 컴플라이언스',
   seriesSub: '연도별 대표 시리즈',
   timeline: [
-    { yr: '2024', nm: '뽕뽕 직장 오락실', cc: '지구오락실 컨셉' },
+    { yr: '2024', nm: '뿅뿅 직장 오락실', cc: '지구오락실 컨셉' },
     { yr: '2025', nm: '법정마불', cc: '지구마블 세계여행 컨셉' },
     { yr: '2026', nm: '법정 헌터스', cc: 'K-POP Demon Hunters 컨셉', cur: true },
   ],
@@ -171,20 +171,6 @@ export const FINAL = {
   titleLine2: '함께 설계합니다',
   sub: '조직 과제에 맞춰 8,426개에서 고르고, 필요하면 직접 만듭니다.',
   ctaPrimary: '콘텐츠 도입 문의',
-  ctaSecondary: '대표 과정 찾기',
-};
-
-export const EXPLORER = {
-  cat: 'Featured Lineup', title: '대표 과정 · AX·AI 전환 34선', mb: '8,426개 중 대표 선별',
-  searchPlaceholder: '과정명·키워드 검색',
-  sorts: [
-    { v: 'default', label: '기본순' },
-    { v: 'hours-asc', label: '시간 짧은순' },
-    { v: 'hours-desc', label: '시간 긴순' },
-    { v: 'level', label: '레벨순' },
-  ],
-  reset: '초기화',
-  empty: '결과 없음',
 };
 
 export const CONSULT_MODAL = {

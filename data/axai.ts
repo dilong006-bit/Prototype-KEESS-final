@@ -7,8 +7,7 @@ export const HERO = {
   h1Lead: 'AI를 배우는 데서 멈추지 않습니다.',
   h1Emph: '일하는 방식을 바꿉니다.',
   sub: '진단부터 성과 창출까지, 맞춤형 교육과 실행을 연결하는 KG에듀원 End-to-End 기업 AX Transformation Partner.',
-  ctaPrimary: 'AX 진단 상담받기',
-  ctaSecondary: 'AX 도입 가이드 받기',
+  cta: '교육 상담',
   strip: ['AI 성숙도 진단', 'AX Framework 5단계', 'End-to-End 5 Step', '사전-사후 성과 리포트'],
   floats: [
     { count: 5, label: 'AX Framework 단계' },
@@ -192,45 +191,13 @@ export const COURSES = {
   ],
 };
 
-export const CASES = {
-  eyebrow: '도입 사례',
-  title: '현업에 바로 쓰는 결과물',
-  note: '* 도입 사례·수치는 노출 협의 기준',
-  items: [
-    { badge: 'AI 실무 적용', title: 'KG그룹 AI LAB', meta: [{ v: '규모', l: '노출 협의' }, { v: '회차', l: '노출 협의' }] },
-    { badge: '직무 특화', title: '직무별 AI 활용 교육', meta: [{ v: '8직무', l: 'Skill Matrix' }, { v: '맞춤', l: '현업 과제' }] },
-    { badge: '워크숍·해커톤', title: '현업 솔루션 도출', meta: [{ v: 'PoC', l: 'AI 포트폴리오' }, { v: 'GAP', l: '성과 리포트' }] },
-  ],
-};
-
 export const FINAL = {
   title: 'AX, 진단부터 시작하세요.',
-  sub: '지금 상담하거나, 먼저 AX 도입 가이드부터 받아보세요.',
-  ctaPrimary: 'AX 진단 상담받기',
-  ctaSecondary: 'AX 도입 가이드 받기',
+  sub: '조직 상황에 맞는 AX 전환 여정을 함께 설계해 드립니다.',
+  cta: '교육 상담',
 };
 
 // 상담/가이드 모달 필드
-export const INQ_MODAL = {
-  title: 'AX 진단 상담받기',
-  sub: 'AI 성숙도 진단 기반으로 맞춤 제안을 드립니다.',
-  sectors: ['기업 (B2B)', '공공·기관 (B2G)'],
-  sizes: ['~50명', '50~300명', '300~1,000명', '1,000명+'],
-  interests: ['AI 리터러시', '직무별 AI 활용', 'AI 자동화', 'AX 전략'],
-  successTitle: '상담 신청이 접수되었습니다.',
-  successMsg: '담당자가 영업일 기준 1일 내 회신드립니다.',
-};
-
-export const GUIDE_MODAL = {
-  title: 'AX 도입 가이드 받기',
-  sub: '입력하신 메일로 가이드를 보내드립니다.',
-  valueTitle: '이 가이드에 담긴 것',
-  value: ['AI 성숙도 진단 체크리스트', '직무별 AI 적용 예시', '단계별 AX 도입 로드맵 (PDF)'],
-  consent: '개인정보 수집·이용(가이드 발송 목적)에 동의합니다.',
-  successTitle: '가이드를 보내드렸습니다.',
-  successMsg: '입력하신 메일로 AX 도입 가이드를 발송했습니다.',
-};
-
 export const SUBNAV = [
   { id: 'scenario', label: '목표 경로' },
   { id: 'service', label: '5 Step' },

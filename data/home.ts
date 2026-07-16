@@ -180,27 +180,23 @@ export const MANIFESTO = {
   heading: '교육의 효과를, 이제 숫자로 증명합니다.',
 };
 
-// ── References (원본 634-656) ──
+// ── References — 고객사 CI 6분류 ──
+// 프로토타입은 임시(placeholder) CI 슬롯이다. 실제 고객사 CI·기업명은 노출 협의 후 교체한다.
+// (실제 CI 롤링(가로 무한 롤링)을 전제로 카테고리별 트랙 구조로 구성)
+const CI = '/images/ci/ci-placeholder.svg';
+const ciSlots = (n: number) => Array.from({ length: n }, (_, i) => ({ name: `고객사 ${i + 1}`, imgSrc: CI }));
+
 export const REFERENCES = {
   eyebrow: 'References',
   title: '이미 이렇게 함께하고 있습니다.',
-  blocks: [
-    {
-      label: '위탁 운영',
-      items: [
-        { org: '국민건강보험공단', role: '위탁 운영' },
-        { org: '한국전기안전공사', role: '위탁 운영' },
-        { org: '그랜드코리아레저(GKL)', role: '위탁 운영' },
-      ],
-    },
-    {
-      label: '맞춤 제작 사례',
-      items: [
-        { org: 'KG그룹', role: '핵심가치·윤리교육' },
-        { org: '코오롱', role: '개인정보 온라인 콘텐츠' },
-        { org: 'KG제로인', role: '퇴직연금 시리즈' },
-      ],
-    },
+  tempBadge: '임시',
+  groups: [
+    { category: '그룹', logos: ciSlots(5) },
+    { category: '산학', logos: ciSlots(5) },
+    { category: '협회·조합', logos: ciSlots(5) },
+    { category: '보험', logos: ciSlots(5) },
+    { category: '증권·카드', logos: ciSlots(5) },
+    { category: '제조·생산', logos: ciSlots(5) },
   ],
   cap: '레퍼런스·사례 (노출 협의 기준)',
 };

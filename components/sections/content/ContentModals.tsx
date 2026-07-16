@@ -3,11 +3,10 @@
 import { EMAIL_RE } from '@/lib/utils';
 import { createContext, useContext, useState } from 'react';
 import Modal from '@/components/common/Modal';
-import Explorer from './Explorer';
 import { CONSULT_MODAL, DOWNLOAD_MODAL, DOWNLOAD } from '@/data/content';
 
-interface Ctx { openExplorer: () => void; openConsult: (axis?: string) => void; openDownload: () => void }
-const ModalCtx = createContext<Ctx>({ openExplorer: () => {}, openConsult: () => {}, openDownload: () => {} });
+interface Ctx { openConsult: (axis?: string) => void; openDownload: () => void }
+const ModalCtx = createContext<Ctx>({ openConsult: () => {}, openDownload: () => {} });
 export const useContentModal = () => useContext(ModalCtx);
 
 
@@ -88,16 +87,13 @@ function DownloadBody() {
 }
 
 export default function ContentModalProvider({ children }: { children: React.ReactNode }) {
-  const [exp, setExp] = useState(false);
   const [consult, setConsult] = useState<{ open: boolean; axis?: string }>({ open: false });
   const [dl, setDl] = useState(false);
-  // 상담 모달을 열 때 탐색기는 닫아 중첩 포커스 트랩 방지 (course detail → 도입 문의)
-  const openConsult = (axis?: string) => { setExp(false); setConsult({ open: true, axis }); };
+  const openConsult = (axis?: string) => setConsult({ open: true, axis });
 
   return (
-    <ModalCtx.Provider value={{ openExplorer: () => setExp(true), openConsult, openDownload: () => setDl(true) }}>
+    <ModalCtx.Provider value={{ openConsult, openDownload: () => setDl(true) }}>
       {children}
-      <Explorer open={exp} onClose={() => setExp(false)} openConsult={openConsult} />
       <Modal open={consult.open} onClose={() => setConsult({ open: false })} labelledBy="c-title" title={<span className="exp-head"><span className="cat">{CONSULT_MODAL.cat}</span><span>{CONSULT_MODAL.title}</span><span className="mb">{CONSULT_MODAL.mb}</span></span>} maxWidth={480}>
         <ConsultBody axis={consult.axis} onClose={() => setConsult({ open: false })} />
       </Modal>

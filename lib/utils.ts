@@ -14,3 +14,16 @@ export function scrollToId(id: string): void {
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
 }
+
+/**
+ * 도입 문의 CTA 공통 동작 — 확인 팝업 없이 문의 입력 섹션으로 즉시 이동 + 첫 입력 필드 포커스.
+ * (스무스 스크롤이 끝난 뒤 포커스해야 브라우저가 위치를 되돌리지 않는다 → preventScroll)
+ */
+export function goToInquiry(id = 'inq'): void {
+  scrollToId(id);
+  const delay = prefersReducedMotion() ? 0 : 480;
+  window.setTimeout(() => {
+    const first = document.querySelector<HTMLElement>(`#${id} input:not([type="hidden"]):not(.hp), #${id} select, #${id} textarea`);
+    first?.focus({ preventScroll: true });
+  }, delay);
+}
