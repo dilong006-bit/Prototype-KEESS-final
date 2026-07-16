@@ -268,19 +268,31 @@ export const INQ = {
     sub: '기업·기관 교육 도입 문의를 남겨 주시면, 담당자가 영업일 기준 1일 내 회신드립니다. 제안서·요건 자료가 있으시면 첨부해 주세요.',
     trust: ['정부 3년 인증', 'ISMS', '동시접속 2만 운영'],
   },
-  // 교육 대상 규모(선택) — value = 제출 페이로드 코드(기술명세서 §D-1)
-  sizes: [
-    { value: 'under50', label: '~50명' },
-    { value: '50to300', label: '50~300명' },
-    { value: '300to1000', label: '300~1,000명' },
-    { value: 'over1000', label: '1,000명+' },
+  // 이메일 도메인 프리셋 — A안 정본 1:1 (순서 고정)
+  emailDomains: ['naver.com', 'gmail.com', 'hanmail.net', 'daum.net', 'kakao.com', 'nate.com'],
+  // 회사 규모 (임직원 수) — 선택 · A안 정본 1:1
+  companySizes: [
+    { value: 'lt50', label: '50인 미만' },
+    { value: '50-300', label: '50~300인 미만' },
+    { value: '300-1000', label: '300~1,000인 미만' },
+    { value: 'gte1000', label: '1,000인 이상' },
   ],
-  // 관심 영역(선택·다중) — 4칩. '정부지원'은 상담 성격상 별도 라우트(/hrd#gov)로 분리(§D-3)
+  // 예상 교육인원 — 선택 · A안 정본 1:1 (회사 규모와 별도 필드)
+  trainees: [
+    { value: 'none', label: '해당없음' },
+    { value: 'lte50', label: '~ 50명' },
+    { value: 'lte100', label: '~ 100명' },
+    { value: 'lte500', label: '~ 500명' },
+    { value: 'lte1000', label: '~ 1000명' },
+    { value: 'gt1000', label: '~ 1000명 이상' },
+  ],
+  // 관심 영역(선택·다중) — 5칩. value는 A안과 동일 유지, 4번째 라벨만 '콘텐츠 제작·도입'으로 변경
   interests: [
     { value: 'ax-ai', label: 'AX·AI 전환' },
     { value: 'leadership', label: '리더십·조직' },
     { value: 'hrd', label: 'HRD 통합 솔루션' },
-    { value: 'content', label: '콘텐츠 솔루션' },
+    { value: 'content', label: '콘텐츠 제작·도입' },
+    { value: 'compliance', label: '법정 필수' },
   ],
   success: {
     title: '상담 신청이 접수되었습니다.',
