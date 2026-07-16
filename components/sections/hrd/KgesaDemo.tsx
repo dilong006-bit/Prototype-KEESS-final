@@ -42,7 +42,7 @@ export default function KgesaDemo() {
   return (
     <div className="kg-demo r">
       <div className="kg-fo-wrap">
-        <div className="kg-fo-bar"><span className="dot" /><span className="dot" /><span className="dot" /><span className="kg-url">연수원 학습자 화면 (FO) · 미리보기</span></div>
+        <div className="kg-fo-bar"><span className="dot" /><span className="dot" /><span className="dot" /><span className="kg-url">학습자 화면 미리보기</span></div>
         <div className="kg-fo" key={foKey}>
           {theme === 'gnb' ? (
             <>
@@ -59,12 +59,12 @@ export default function KgesaDemo() {
       </div>
 
       <div className="kg-ctrl">
-        <div className="kc-label">테마</div>
+        <div className="kc-label">메뉴 유형</div>
         <div className="kc-theme">
           <button className={`kc-tbtn${theme === 'gnb' ? ' on' : ''}`} onClick={() => setTheme('gnb')}>GNB형 (상단 메뉴)</button>
           <button className={`kc-tbtn${theme === 'lnb' ? ' on' : ''}`} onClick={() => setTheme('lnb')}>LNB형 (좌측 메뉴)</button>
         </div>
-        <div className="kc-label" style={{ marginTop: 20 }}>위젯 구성</div>
+        <div className="kc-label" style={{ marginTop: 20 }}>화면 구성 요소(위젯)</div>
         <div className="kw-list">
           {widgets.map((w, i) => (
             <div className="kw-item" key={w.id}>
