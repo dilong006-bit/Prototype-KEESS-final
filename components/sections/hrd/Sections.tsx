@@ -160,7 +160,7 @@ export default function Sections() {
         <div className="wrap">
           <p className="eyebrow gov-eb r"><span className="gov-dot" />{GOV.eyebrow}</p>
           <h2 className="sec-title r" style={{ marginTop: 14 }}>교육비, <span className="gov-g">정부지원으로 돌려받으세요</span></h2>
-          <p className="sec-sub r">{GOV.lead}</p>
+          <p className="sec-sub r">{GOV.lead}<span className="nowrap">{GOV.leadTail}</span></p>
           <div className="gov-grid r">
             {GOV.cards.map((c) => (
               <div className={`gcard${c.hi ? ' hi' : ''}`} key={c.gk}>
@@ -181,7 +181,7 @@ export default function Sections() {
           <div className="gov-cta r">
             <div className="gc-copy">
               <b>{GOV.ctaCopy}</b>
-              <span>{GOV.ctaSub}</span>
+              <span>{GOV.ctaSub}<span className="nowrap">{GOV.ctaSubTail}</span></span>
               {/* K4: 환급 링크는 상담 문구에 이어 붙지 않도록 별도 줄로 분리 */}
               <Link className="gc-link" href={GOV.crossLink.href}>{GOV.crossLink.label}</Link>
             </div>

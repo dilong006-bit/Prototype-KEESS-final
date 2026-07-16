@@ -49,15 +49,6 @@ export default function Footer() {
     };
   }, []);
 
-  const rm = () =>
-    typeof window !== 'undefined' &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  const toTop = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: rm() ? 'auto' : 'smooth' });
-  };
-
   return (
     <>
       <footer className="foot" id="site-footer">
@@ -84,7 +75,7 @@ export default function Footer() {
                 ))}
               </ul>
             </div>
-            <a className="totop" href="#top" onClick={toTop}>맨 위로 <span aria-hidden="true">↑</span></a>
+            {/* '맨 위로 ↑'는 플로팅 상단이동 버튼(ToTop)과 중복되어 제거 — 상단이동 수단은 ToTop이 담당 */}
           </div>
 
           <div className="foot-main">

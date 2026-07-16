@@ -133,7 +133,7 @@ export const FACULTY = {
 };
 
 export const GROWTHFIT = {
-  eyebrow: 'ORGANIZATION DIAGNOSIS · B2-3',
+  eyebrow: 'ORGANIZATION DIAGNOSIS',
   title: '우리 조직은 지금, 어떻게 성장하고 있나요?',
   lead: '조직전환 연구소 **Growth-Fit**은 구성원의 경험을 데이터로 진단해 성장 동인을 찾습니다. 48개 문항·6개 축으로, 강점은 확산하고 우선 지원 영역은 HRD 과제로 연결합니다.',
   radarNote: '※ 6 Core Dimensions 프로파일 예시, 실제 진단 시 조직별 리포트 제공',
@@ -174,7 +174,7 @@ export const WHY = {
 export const INQ = {
   title: '리더십 체계,\n진단부터 시작하세요',
   sub: '우리 조직에 맞는 리더십·조직 체계를 함께 설계합니다. 도입 문의를 남겨주시면 담당자가 연락드립니다.',
-  interests: ['리더십·조직', 'AX·AI 전환', 'HRD 통합', '콘텐츠', '법정 필수', '기타'],
+  interests: ['리더십·조직', 'AX·AI 전환', 'HRD 통합', '콘텐츠 제작·도입', '법정 필수', '기타'],
   successTitle: '문의가 접수되었습니다',
   successMsg: '담당자가 확인 후 연락드리겠습니다.',
 };

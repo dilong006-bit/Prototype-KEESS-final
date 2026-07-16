@@ -22,10 +22,10 @@ export const ARCH = {
   title: '4개 축으로 완성되는 HRD 플랫폼',
   lead: '개별 솔루션의 나열이 아닙니다. 하나의 아키텍처로 연결된 통합 플랫폼입니다.',
   cells: [
-    { cls: 'c-sys', bk: 'B3-1 · 시스템', h3: '맞춤형 HRD 연수원', p: 'LMS + 전용 APP · 온·오프 하이브리드 · ISMS · 동시접속 2만', chips: ['WEB·Mobile UI 통일', 'iOS·Android·PUSH', '365일 24h'] },
-    { cls: 'c-ops', bk: 'B3-2 · 운영', h3: 'HRD 운영 위탁', p: 'HOW 7축 · 30+사 실적' },
-    { cls: 'c-studio hi', bk: 'B3-3 · 제작 ★', h3: '콘텐츠 스튜디오', p: '자체 3개소 · 촬영·제작팀 · 자체 IP' },
-    { cls: 'c-kgesa wide', bk: 'B3-4 · 차세대 (KGESA)', h3: '노코드 사이트 빌더', p: '운영자가 테마·위젯을 조작하면 학습자 화면이 실시간 완성, 개발 요청 제로', demoLink: true },
+    { cls: 'c-sys', bk: '시스템', h3: '맞춤형 HRD 연수원', p: 'LMS + 전용 APP · 온·오프 하이브리드 · ISMS · 동시접속 2만', chips: ['WEB·Mobile UI 통일', 'iOS·Android·PUSH', '365일 24h'] },
+    { cls: 'c-ops', bk: '운영', h3: 'HRD 운영 위탁', p: 'HOW 7축 · 30+사 실적' },
+    { cls: 'c-studio hi', bk: '제작', h3: '콘텐츠 스튜디오', p: '자체 3개소 · 촬영·제작팀 · 자체 IP' },
+    { cls: 'c-kgesa wide', bk: '차세대 (KGESA)', h3: '노코드 사이트 빌더', p: '운영자가 테마·위젯을 조작하면 학습자 화면이 실시간 완성, 개발 요청 제로', demoLink: true },
   ],
   svcHead: { eyebrow: 'SERVICE MODEL', title: '복잡한 건 시스템이, 담당자는 클릭만', sub: '기획·구성부터 성과 관리까지, 어려운 일은 시스템이 처리하고, 담당자는 클릭으로 끝냅니다.' },
   svc: [
@@ -51,7 +51,7 @@ export const STUDIO = {
 };
 
 export const DEMO = {
-  eyebrow: 'B3-4 · KGESA · INTERACTIVE TOUR',
+  eyebrow: 'KGESA · INTERACTIVE TOUR',
   title: '클릭 몇 번으로, 학습자 화면 완성',
   tbd: '정식 오픈 예정',
   lead: '개발 없이 테마와 위젯만 조작하면 학습자 화면(FO)이 실시간으로 완성됩니다. 아래에서 직접 조작해 보세요.',
@@ -107,7 +107,9 @@ export const MOD: Mod[] = [
 export const GOV = {
   eyebrow: 'GOVERNMENT SUPPORT · 정부지원 환급',
   title: '교육비, 정부지원으로 돌려받으세요',
-  lead: '고용보험에 가입한 사업주라면 위탁훈련비의 상당 부분을 환급받을 수 있습니다. 복잡한 인정신청부터 비용 정산까지, KG에듀원이 위탁 훈련기관으로서 전 과정을 대행합니다.',
+  // 마지막 절은 nowrap 처리(D-2 줄바꿈 해소) — '전 과정을 대행합니다.'가 어절 사이에서 갈라지지 않게. 카피는 lead+leadTail로 동일.
+  lead: '고용보험에 가입한 사업주라면 위탁훈련비의 상당 부분을 환급받을 수 있습니다. 복잡한 인정신청부터 비용 정산까지, KG에듀원이 위탁 훈련기관으로서 ',
+  leadTail: '전 과정을 대행합니다.',
   cards: [
     { gk: 'WHO · 지원 대상', b: '고용보험 가입 사업주', p: '재직근로자·채용예정자 대상 훈련이면, 기업 규모와 무관하게 신청할 수 있습니다.', hi: false },
     { gk: 'HOW MUCH · 환급 규모', b: '훈련비 최대 90% 환급', bnum: '90%', em: '우선지원기업 기준', p: '기업 규모·과정 유형에 따라 지원율이 달라집니다. 정확한 환급액은 상담 시 산정해 드립니다.', hi: true },
@@ -120,7 +122,9 @@ export const GOV = {
     { gsn: 'STEP 4', b: '지원금 지급', p: 'KG에듀원이 대행 신청' },
   ],
   ctaCopy: '우리 회사는 얼마나 지원받을 수 있을까요?',
-  ctaSub: '고용보험 가입 여부와 대상 인원만 알려주시면, 예상 환급 규모와 맞춤 과정을 안내해 드립니다.',
+  // 마지막 절 nowrap(D-3) — '맞춤 과정을 안내해 드립니다.'가 갈라지지 않게. 카피는 ctaSub+ctaSubTail로 동일.
+  ctaSub: '고용보험 가입 여부와 대상 인원만 알려주시면, 예상 환급 규모와 ',
+  ctaSubTail: '맞춤 과정을 안내해 드립니다.',
   crossLink: { label: '환급 가능 과정 리스트 보기 →', href: '/content#download' },
   cta: '지원 가능 여부 상담 →',
   preselect: '정부지원 환급',

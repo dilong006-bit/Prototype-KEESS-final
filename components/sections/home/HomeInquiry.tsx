@@ -7,6 +7,8 @@ import { INQ } from '@/data/home';
 const ALLOWED = ['zip', 'pdf', 'hwp', 'ppt', 'pptx', 'doc', 'docx', 'xls', 'xlsx', 'jpg', 'jpeg', 'png', 'gif'];
 const MAX = 10 * 1024 * 1024;
 const FILE_PLACEHOLDER = '파일을 선택하거나 끌어다 놓으세요';
+/** 접수 완료 후 입력 폼으로 자동 복귀까지의 대기 시간(ms) */
+const AUTO_RETURN_MS = 5000;
 
 /** 상태 key → 입력 element id (제출 실패 시 첫 미충족 필드로 포커스 이동) */
 const FIELD_ID: Record<string, string> = {
@@ -61,6 +63,8 @@ export default function HomeInquiry() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const mktAllRef = useRef<HTMLInputElement>(null);
   const phoneHintTimer = useRef<ReturnType<typeof setTimeout>>();
+  const returnTimer = useRef<ReturnType<typeof setTimeout>>();
+  const firstFieldRef = useRef<HTMLInputElement>(null);
 
   // 마케팅 부모 ↔ 3채널 양방향 동기화
   const mktAll = mkt.email && mkt.sms && mkt.tel;
@@ -70,6 +74,37 @@ export default function HomeInquiry() {
   }, [mktSome]);
   const toggleMktAll = (checked: boolean) => setMkt({ email: checked, sms: checked, tel: checked });
   const toggleMkt = (k: 'email' | 'sms' | 'tel') => setMkt((p) => ({ ...p, [k]: !p[k] }));
+
+  // 완료(감사) 상태에서만 자동복귀 타이머 가동, 복귀/언마운트 시 정리(중복 실행·누수 방지)
+  useEffect(() => {
+    if (!done) return;
+    returnTimer.current = setTimeout(() => resetForm(), AUTO_RETURN_MS);
+    return () => clearTimeout(returnTimer.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [done]);
+
+  /** 상태 완전 초기화 후 입력 폼으로 복귀 + 첫 필드 포커스 (즉시복귀·자동복귀 공용) */
+  function resetForm() {
+    clearTimeout(returnTimer.current);
+    clearTimeout(phoneHintTimer.current);
+    setV({ company: '', name: '', phone: '', position: '', emailLocal: '', emailDomain: '', companySize: '', trainees: '', message: '' });
+    setCustomDomain(false);
+    setInterests({});
+    setConsent(false);
+    setMkt({ email: false, sms: false, tel: false });
+    setErrs({});
+    setConsentErr(false);
+    setConsentOpen({});
+    setLenErr(null);
+    setPhoneHint(false);
+    setFile(null);
+    setFileName(FILE_PLACEHOLDER);
+    setFileErr('');
+    if (fileInputRef.current) fileInputRef.current.value = '';
+    setHp('');
+    setDone(false);
+    requestAnimationFrame(() => firstFieldRef.current?.focus({ preventScroll: true }));
+  }
 
   // R1: 입력 단계 캡 — maxLength를 우회하는 붙여넣기·IME 조합까지 slice로 차단
   const upd = (k: keyof typeof v) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -202,7 +237,7 @@ export default function HomeInquiry() {
                 <div className="frow">
                   <div className={fld('company')}>
                     <label htmlFor="f-company">회사·기관명 <span className="req">*</span></label>
-                    <input id="f-company" name="company" maxLength={INQ_MAX.company} value={v.company} onChange={upd('company')} aria-required="true" aria-invalid={!!errs.company} />
+                    <input id="f-company" ref={firstFieldRef} name="company" maxLength={INQ_MAX.company} value={v.company} onChange={upd('company')} aria-required="true" aria-invalid={!!errs.company} />
                     <span className="err" aria-live="polite">회사·기관명을 입력해 주세요.</span>
                   </div>
                   <div className={fld('name')}>
@@ -337,10 +372,12 @@ export default function HomeInquiry() {
                 <button className="btn submit" onClick={submit}>상담 신청</button>
               </div>
             ) : (
-              <div className="form-done show">
+              <div className="form-done show" role="status" aria-live="polite">
                 <div className="check">✓</div>
                 <h4>{INQ.success.title}</h4>
                 <p>{INQ.success.msg}</p>
+                <p className="done-return">접수가 완료되었습니다. 잠시 후 문의 폼으로 돌아갑니다.</p>
+                <button type="button" className="btn btn-line-dark done-again" onClick={resetForm}>새 문의 작성</button>
               </div>
             )}
           </div>

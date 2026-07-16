@@ -108,6 +108,14 @@ public/         # fonts(Pretendard self-host)·images·downloads(xlsx)
 - **P2·P3**: 관심영역에서 `(P1)~(P4)` 접미 제거 + `법정 필수`·`기타` 추가.
 - **P3**: SOLUTION MODULES `B3-x ·` 접두어·`★` 제거(시스템/운영/제작) · **PROVEN AT SCALE 섹션 제거**(데이터·앵커·SubNav 포함).
 - **P4**: **'대표 과정 찾기' 기능 전면 제거**(히어로·최하단·모달·**FAB**) + **Featured Lineup 섹션 제거** + dead code 정리(`Explorer.tsx`·`data/courses.ts`·`EXPLORER` 상수 삭제). `6개 체계 보기`·`콘텐츠 도입 문의`는 유지.
-- **카피(K1~K5)**: P3 SERVICE MODEL·GOVERNMENT SUPPORT·환급 상담 문구의 어절 끊김 방지(`word-break:keep-all`) · 환급 링크를 상담 문구와 **줄 분리** · P4 Compliance 2024 시리즈 `뽕뽕`→**`뿅뿅` 직장 오락실**(오타 수정).
+- **카피(K1~K5)**: P3 SERVICE MODEL·GOVERNMENT SUPPORT·환급 상담 문구의 어절 끊김 방지(`word-break:keep-all`) · 환급 링크를 상담 문구와 **줄 분리** · P4 Compliance 2024 시리즈 `뽕뽕`→**`뿅뿅` 직장 오락실`(오타 수정).
+
+### 7) QA 라운드1 (검수 피드백 반영)
+- **상담폼 입력 검증**: 필드별 글자수 상한(`INQ_MAX`)+붙여넣기 우회 차단(`slice`), 제출 전 재검증(초과 시 전송 전 차단·포커스), 문의내용 `n/1000` 카운터. 연락처 숫자only+자동 하이픈은 **신고 접수 '전화번호' 정본(`fmtPhone`)을 `lib/utils`로 추출해 공유**(단일 기준).
+- **문의 완료 자동복귀**: 접수 완료(감사) 상태 노출 → **5초 후 자동으로 빈 폼 복귀**(`AUTO_RETURN_MS`) + **'새 문의 작성'** 즉시복귀. 복귀 시 값·동의(3채널)·에러·첨부·이메일 분리입력·포커스 완전 초기화. 완료 상태 비영구(새로고침도 폼 복귀). `role="status"`/`aria-live`, 첫 필드 포커스, 타이머 완료 상태에서만 가동·정리.
+- **푸터 '맨 위로 ↑' 제거**: 플로팅 상단이동 버튼(`ToTop`)과 중복 → 제거(상단이동 수단은 `ToTop` 유지).
+- **P1 대표과정 6종**: 과정 라인업 6개 카드 제목을 콘텐츠개발팀 확정본으로 교체 + 썸네일을 과정 테마별 Unsplash 실사(AI·인간/영상/팀/자동화/노트북/데이터)로 self-host 교체.
+- **P2**: 관심영역 `콘텐츠`→`콘텐츠 제작·도입`(value 유지) · Growth-Fit 레이더 SVG 박스 내 **가로 중앙 정렬**(`display:block`+`margin-inline:auto`, `text-align`이 block에 안 먹던 근본원인 교정) · 헤더 `ORGANIZATION DIAGNOSIS · B2-3`→`ORGANIZATION DIAGNOSIS`.
+- **P3 임의코드 노출 제거**: PLATFORM ARCHITECTURE `B3-1~4 ·`·`★`·KGESA 투어 `B3-4 ·` 전부 제거(카테고리명만, `.hi` 그라데이션으로 시각 위계 유지). GOVERNMENT SUPPORT/환급 상담 문장은 마지막 절을 `head+nowrap tail`로 분리 렌더 → 전 브레이크포인트에서 어절 사이 끊김 해소(데이터 NBSP는 포매터가 정규화하므로 `.nowrap` span으로 교정).
 
 > 백엔드 미연동(클라이언트 상태 UI) · Design.md 토큰 준수 · 가격/결제 요소 없음.

@@ -182,12 +182,12 @@ export const COURSES = {
   eyebrow: '과정 라인업',
   title: '입문부터 실무·자격까지',
   items: [
-    { badge: '입문', title: 'AI 시대, 실무에서 통하는 AI 리터러시', img: '/images/course1.jpg' },
-    { badge: '활용', title: '퍼플렉시티로 완성하는 리서치 자동화', img: '/images/course2.jpg' },
-    { badge: '실무', title: '일잘러 장피엔과 ChatGPT 300% 활용', img: '/images/course3.jpg' },
-    { badge: '심화', title: '노코드 RAG · 노트북LM 지식관리 마스터', img: '/images/course4.jpg' },
-    { badge: '일잘러', title: '구글 사이드 AI로 업무 자동화 구축', img: '/images/course5.jpg' },
-    { badge: '자격', title: 'AICE Basic 준비 과정', img: '/images/course6.jpg' },
+    { badge: '입문', title: '선을 넘는 AI, 선을 긋는 인간', img: '/images/course1.jpg' },
+    { badge: '활용', title: '미드저니와 캡컷으로 완성하는 시네마틱 AI 영상 제작 바이블', img: '/images/course2.jpg' },
+    { badge: '실무', title: '[리더의 AI 워크북] 배치하라-팀 최적화 6단계 프롬프팅', img: '/images/course3.jpg' },
+    { badge: '심화', title: '[구글 올인원 AI] 아날로그 업무 현장, AI 자동화로 시스템 구축하기', img: '/images/course4.jpg' },
+    { badge: '일잘러', title: '[AI Class] 일잘러 장피엠과 ChatGPT 업무 300% 활용하기', img: '/images/course5.jpg' },
+    { badge: '자격', title: '[AI Class] 노코드 RAG 끝판왕, 노트북LM으로 지식관리 마스터하기', img: '/images/course6.jpg' },
   ],
 };
 
