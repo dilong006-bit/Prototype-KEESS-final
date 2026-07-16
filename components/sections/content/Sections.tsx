@@ -59,7 +59,6 @@ export default function Sections() {
               <div className="hero-cta">
                 <a href="#ax1" className="btn btn-ink">6개 체계 보기</a>
               </div>
-              <p className="hero-note">{HERO.note}</p>
             </div>
             <div className="hexmap" aria-label="6축 체계 맵">
               <div className="core"><b>{HERO.core.b}</b><span>{HERO.core.span}</span></div>

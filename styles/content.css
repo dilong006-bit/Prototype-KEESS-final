@@ -224,7 +224,7 @@
 .dl-file{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:var(--shadow-1)}
 .dl-file .fh{display:flex;align-items:center;gap:14px}
 .dl-file .xls{width:44px;height:44px;border-radius:11px;background:#1E6B41;color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
-.dl-file .xls svg{width:23px;height:23px}
+.dl-file .xls svg{width:23px;height:23px;display:block;stroke:#fff;color:#fff}
 .dl-file .fh b{font-size:15px;font-weight:800}
 .dl-file .fh span{display:block;font-size:12px;color:var(--muted);margin-top:3px}
 .dl-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
