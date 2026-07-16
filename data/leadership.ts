@@ -70,10 +70,10 @@ export const TRACKS_SECTION = {
 export const FRAMEWORK = {
   eyebrow: 'LEADERSHIP FRAMEWORK · 6대 역량',
   title: '리더십을 완성하는 6대 핵심 역량',
-  lead: '리더십을 중심으로 6개 역량이 궤도를 이룹니다. 노드를 클릭해 세부 역량을 확인하세요.',
-  hint: '노드를 클릭하세요',
+  lead: '리더십은 하나의 능력만으로 완성되지 않습니다. 6개 핵심 역량이 유기적으로 연결될 때, 역할과 상황에 맞는 리더십이 발휘됩니다.',
+  hint: '관심 있는 리더십 역량을 선택해 보세요',
   name: '6대 리더십 역량 체계',
-  desc: '리더십 코어를 중심으로 6개 역량이 궤도를 이룹니다. 중심-구성 관계로 체계를 표현합니다.',
+  desc: '좌측의 역량을 선택하면 각 영역의 의미와 핵심 행동을 확인할 수 있습니다.',
 };
 
 // 오빗 노드 (TRACKS), 노드 색상은 --p2 파생 mix(라이트→다크)로 정의
@@ -91,7 +91,7 @@ export const OFFLINE = {
   eyebrow: 'LEADERSHIP TRACK · 성장 시점 선택',
   title: '입사부터 임원까지, 역할의 변화에 맞춰 성장을 설계합니다',
   badge: '오프라인',
-  lead: '입사·승진·팀장·임원, 역할이 바뀌는 시점을 고르면 해당 트랙이 열립니다. **온라인 여정으로 이어가거나, 오프라인 집합교육으로 진행**할 수 있습니다.',
+  lead: '입사·승진·팀장 선임·임원 전환 등 주요 경력 단계마다 필요한 역량과 교육과정을 제공하며, 온라인 과정과 오프라인 집합교육을 조직 상황에 맞게 선택할 수 있습니다.',
 };
 
 export interface Prog { ph: string; key: string; nm: string; en: string; sub: { t: string; d: string; caps: string[] }[] }
@@ -118,7 +118,7 @@ export const FACULTY = {
   eyebrow: 'TEACHING & OPERATION',
   title: '교육 운영·강사 체계',
   tbd: '강사 프로필·사례 확보 후 확장',
-  lead: '강사 개인 역량이 아닌, 컨설턴트-강사 협업과 시스템으로 교육 품질을 관리합니다.',
+  lead: '컨설턴트와 강사가 설계부터 운영·개선까지 함께하며, 표준화된 관리 체계로 일관된 교육 품질을 제공합니다.',
   steps: [
     { fsn: 'STEP 1', b: '전문성 검증', p: '실무 경험·직무 이해·트렌드 반영' },
     { fsn: 'STEP 2', b: '기업교육 적합성', p: '전달력·참여 유도·현업 적용' },
@@ -135,7 +135,7 @@ export const FACULTY = {
 export const GROWTHFIT = {
   eyebrow: 'ORGANIZATION DIAGNOSIS',
   title: '우리 조직은 지금, 어떻게 성장하고 있나요?',
-  lead: '조직전환 연구소 **Growth-Fit**은 구성원의 경험을 데이터로 진단해 성장 동인을 찾습니다. 48개 문항·6개 축으로, 강점은 확산하고 우선 지원 영역은 HRD 과제로 연결합니다.',
+  lead: '조직전환연구소의 **Growth-Fit**은 구성원이 실제로 경험하는 일하는 방식을 데이터로 분석해, 성장을 이끄는 요인과 개선이 필요한 지점을 함께 찾아냅니다. 또한 48개 문항과 6개 핵심 축을 바탕으로 확산할 강점과 개선할 영역을 구분하고, 이를 실행 가능한 HRD 과제로 구체화합니다.',
   radarNote: '※ 6 Core Dimensions 프로파일 예시, 실제 진단 시 조직별 리포트 제공',
   radarLabels: ['Vision', 'Result', 'Trust', 'Value', 'Agility', 'Infra'],
   dims: [
