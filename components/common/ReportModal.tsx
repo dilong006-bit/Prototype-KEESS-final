@@ -1,6 +1,6 @@
 'use client';
 
-import { EMAIL_RE } from '@/lib/utils';
+import { EMAIL_RE, fmtPhone, hasNonPhoneChar } from '@/lib/utils';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useModal } from '@/lib/useModal';
 import { REPORT_SEED, REPORT_STATUS, REPORT_MASTER_PW, type ReportRecord } from '@/data/report';
@@ -20,14 +20,7 @@ function todayStr() {
   const d = new Date();
   return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
 }
-// 전화 자동 하이픈 (v26 fmtPhone)
-function fmtPhone(v: string) {
-  const d = (v || '').replace(/\D/g, '').slice(0, 11);
-  if (d.length < 4) return d;
-  if (d.length < 8) return d.slice(0, 3) + '-' + d.slice(3);
-  if (d.length < 11) return d.slice(0, 3) + '-' + d.slice(3, 6) + '-' + d.slice(6);
-  return d.slice(0, 3) + '-' + d.slice(3, 7) + '-' + d.slice(7);
-}
+// 전화 자동 하이픈은 lib/utils의 fmtPhone(정본)을 공유한다 — 상담 폼과 단일 기준.
 
 // ── 아이콘 ────────────────────────────────────────────────────────────────
 const IcShield = () => (
@@ -134,7 +127,7 @@ export default function ReportModal({ open, onClose, initialTab = 'info' }: Repo
 
   const onPhone = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value;
-    const bad = /[^0-9-]/.test(raw);
+    const bad = hasNonPhoneChar(raw);
     setForm((f) => ({ ...f, phone: fmtPhone(raw) }));
     if (bad) {
       setPhoneHint(true);
@@ -144,7 +137,7 @@ export default function ReportModal({ open, onClose, initialTab = 'info' }: Repo
   };
   const onLkPhone = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value;
-    const bad = /[^0-9-]/.test(raw);
+    const bad = hasNonPhoneChar(raw);
     setLkPhone(fmtPhone(raw));
     if (bad) {
       setLkPhoneHint(true);

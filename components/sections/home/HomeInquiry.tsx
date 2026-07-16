@@ -1,12 +1,18 @@
 'use client';
 
-import { EMAIL_RE } from '@/lib/utils';
+import { EMAIL_RE, INQ_MAX, fmtPhone, hasNonPhoneChar } from '@/lib/utils';
 import { useEffect, useRef, useState } from 'react';
 import { INQ } from '@/data/home';
 
 const ALLOWED = ['zip', 'pdf', 'hwp', 'ppt', 'pptx', 'doc', 'docx', 'xls', 'xlsx', 'jpg', 'jpeg', 'png', 'gif'];
 const MAX = 10 * 1024 * 1024;
 const FILE_PLACEHOLDER = '파일을 선택하거나 끌어다 놓으세요';
+
+/** 상태 key → 입력 element id (제출 실패 시 첫 미충족 필드로 포커스 이동) */
+const FIELD_ID: Record<string, string> = {
+  company: 'f-company', name: 'f-name', phone: 'f-phone', position: 'f-position',
+  emailLocal: 'f-email', emailDomain: 'f-email', companySize: 'f-csize', trainees: 'f-trainees', message: 'f-msg',
+};
 
 /** 상담 신청 제출 페이로드 — A안 정본 스키마(기술명세서 §C). */
 export interface InquiryPayload {
@@ -49,9 +55,12 @@ export default function HomeInquiry() {
   const [fileName, setFileName] = useState(FILE_PLACEHOLDER);
   const [fileErr, setFileErr] = useState('');
   const [dragOver, setDragOver] = useState(false);
+  const [phoneHint, setPhoneHint] = useState(false);
+  const [lenErr, setLenErr] = useState<string | null>(null);
   const [done, setDone] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const mktAllRef = useRef<HTMLInputElement>(null);
+  const phoneHintTimer = useRef<ReturnType<typeof setTimeout>>();
 
   // 마케팅 부모 ↔ 3채널 양방향 동기화
   const mktAll = mkt.email && mkt.sms && mkt.tel;
@@ -62,8 +71,25 @@ export default function HomeInquiry() {
   const toggleMktAll = (checked: boolean) => setMkt({ email: checked, sms: checked, tel: checked });
   const toggleMkt = (k: 'email' | 'sms' | 'tel') => setMkt((p) => ({ ...p, [k]: !p[k] }));
 
-  const upd = (k: keyof typeof v) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
-    setV((s) => ({ ...s, [k]: e.target.value }));
+  // R1: 입력 단계 캡 — maxLength를 우회하는 붙여넣기·IME 조합까지 slice로 차단
+  const upd = (k: keyof typeof v) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const max = (INQ_MAX as Record<string, number | undefined>)[k];
+    const next = max ? e.target.value.slice(0, max) : e.target.value;
+    setV((s) => ({ ...s, [k]: next }));
+  };
+
+  // R3·R4: 연락처 — 숫자만 남기고 자동 하이픈. 포맷·힌트 모두 신고 접수 '전화번호' 정본과 동일.
+  const onPhone = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value;
+    const bad = hasNonPhoneChar(raw);
+    setV((s) => ({ ...s, phone: fmtPhone(raw) }));
+    if (bad) {
+      setPhoneHint(true);
+      clearTimeout(phoneHintTimer.current);
+      phoneHintTimer.current = setTimeout(() => setPhoneHint(false), 2500);
+    } else setPhoneHint(false);
+  };
+  useEffect(() => () => clearTimeout(phoneHintTimer.current), []);
 
   const email = `${v.emailLocal.trim()}@${v.emailDomain.trim()}`;
 
@@ -84,6 +110,15 @@ export default function HomeInquiry() {
     setFileName(`${f.name} (${(f.size / 1048576).toFixed(1)}MB)`);
   }
 
+  /** R2: 제출 직전 전 필드 길이 재검증 — 초과 시 서버 전송 없이 차단 + 해당 필드 포커스 */
+  function findOverflow(): keyof typeof v | null {
+    for (const k of Object.keys(v) as (keyof typeof v)[]) {
+      const max = (INQ_MAX as Record<string, number | undefined>)[k];
+      if (max && (v[k] || '').length > max) return k;
+    }
+    return null;
+  }
+
   // 제출 차단 = 필수 5개(회사·기관명/담당자명/연락처/직급·직책/이메일) + 개인정보 동의
   function submit() {
     if (hp) return; // 허니팟
@@ -97,12 +132,25 @@ export default function HomeInquiry() {
     const emailOK = !!v.emailLocal.trim() && !!v.emailDomain.trim() && EMAIL_RE.test(email);
     next.email = !emailOK;
     if (!emailOK) ok = false;
+
+    // R2: 길이 초과는 페이로드 조립 전에 차단한다(과다 입력이 서버로 넘어가지 않게)
+    const over = findOverflow();
+    if (over) {
+      next[over === 'emailLocal' || over === 'emailDomain' ? 'email' : over] = true;
+      setLenErr(over);
+      ok = false;
+    } else setLenErr(null);
+
     setErrs(next);
     const cBad = !consent;
     setConsentErr(cBad);
     if (cBad) ok = false;
     if (fileErr) ok = false;
-    if (!ok) return;
+    if (!ok) {
+      const firstBad = over ?? (['company', 'name', 'phone', 'position'] as const).find((k) => next[k]);
+      if (firstBad) document.getElementById(FIELD_ID[firstBad])?.focus({ preventScroll: false });
+      return;
+    }
 
     const payload: InquiryPayload = {
       companyName: v.company.trim(),
@@ -154,12 +202,12 @@ export default function HomeInquiry() {
                 <div className="frow">
                   <div className={fld('company')}>
                     <label htmlFor="f-company">회사·기관명 <span className="req">*</span></label>
-                    <input id="f-company" name="company" value={v.company} onChange={upd('company')} aria-required="true" aria-invalid={!!errs.company} />
+                    <input id="f-company" name="company" maxLength={INQ_MAX.company} value={v.company} onChange={upd('company')} aria-required="true" aria-invalid={!!errs.company} />
                     <span className="err" aria-live="polite">회사·기관명을 입력해 주세요.</span>
                   </div>
                   <div className={fld('name')}>
                     <label htmlFor="f-name">담당자명 <span className="req">*</span></label>
-                    <input id="f-name" name="contactName" value={v.name} onChange={upd('name')} aria-required="true" aria-invalid={!!errs.name} />
+                    <input id="f-name" name="contactName" maxLength={INQ_MAX.name} value={v.name} onChange={upd('name')} aria-required="true" aria-invalid={!!errs.name} />
                     <span className="err" aria-live="polite">담당자명을 입력해 주세요.</span>
                   </div>
                 </div>
@@ -168,12 +216,14 @@ export default function HomeInquiry() {
                 <div className="frow">
                   <div className={fld('phone')}>
                     <label htmlFor="f-phone">연락처 <span className="req">*</span></label>
-                    <input id="f-phone" name="phone" type="tel" value={v.phone} onChange={upd('phone')} aria-required="true" aria-invalid={!!errs.phone} />
+                    {/* R3~R5: 숫자만·자동 하이픈·힌트 문구 모두 신고 접수 '전화번호' 정본과 동일 */}
+                    <input id="f-phone" name="phone" type="tel" inputMode="numeric" placeholder="010-0000-0000" maxLength={INQ_MAX.phone} value={v.phone} onChange={onPhone} aria-required="true" aria-invalid={!!errs.phone} />
+                    {phoneHint && <span className="phone-hint" aria-live="polite">숫자만 입력할 수 있어요.</span>}
                     <span className="err" aria-live="polite">연락처를 입력해 주세요.</span>
                   </div>
                   <div className={fld('position')}>
                     <label htmlFor="f-position">직급/직책 <span className="req">*</span></label>
-                    <input id="f-position" name="jobTitle" placeholder="예: 인사팀 과장 / 교육담당" value={v.position} onChange={upd('position')} aria-required="true" aria-invalid={!!errs.position} />
+                    <input id="f-position" name="jobTitle" placeholder="예: 인사팀 과장 / 교육담당" maxLength={INQ_MAX.position} value={v.position} onChange={upd('position')} aria-required="true" aria-invalid={!!errs.position} />
                     <span className="err" aria-live="polite">직급/직책을 입력해 주세요.</span>
                   </div>
                 </div>
@@ -182,10 +232,10 @@ export default function HomeInquiry() {
                 <div className={fld('email')}>
                   <label htmlFor="f-email">이메일 <span className="req">*</span></label>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-                    <input id="f-email" name="emailLocal" placeholder="이메일 아이디" style={half} value={v.emailLocal} onChange={upd('emailLocal')} aria-required="true" aria-invalid={!!errs.email} />
+                    <input id="f-email" name="emailLocal" placeholder="이메일 아이디" maxLength={INQ_MAX.emailLocal} style={half} value={v.emailLocal} onChange={upd('emailLocal')} aria-required="true" aria-invalid={!!errs.email} />
                     <span aria-hidden="true" style={{ flex: 'none', color: 'var(--muted)', fontWeight: 700 }}>@</span>
                     {customDomain ? (
-                      <input name="emailDomain" aria-label="이메일 도메인 직접 입력" placeholder="직접 입력 (예: company.com)" style={half} value={v.emailDomain} onChange={upd('emailDomain')} />
+                      <input name="emailDomain" aria-label="이메일 도메인 직접 입력" placeholder="직접 입력 (예: company.com)" maxLength={INQ_MAX.emailDomain} style={half} value={v.emailDomain} onChange={upd('emailDomain')} />
                     ) : (
                       <select name="emailDomain" aria-label="이메일 도메인 선택" style={half} value={v.emailDomain} onChange={upd('emailDomain')}>
                         <option value="">이메일 선택</option>
@@ -239,8 +289,11 @@ export default function HomeInquiry() {
                 {/* 9 문의 내용 (선택) */}
                 <div className="field">
                   <label htmlFor="f-msg">문의 내용</label>
-                  <textarea id="f-msg" name="message" rows={3} value={v.message} onChange={upd('message')}
+                  <textarea id="f-msg" name="message" rows={3} maxLength={INQ_MAX.message} value={v.message} onChange={upd('message')}
                     placeholder="도입을 검토 중인 교육 주제와 예상 인원·시기, 해결하고 싶은 조직 과제를 남겨주시면 담당 컨설턴트가 맞춤 상담으로 안내드립니다. (예: 임직원 300명 대상 AX 전환 교육을 3분기 중 검토 중입니다.)" />
+                  <div className={`len-count${v.message.length >= INQ_MAX.message ? ' max' : ''}`} aria-live="polite">
+                    {v.message.length}/{INQ_MAX.message}
+                  </div>
                 </div>
 
                 {/* 10 첨부파일 (선택·드롭존) */}

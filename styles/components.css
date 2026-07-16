@@ -289,6 +289,9 @@
 .pv-rc-chev{margin-left:auto;color:var(--muted);font-size:19px;line-height:1;transition:transform .3s var(--ease),color .3s}
 .pv-rcard.open .pv-rc-chev{transform:rotate(90deg);color:var(--p1)}
 .phone-hint{display:block;font-size:12px;color:#B8891A;margin-top:5px;font-weight:600}
+/* 글자수 카운터 (문의 내용 n/1000) — 상한 도달 시 경고 톤 */
+.len-count{margin-top:6px;text-align:right;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.len-count.max{color:#B8891A;font-weight:700}
 /* v20: 셀렉트 커스텀 화살표 (전역 .field select) */
 .field select{-webkit-appearance:none;-moz-appearance:none;appearance:none;padding-right:42px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2354585f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:16px}
 
