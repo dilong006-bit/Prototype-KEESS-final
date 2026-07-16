@@ -3,8 +3,8 @@
 
 export const HERO = {
   tag: 'KG에듀원 리더십·조직 체계',
-  h1Lead: '리더십은 감이 아니라,',
-  h1Emph: '체계입니다',
+  h1Lead: '좋은 리더는',
+  h1Emph: '우연히 만들어지지 않습니다.',
   sub: 'KG에듀원 고유의 6대 리더십 역량 체계로, 무엇을 기를지 명확히 정의하고 진단에서 조직문화 정착까지 설계합니다.',
   ctaPrimary: '도입 문의',
   ctaSecondary: '리더십 체계 보기',
@@ -19,7 +19,7 @@ export const HERO = {
 
 export const PAIN = {
   eyebrow: 'LEADERSHIP PAIN',
-  title: '리더가 된 순간, 준비된 사람은 없습니다',
+  title: '리더가 됐지만, 무엇부터 해야 할지 모르겠습니다',
   lead: '직급이 오를 때마다 요구되는 리더십은 완전히 달라집니다. 단발성 교육이 아닌, 성장단계에 맞는 체계가 필요한 이유입니다.',
   // b 강조 부분은 **로 표기
   chips: [
@@ -32,7 +32,7 @@ export const PAIN = {
 
 export const JOURNEY = {
   eyebrow: '교육체계 · 한눈에',
-  title: '먼저, 리더십 체계를 한눈에 봅니다',
+  title: '성장단계마다, 필요한 리더십을 설계합니다',
   lead: '신입부터 최고경영진까지 성장단계 로드맵. B안은 체계 소개를 압축하고, 아래 **6대 역량 트랙을 본체**로 제시합니다.',
   stages: [
     { jn: 'STAGE 1', js: '신입', jr: 'Entry' },
@@ -55,7 +55,7 @@ export const JOURNEY = {
 
 export const TRACKS_SECTION = {
   eyebrow: '6 LEADERSHIP TRACKS · 역량 체계',
-  title: 'KG에듀원 고유 6대 리더십 역량 체계',
+  title: 'KG에듀원만의 6대 리더십 역량 체계',
   lead: '무엇을 기를지 정의하는 6개 트랙. 각 트랙은 세부 역량으로 구성되어 성장단계별 여정의 본체가 됩니다.',
   cards: [
     { ti: 'S', tk: 'TRACK 01', h4: 'Self', p: '스스로를 이끄는 리더의 출발점', tags: ['자기주도성', '회복탄력성', '성장마인드셋', '자기관리'] },
@@ -69,7 +69,7 @@ export const TRACKS_SECTION = {
 
 export const FRAMEWORK = {
   eyebrow: 'LEADERSHIP FRAMEWORK · 6대 역량',
-  title: '하나의 리더십 코어, 6개 역량 궤도',
+  title: '리더십을 완성하는 6대 핵심 역량',
   lead: '리더십을 중심으로 6개 역량이 궤도를 이룹니다. 노드를 클릭해 세부 역량을 확인하세요.',
   hint: '노드를 클릭하세요',
   name: '6대 리더십 역량 체계',
@@ -89,7 +89,7 @@ export const TRACKS: Track[] = [
 
 export const OFFLINE = {
   eyebrow: 'LEADERSHIP TRACK · 성장 시점 선택',
-  title: '성장 시점을 선택하면, 맞는 트랙이 열립니다',
+  title: '입사부터 임원까지, 역할의 변화에 맞춰 성장을 설계합니다',
   badge: '오프라인',
   lead: '입사·승진·팀장·임원, 역할이 바뀌는 시점을 고르면 해당 트랙이 열립니다. **온라인 여정으로 이어가거나, 오프라인 집합교육으로 진행**할 수 있습니다.',
 };
@@ -163,7 +163,7 @@ export const GROWTHFIT = {
 
 export const WHY = {
   eyebrow: 'WHY KG',
-  title: '이번 교육이, 다음 리더를 만듭니다',
+  title: '리더 한 사람의 변화가, 조직의 방향이 되도록',
   cards: [
     { wn: '01', h4: '진단에서 시작', p: '리더십·조직문화·AI리터러시 진단으로 현재를 파악하고 여정을 설계합니다.' },
     { wn: '02', h4: '성장단계 정합', p: '신입부터 C-Level까지, 직급이 아닌 성장단계에 맞춘 리더십을 제공합니다.' },

@@ -45,7 +45,7 @@ export const AX1 = {
 };
 
 export const AX2 = {
-  no: '02', kicker: 'Language', title: '어학·글로벌, 입문부터 시험까지, 레벨로',
+  no: '02', kicker: 'Language', title: '어학·글로벌 교육, 입문부터 실무·자격시험까지',
   lead: '언어별로 어디서 시작해 어디까지 가는지 한눈에 봅니다.',
   tag: '외국어 4,146 보유',
   cols: ['LV1 · 입문', 'LV2 · 일상', 'LV3 · 비즈니스', 'LV4 · 시험·자격'],
@@ -87,7 +87,7 @@ export const AX4 = {
 };
 
 export const AX5 = {
-  no: '05', kicker: 'Compliance', titleLead: '법정 헌터스, ', titleEmph: '매년 하는 교육', titleTail: ', 매년 새롭게',
+  no: '05', kicker: 'Compliance', titleLead: '필수 기준은 정확하게, 콘텐츠는 ', titleEmph: '매년 새롭게', titleTail: '',
   lead: '근거·대상·주기는 정확하게, 콘텐츠는 지겹지 않게.',
   tag: '법정의무 · 컴플라이언스',
   seriesSub: '연도별 대표 시리즈',
@@ -117,7 +117,7 @@ export const AX5 = {
 };
 
 export const AX6 = {
-  no: '06', kicker: 'Studio & Network', title: '맞춤 제작 & 파트너 네트워크',
+  no: '06', kicker: 'Studio & Network', title: '우리 조직에 필요한 교육, 기획부터 제작까지 함께',
   lead: '기획부터 제작까지 한 팀처럼. 스튜디오·AI로 직접 만들고, 파트너와 넓힙니다.',
   consultAxis: '맞춤 제작·파트너',
   studioCap: '자체 스튜디오 3종 (호리즌·크로마키·무빙월)',
