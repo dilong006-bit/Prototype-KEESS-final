@@ -33,7 +33,7 @@ export const PAIN = {
 export const JOURNEY = {
   eyebrow: '교육체계 · 한눈에',
   title: '성장단계마다, 필요한 리더십을 설계합니다',
-  lead: '신입부터 최고경영진까지 성장단계 로드맵. B안은 체계 소개를 압축하고, 아래 **6대 역량 트랙을 본체**로 제시합니다.',
+  lead: '신입부터 최고경영진까지, 역할 변화에 따라 요구되는 핵심역량을 6단계 성장 로드맵으로 체계화했습니다.',
   stages: [
     { jn: 'STAGE 1', js: '신입', jr: 'Entry' },
     { jn: 'STAGE 2', js: '주니어', jr: 'Junior' },
@@ -56,7 +56,7 @@ export const JOURNEY = {
 export const TRACKS_SECTION = {
   eyebrow: '6 LEADERSHIP TRACKS · 역량 체계',
   title: 'KG에듀원만의 6대 리더십 역량 체계',
-  lead: '무엇을 기를지 정의하는 6개 트랙. 각 트랙은 세부 역량으로 구성되어 성장단계별 여정의 본체가 됩니다.',
+  lead: '리더에게 필요한 역량을 6개 트랙으로 체계화하고, 각 트랙의 세부 역량을 성장 단계별 학습 여정에 연결합니다.',
   cards: [
     { ti: 'S', tk: 'TRACK 01', h4: 'Self', p: '스스로를 이끄는 리더의 출발점', tags: ['자기주도성', '회복탄력성', '성장마인드셋', '자기관리'] },
     { ti: 'P', tk: 'TRACK 02', h4: 'People', p: '사람을 성장시키는 리더', tags: ['코칭', '피드백', '동기부여', '갈등관리', '세대이해'] },
