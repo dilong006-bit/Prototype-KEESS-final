@@ -86,5 +86,18 @@ public/         # fonts(Pretendard self-host)·images·downloads(xlsx)
 - **모달 닫기 버튼 고도화(전 모달 공통)**: `×` 글리프 → 스트로크 SVG X로 교체(hover 시 광학 중심 정확) · 고정 top-right 앵커로 1행/2행 헤더 무관 제목 첫 줄 정렬(오차 ±2px) · outline 원형 + ink hover·scale·active·focus-visible 링. 게이트 모달 `.ctx` 웜(P4) 톤·업퍼케이스 마이크로 이브로우·입력 포커스 링 추가.
 - **P1~P4 히어로 실사 이미지 통일**: 필러별 히어로에 실사 배경(저채도 텍스처) + 필러 톤 스크림의 동일 처리 적용 → 4페이지 히어로 시각 언어 통일. P1(디지털 워크플레이스)·P4(콘텐츠 제작)에 신규 실사 추가, P2(팀)·P3(시스템)는 기존 이미지 유지. **Unsplash 소싱 후 `public/images/p1~p4-hero.jpg`로 self-host**(핫링크 제거·배포 견고성). 콘텐츠(카드·copy)는 불변, 배경 레이어만 추가(§0.5-3 스크림/그라데이션 허용 영역).
 - **히어로 eyebrow 칩 통일**: 4페이지 히어로 eyebrow를 동일한 글래스 필 칩(닷 + `blur(8px)` + border + 8·15 pad + 22px margin)으로 정규화. P4는 평문 이브로우 → 칩 전환(닷 추가), P1 태그는 `End-to-End Partner`로 축약, P2/P3는 blur·margin 미세 편차 정합. 구성 불변·시각 통일.
+- **P3 CORE ADVANTAGE 카드**: 좌측 하단 카드 → `AI 활용 콘텐츠 제작 / 영상·이미지·음성까지 AI 기반 제작 지원`.
+
+### 5) 홈 교육 상담 문의폼(`/#inq`) 고도화 — A안 v1.1 패리티 이식
+> 기준: `KEESS_B안_문의폼_고도화_기술명세서_v1.0`. **홈 `/#inq` 폼 전용** 변경이며, P3 `/hrd#inq`(정부지원 환급 프리셀렉트)·P2 `/leadership#inq`·GNB 정부지원(`/hrd#gov`)·부정훈련 신고 폼은 미변경.
+
+- **C1 부문 제거**: `부문(기업 B2B/공공·기관 B2G)` select를 JSX·상태·검증·옵션 상수에서 완전 삭제.
+- **C2 필수 최소화**: 필수를 **회사·기관명 / 담당자명 / 이메일 / 개인정보 수집·이용 동의 4개**로 축소. `교육 대상 규모`의 required·검증·에러 제거, 라벨 `*` 표기도 4개에만 유지.
+- **C3 4단계 퍼널 순서**: 회사·기관명 → 담당자명 → 이메일 → 연락처 → 교육 대상 규모(교육 인원) → 관심 영역 → 문의 내용 → 첨부파일 → 개인정보 동의 → 마케팅 동의.
+- **C4 마케팅 3채널 동의**: 단일 체크박스 → **전체 + 이메일/SMS(문자)/전화(TM) 개별**. 양방향 동기화(전체↔개별) + 부분선택 시 `indeterminate` / `aria-checked="mixed"`. 전부 선택 사항(제출 차단 조건 아님).
+- **C5 관심영역 4칩**: `정부지원` 칩 제거 → AX·AI 전환/리더십·조직/HRD 통합 솔루션/콘텐츠 솔루션. value 코드화(`ax-ai|leadership|hrd|content`).
+- **제출 페이로드 신규 조립**(기존 없음): `InquiryPayload` 타입 + 연동 슬롯 `submitInquiry()`.
+  `{ companyName, managerName, email, phone, eduScale(under50|50to300|300to1000|over1000|''), interests[], message, attachment, agreePrivacy, agreeMarketingEmail/Sms/Tel }` — 부문 키·단일 마케팅 키 없음. 백엔드 미연동(§0-6 추후 연동 슬롯).
+- **접근성**: `label htmlFor`+id 연결(aria-label 제거), `aria-required`/`aria-invalid`/`aria-live=polite`, 관심영역 칩 `span`→`button`(`aria-pressed`, Tab·Space 조작 가능).
 
 > 백엔드 미연동(클라이언트 상태 UI) · Design.md 토큰 준수 · 가격/결제 요소 없음.
