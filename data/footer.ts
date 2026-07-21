@@ -30,3 +30,8 @@ export const COPYRIGHT = 'COPYRIGHT © KG EDUONE. All RIGHTS RESERVED.';
 
 // ISMS 인증 마크(원본 PNG를 public/images/로 추출 · data:base64 → 정적 자산)
 export const ISMS_MARK_SRC = '/images/isms-mark.png';
+
+// ISMS 인증서 원본 경로 규칙: /public/certificates/isms.jpg (수급 후 이 경로에 추가)
+// 수급 전에는 세로형 placeholder(SVG)로 노출 — Footer에서 onError 폴백.
+export const ISMS_CERT_SRC = '/certificates/isms.jpg';
+export const ISMS_CERT_PLACEHOLDER = '/certificates/isms-placeholder.svg';

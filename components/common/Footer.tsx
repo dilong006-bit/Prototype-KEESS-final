@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import ReportModal from './ReportModal';
+import Modal from './Modal';
 import {
   FAMILY_SITES,
   SNS,
@@ -10,6 +11,8 @@ import {
   FOOT_NOTE,
   COPYRIGHT,
   ISMS_MARK_SRC,
+  ISMS_CERT_SRC,
+  ISMS_CERT_PLACEHOLDER,
 } from '@/data/footer';
 
 function SnsIcon({ icon }: { icon: 'instagram' | 'facebook' | 'blog' }) {
@@ -32,6 +35,7 @@ export default function Footer() {
     open: false,
     tab: 'info',
   });
+  const [ismsOpen, setIsmsOpen] = useState(false);
   const famRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -104,7 +108,9 @@ export default function Footer() {
                 <button className="report-link" type="button" onClick={() => setReport({ open: true, tab: 'info' })}>부정훈련 예방 안내</button>
                 <span>·</span>
                 <button className="report-link" type="button" onClick={() => setReport({ open: true, tab: 'report' })}>부정훈련 신고</button>
-                <Image className="isms-mark" src={ISMS_MARK_SRC} alt="ISMS 정보보호 관리체계 인증" width={116} height={82} />
+                <button type="button" className="isms-btn" onClick={() => setIsmsOpen(true)} aria-label="정보보호 관리체계(ISMS) 인증서 보기" aria-haspopup="dialog">
+                  <Image className="isms-mark" src={ISMS_MARK_SRC} alt="ISMS 정보보호 관리체계 인증" width={116} height={82} />
+                </button>
               </div>
             </div>
           </div>
@@ -116,6 +122,15 @@ export default function Footer() {
       </footer>
 
       <ReportModal open={report.open} initialTab={report.tab} onClose={() => setReport((r) => ({ ...r, open: false }))} />
+
+      {/* ISMS 인증서 모달 — 공통 Modal(포커스 트랩·ESC·오버레이 클릭·배경 스크롤 잠금·포커스 복귀 내장) */}
+      <Modal open={ismsOpen} onClose={() => setIsmsOpen(false)} labelledBy="isms-cert-title" title="정보보호 관리체계(ISMS) 인증서" maxWidth={460}>
+        <div className="isms-cert">
+          {/* 원본 수급 전: placeholder 노출(404 방지). 수급 후 src를 ISMS_CERT_SRC(/certificates/isms.jpg)로 교체. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={ISMS_CERT_PLACEHOLDER} data-cert-src={ISMS_CERT_SRC} alt="정보보호 관리체계(ISMS) 인증서" />
+        </div>
+      </Modal>
     </>
   );
 }

@@ -154,8 +154,15 @@
 .foot-policy .report-link{color:rgba(255,255,255,.62);font-weight:600;text-decoration:none}
 .foot-policy .report-link:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
 .report-link{font-family:inherit;background:none;border:none;cursor:pointer;padding:0}
-.isms-mark{margin-left:auto;height:44px;width:auto;background:#fff;border-radius:8px;padding:5px 8px;box-shadow:0 2px 8px rgba(0,0,0,.25)}
-@media(max-width:560px){.isms-mark{margin-left:0}}
+.isms-mark{height:44px;width:auto;background:#fff;border-radius:8px;padding:5px 8px;box-shadow:0 2px 8px rgba(0,0,0,.25);display:block}
+/* ISMS 배지 → 인증서 모달 트리거 버튼 */
+.isms-btn{margin-left:auto;padding:0;border:none;background:none;cursor:pointer;line-height:0;border-radius:8px;transition:transform .2s var(--ease)}
+.isms-btn:hover{transform:translateY(-2px)}
+.isms-btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media(max-width:560px){.isms-btn{margin-left:0}}
+/* ISMS 인증서 이미지(세로형) — 뷰포트 초과 시 내부 스크롤 */
+.isms-cert{display:flex;justify-content:center}
+.isms-cert img{display:block;width:100%;max-width:360px;height:auto;border-radius:10px;border:1px solid var(--line)}
 .foot-bottom{display:flex;justify-content:flex-start;align-items:center;gap:12px;flex-wrap:wrap;padding-top:22px;border-top:1px solid rgba(255,255,255,.1)}
 .foot-bottom .copy{font-size:12.5px;color:rgba(255,255,255,.42);letter-spacing:.02em}
 
