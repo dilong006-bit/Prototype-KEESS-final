@@ -2,18 +2,18 @@
 export type NavKey = 'home' | 'ax-ai' | 'leadership' | 'hrd' | 'content';
 
 export interface NavItem {
-  key: NavKey | 'gov';
+  key: NavKey;
   label: string;
   href: string;
 }
 
-// AX·AI→/ax-ai, 리더십·조직→/leadership, HRD 통합→/hrd, 콘텐츠→/content, 정부지원→/hrd#gov
+// AX·AI→/ax-ai, 리더십·조직→/leadership, HRD 통합→/hrd, 콘텐츠→/content
+// (정부지원 GNB 진입점은 제거 — /hrd#gov 섹션 및 타 위치 링크는 유지)
 export const NAV_ITEMS: NavItem[] = [
   { key: 'ax-ai', label: 'AX·AI 전환', href: '/ax-ai' },
   { key: 'leadership', label: '리더십·조직', href: '/leadership' },
   { key: 'hrd', label: 'HRD 통합 솔루션', href: '/hrd' },
   { key: 'content', label: '콘텐츠 솔루션', href: '/content' },
-  { key: 'gov', label: '정부지원', href: '/hrd#gov' },
 ];
 
 // 홈 로고 = 홈(/) (Design.md §0.5-2)
