@@ -8,12 +8,13 @@ import HomeStats from '@/components/sections/home/HomeStats';
 import HomeManifesto from '@/components/sections/home/HomeManifesto';
 import HomeFaq from '@/components/sections/home/HomeFaq';
 import HomeInquiry from '@/components/sections/home/HomeInquiry';
-import { INTRO, REFERENCES, CERTS } from '@/data/home';
+import HomeReferences from '@/components/sections/home/HomeReferences';
+import { INTRO, CERTS } from '@/data/home';
 
 export const metadata: Metadata = {
-  title: 'KEESS — KG에듀원 기업교육 | 진단으로 설계하고, 효과로 증명합니다.',
+  title: 'KEESS | KG에듀원 기업교육 · 진단으로 설계하고, 효과로 증명합니다',
   description:
-    '진단으로 설계하고, 효과로 증명합니다. KG에듀원 HRD사업본부의 기업·기관 교육 도입 채널 — AX·AI 전환·리더십·HRD 통합·콘텐츠 솔루션.',
+    '진단으로 설계하고, 효과로 증명합니다. KG에듀원 HRD사업본부의 기업·기관 교육 도입 채널, AX·AI 전환·리더십·HRD 통합·콘텐츠 솔루션.',
 };
 
 export default function HomePage() {
@@ -41,34 +42,8 @@ export default function HomePage() {
 
       <HomeManifesto />
 
-      {/* References — 고객사 CI 6분류 (CI 롤링 전제 트랙 구조 · 프로토타입은 임시 CI) */}
-      <section className="section">
-        <div className="wrap">
-          <p className="eyebrow r">{REFERENCES.eyebrow}</p>
-          <h2 className="sec-title r" style={{ marginTop: 12 }}>{REFERENCES.title}</h2>
-          <div className="ci-cats">
-            {REFERENCES.groups.map((g) => (
-              <div className="ci-cat r" key={g.category}>
-                <p className="ci-cat-label">
-                  {g.category}
-                  <em className="ci-temp">{REFERENCES.tempBadge}</em>
-                </p>
-                <div className="ci-roll">
-                  <div className="ci-track">
-                    {g.logos.map((l, i) => (
-                      <span className="ci-item" key={`${g.category}-${i}`}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={l.imgSrc} alt="" loading="lazy" decoding="async" />
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <p className="ref-cap r">{REFERENCES.cap}</p>
-        </div>
-      </section>
+      {/* References — 고객사 CI 무한 롤링(마퀴) */}
+      <HomeReferences />
 
       {/* 인증 */}
       <section className="section" id="cert" style={{ background: 'var(--surface)' }}>

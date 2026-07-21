@@ -55,7 +55,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     tag: 'CASE · 예시',
     eyebrow: '고객 성공 사례',
     title: '○○기업, AI 전환 교육으로<br>실무를 바꾸다',
-    sub: '전 직원 AI 리터러시 교육 도입 후 업무 자동화가 확산됐습니다. 진단–설계–운영–성과까지 함께 만들었습니다.',
+    sub: '전 직원 AI 리터러시 교육 도입 후 업무 자동화가 확산됐습니다. 진단·설계·운영·성과까지 함께 만들었습니다.',
     cta: { label: '사례 문의', scroll: '#inq' },
   },
 ];
@@ -180,24 +180,29 @@ export const MANIFESTO = {
   heading: '교육의 효과를, 이제 숫자로 증명합니다.',
 };
 
-// ── References — 고객사 CI 6분류 ──
-// 프로토타입은 임시(placeholder) CI 슬롯이다. 실제 고객사 CI·기업명은 노출 협의 후 교체한다.
-// (실제 CI 롤링(가로 무한 롤링)을 전제로 카테고리별 트랙 구조로 구성)
-const CI = '/images/ci/ci-placeholder.svg';
-const ciSlots = (n: number) => Array.from({ length: n }, (_, i) => ({ name: `고객사 ${i + 1}`, imgSrc: CI }));
+// ── References — 고객사 CI 무한 롤링(마퀴) ──
+// 실제 CI 이미지 수급 전에는 사명 텍스트 로고 칩(placeholder)으로 노출한다.
+// 이미지 경로 규칙: /public/logos/{순번}.png (수급 후 파일만 추가·매핑하면 교체).
+// ▶ 단일 배열: 아래 REF_LOGOS에 사명을 추가하기만 하면 롤링에 자동 반영된다.
+export const REF_LOGO_BASE = '/logos';
+export const REF_LOGOS: string[] = [
+  // 그룹
+  '동원', '롯데', 'CJ', '아주', 'LS', '웅진', 'KG',
+  // 은행
+  'KB금융그룹', '신한은행', '우리은행', 'NH농협은행', 'KDB산업은행', 'BNK부산은행', 'DGB대구은행', '전북은행',
+  // 협회·조합
+  '농협중앙회', '신협중앙회', '수협중앙회', '저축은행중앙회', '새대한공인중개사협회', '대한치과의사협회', '한국공인중개사협회', '한국교직원공제회',
+  // 보험
+  '삼성생명', '삼성화재', '신한라이프', '한화생명', '동양생명', '하나손해보험', '메리츠화재', 'KB생명보험',
+  // 증권·카드
+  'KB증권', '한국투자증권', '신한투자증권', '신한카드', '교보증권', 'IBK투자증권', 'SK증권', '롯데카드',
+  // 제조·생산
+  '동국제강', '금호석유화학', 'POSCO', '벽산', 'Haatz', '도레이첨단소재', 'KYOCERA', 'KGM',
+];
 
 export const REFERENCES = {
   eyebrow: 'References',
   title: '이미 이렇게 함께하고 있습니다.',
-  tempBadge: '임시',
-  groups: [
-    { category: '그룹', logos: ciSlots(5) },
-    { category: '산학', logos: ciSlots(5) },
-    { category: '협회·조합', logos: ciSlots(5) },
-    { category: '보험', logos: ciSlots(5) },
-    { category: '증권·카드', logos: ciSlots(5) },
-    { category: '제조·생산', logos: ciSlots(5) },
-  ],
   cap: '레퍼런스·사례 (노출 협의 기준)',
 };
 
@@ -206,7 +211,7 @@ export const CERTS = {
   eyebrow: '정부지원 · 인증',
   title: '정부가 인증하고, 보안으로 지킵니다.',
   items: [
-    { main: '정부 3년 인증 훈련기관', small: '2026.01 – 2028.12' },
+    { main: '정부 3년 인증 훈련기관', small: '2026.01 ~ 2028.12' },
     { main: 'ISMS', small: '정보보호 관리체계 인증' },
     { main: '국무총리 표창', small: '정부 표창' },
     { main: '고용노동부장관 표창', small: '정부 표창' },
