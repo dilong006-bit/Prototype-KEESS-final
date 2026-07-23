@@ -178,7 +178,8 @@ export const CONSULT_MODAL = {
 };
 
 export const DOWNLOAD_MODAL = {
-  cat: 'Course List', title: '전체 과정 리스트 다운로드', mb1: 'Excel · 매월 갱신', mb2: '8,000여 과정',
+  // 헤더 이브로우 텍스트는 아이콘으로 대체(제목과 의미 중복) — cat 키 제거
+  title: '전체 과정 리스트 다운로드', mb1: 'Excel · 매월 갱신', mb2: '8,000여 과정',
   ctxNote: '입력하신 메일로 매월 갱신되는 최신 리스트도 함께 안내드립니다.',
   submit: '리스트 다운로드',
   okTitle: '다운로드가 시작됩니다',

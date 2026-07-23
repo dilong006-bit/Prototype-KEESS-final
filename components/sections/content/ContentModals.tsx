@@ -9,6 +9,11 @@ interface Ctx { openConsult: (axis?: string) => void; openDownload: () => void }
 const ModalCtx = createContext<Ctx>({ openConsult: () => {}, openDownload: () => {} });
 export const useContentModal = () => useContext(ModalCtx);
 
+// 다운로드 모달 헤더 아이콘 — 다운로드 카드(.xls)와 동일한 스프레드시트 글리프 재사용
+const IcSheet = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="3" width="16" height="18" rx="2" /><path d="M4 9h16M4 15h16M10 3v18" /></svg>
+);
+
 
 function triggerDL() {
   const a = document.createElement('a');
@@ -97,7 +102,7 @@ export default function ContentModalProvider({ children }: { children: React.Rea
       <Modal open={consult.open} onClose={() => setConsult({ open: false })} labelledBy="c-title" title={<span className="exp-head"><span className="cat">{CONSULT_MODAL.cat}</span><span>{CONSULT_MODAL.title}</span><span className="mb">{CONSULT_MODAL.mb}</span></span>} maxWidth={480}>
         <ConsultBody axis={consult.axis} onClose={() => setConsult({ open: false })} />
       </Modal>
-      <Modal open={dl} onClose={() => setDl(false)} labelledBy="d-title" title={<span className="exp-head"><span className="cat">{DOWNLOAD_MODAL.cat}</span><span>{DOWNLOAD_MODAL.title}</span><span className="mb">{DOWNLOAD_MODAL.mb1} · {DOWNLOAD_MODAL.mb2}</span></span>} maxWidth={480}>
+      <Modal open={dl} onClose={() => setDl(false)} labelledBy="d-title" title={<span className="exp-head"><span className="cat-ic" aria-hidden="true"><IcSheet /></span><span>{DOWNLOAD_MODAL.title}</span><span className="mb">{DOWNLOAD_MODAL.mb1} · {DOWNLOAD_MODAL.mb2}</span></span>} maxWidth={480}>
         <DownloadBody />
       </Modal>
     </ModalCtx.Provider>
