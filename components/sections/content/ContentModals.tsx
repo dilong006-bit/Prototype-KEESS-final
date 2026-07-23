@@ -13,6 +13,10 @@ export const useContentModal = () => useContext(ModalCtx);
 const IcSheet = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="3" width="16" height="18" rx="2" /><path d="M4 9h16M4 15h16M10 3v18" /></svg>
 );
+// 상담 모달 헤더 아이콘 — GNB '교육 상담' 버튼과 동일한 말풍선 글리프 재사용
+const IcChat = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.9 8.4 8.5 8.5 0 0 1-3.6-.8L3 21l1.9-5.5a8.4 8.4 0 0 1-.8-3.6A8.38 8.38 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z" /></svg>
+);
 
 
 function triggerDL() {
@@ -99,7 +103,7 @@ export default function ContentModalProvider({ children }: { children: React.Rea
   return (
     <ModalCtx.Provider value={{ openConsult, openDownload: () => setDl(true) }}>
       {children}
-      <Modal open={consult.open} onClose={() => setConsult({ open: false })} labelledBy="c-title" title={<span className="exp-head"><span className="cat">{CONSULT_MODAL.cat}</span><span>{CONSULT_MODAL.title}</span><span className="mb">{CONSULT_MODAL.mb}</span></span>} maxWidth={480}>
+      <Modal open={consult.open} onClose={() => setConsult({ open: false })} labelledBy="c-title" title={<span className="exp-head"><span className="cat-ic" aria-hidden="true"><IcChat /></span><span>{CONSULT_MODAL.title}</span><span className="mb">{CONSULT_MODAL.mb}</span></span>} maxWidth={480}>
         <ConsultBody axis={consult.axis} onClose={() => setConsult({ open: false })} />
       </Modal>
       <Modal open={dl} onClose={() => setDl(false)} labelledBy="d-title" title={<span className="exp-head"><span className="cat-ic" aria-hidden="true"><IcSheet /></span><span>{DOWNLOAD_MODAL.title}</span><span className="mb">{DOWNLOAD_MODAL.mb1} · {DOWNLOAD_MODAL.mb2}</span></span>} maxWidth={480}>

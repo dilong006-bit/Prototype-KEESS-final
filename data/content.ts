@@ -173,7 +173,8 @@ export const FINAL = {
 };
 
 export const CONSULT_MODAL = {
-  cat: 'Inquiry', title: '콘텐츠 도입 문의', mb: '영업일 1일 내 회신',
+  // 헤더 이브로우 텍스트는 아이콘으로 대체 — cat 키 제거
+  title: '콘텐츠 도입 문의', mb: '영업일 1일 내 회신',
   successTitle: '문의가 접수되었습니다', successMsg: '담당자가 영업일 1일 내 회신드립니다.',
 };
 

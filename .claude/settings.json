@@ -2,7 +2,15 @@
   "permissions": {
     "allow": [
       "Bash(grep -n \"역량 체계$\\\\|본체가 됩니다.$\\\\|임원, 역할\\\\|성장단계 로드맵\" data/leadership.ts)",
-      "Read(//c/оффиcе/workspace/KEESS_B-Type/components/sections/content/**)"
+      "Read(//c/оффиcе/workspace/KEESS_B-Type/components/sections/content/**)",
+      "Read(//c/оффиcе/workspace/KEESS_B-Type/data/**)",
+      "Bash(node run.js ' *)",
+      "Bash(xargs grep -ln \"export default function Img\\\\|export function Img\")",
+      "Bash(curl -s -o /dev/null -w \"  구 B-Type /      : HTTP %{http_code}\\\\n\" \"https://prototype-keess-b-type.vercel.app/\" --max-time 30)",
+      "Bash(curl -s -o /dev/null -w \"  구 B-Type /ax-ai : HTTP %{http_code}\\\\n\" \"https://prototype-keess-b-type.vercel.app/ax-ai\" --max-time 30)",
+      "Bash(curl -s -o /dev/null -w \"  final /          : HTTP %{http_code}\\\\n\" \"https://prototype-keess-final.vercel.app/\" --max-time 30)",
+      "Bash(curl -s -o /dev/null -w \"  final /images/p1-hero.jpg : HTTP %{http_code}  <- public/ 는 서빙됨\\\\n\" \"https://prototype-keess-final.vercel.app/images/p1-hero.jpg\" --max-time 30)",
+      "Bash(curl -s -o /dev/null -w \"  구 B-Type /images/p1-hero.jpg : HTTP %{http_code}\\\\n\" \"https://prototype-keess-b-type.vercel.app/images/p1-hero.jpg\" --max-time 30)"
     ]
   }
 }
