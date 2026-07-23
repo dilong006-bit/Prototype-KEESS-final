@@ -20,12 +20,13 @@ function todayStr() {
   const d = new Date();
   return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
 }
-// 접수 시각 HH:mm (24시간제, 초 미노출). 신규 접수 건에만 실제 값이 생긴다.
+// 접수 시각 HH:mm:ss (24시간제·KST). 접수 시점의 실제 시각을 기록한다.
 function nowTimeStr() {
   const d = new Date();
-  return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2);
+  const p = (x: number) => ('0' + x).slice(-2);
+  return p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
 }
-// 접수일시 표기 — time이 없는 건(프로토타입 시드)은 날짜만. 시:분을 임의로 만들어내지 않는다.
+// 접수일시 표기 — 'YYYY-MM-DD HH:mm:ss'. time이 없는 건은 날짜만(값 임의 생성 금지).
 function fmtReceivedAt(r: ReportRecord) {
   return r.time ? r.date + ' ' + r.time : r.date;
 }
@@ -253,7 +254,6 @@ export default function ReportModal({ open, onClose, initialTab = 'info' }: Repo
   }
 
   const fld = (k: keyof typeof emptyForm) => `field${errs[k] ? ' invalid' : ''}`;
-  const preview = (c: string) => (c && c.length > 52 ? c.slice(0, 52) + '…' : c || '');
 
   return (
     <div
@@ -406,10 +406,9 @@ export default function ReportModal({ open, onClose, initialTab = 'info' }: Repo
                       <div className="pv-rc-top"><span className="pv-rc-no">{r.no}</span><span className={`pv-badge s${r.status}`}>{REPORT_STATUS[r.status]}</span><span className="pv-rc-chev">›</span></div>
                       <div className="pv-rc-title">{r.title}</div>
                       <div className="pv-rc-meta">{r.ttype || '훈련구분 미지정'} · {r.date} 접수</div>
-                      {/* 내용은 비밀번호 인증 전 비노출 — 일부 발췌도 금지(문맥으로 신고 대상 유추 가능) */}
-                      {cardRevealed[i]
-                        ? <div className="pv-rc-preview">{preview(r.content)}</div>
-                        : <div className="pv-rc-preview pv-rc-locked">{CONTENT_LOCKED_MSG}</div>}
+                      {/* 인증 전: 내용 자리에 안내 문구(일부 발췌도 금지 — 문맥으로 신고 대상 유추 가능)
+                          인증 후: 상세 패널 '내용' 행과 중복되므로 이 줄은 표시하지 않는다 */}
+                      {!cardRevealed[i] && <div className="pv-rc-preview pv-rc-locked">{CONTENT_LOCKED_MSG}</div>}
                     </div>
                     <div className={`pv-rc-detail${cardOpen[i] ? ' open' : ''}`}>
                       {!cardRevealed[i] ? (
