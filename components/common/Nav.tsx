@@ -18,11 +18,14 @@ interface NavProps {
   current: NavKey;
   /** 교육 상담 CTA 목적지 (기본: 현재 페이지 #inq) */
   consultHref?: string;
+  /** 히어로 없는 밝은 배경(예: 404)에서 항상 solid 상태로 고정 */
+  forceSolid?: boolean;
 }
 
-export default function Nav({ current, consultHref = '#inq' }: NavProps) {
+export default function Nav({ current, consultHref = '#inq', forceSolid = false }: NavProps) {
   const pathname = usePathname();
   const [solid, setSolid] = useState(false);
+  const isSolid = solid || forceSolid;
   const [menuOpen, setMenuOpen] = useState(false);
   const thresholdRef = useRef(40);
 
@@ -86,7 +89,7 @@ export default function Nav({ current, consultHref = '#inq' }: NavProps) {
 
   return (
     <>
-      <header className={`nav${solid ? ' solid' : ''}${menuOpen ? ' menu-open' : ''}`} id="nav">
+      <header className={`nav${isSolid ? ' solid' : ''}${menuOpen ? ' menu-open' : ''}`} id="nav">
         <div className="wrap nav-in">
           <Link className="logo" href={LOGO.href} onClick={onLogo} aria-label="KEESS 홈">
             {LOGO.label}
