@@ -2,12 +2,20 @@
    에러 대응 화면 — 404(not-found). 기존 디자인 토큰(--p1~4·--ink·--muted 등) 재사용.
    ※ 500(error/global-error)은 독립 화면이라 컴포넌트 내부 인라인 스타일로 해결(외부 CSS 미참조).
    ========================================================================= */
-.nf{min-height:72vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:96px 24px 56px}
+.nf{position:relative;min-height:72vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:96px 24px 56px}
+/* 브랜드 그라데이션 메시 — 히어로에서 쓰던 radial 패턴 재사용(신규 토큰 0, 이미지 0) */
+.nf::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(52% 40% at 50% 6%,color-mix(in srgb,var(--p3) 13%,transparent) 0,transparent 70%),
+             radial-gradient(40% 34% at 84% 26%,color-mix(in srgb,var(--p1) 10%,transparent) 0,transparent 72%),
+             radial-gradient(36% 30% at 14% 34%,color-mix(in srgb,var(--p2) 7%,transparent) 0,transparent 72%)}
+.nf > *{position:relative;z-index:1}
 .nf-num{font-size:clamp(90px,18vw,172px);font-weight:900;line-height:1;letter-spacing:-.04em;
   background:linear-gradient(120deg,var(--p1),var(--p3));-webkit-background-clip:text;background-clip:text;color:transparent}
 .nf-eyebrow{margin-top:4px;font-size:12.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .nf h1{margin-top:26px;font-size:clamp(24px,3.4vw,34px);font-weight:800;letter-spacing:-.02em;color:var(--ink)}
-.nf-desc{margin-top:14px;font-size:clamp(15px,1.7vw,17px);color:var(--muted);line-height:1.7;max-width:52ch;word-break:keep-all}
+.nf-desc{margin-top:14px;font-size:clamp(15px,1.7vw,17px);color:var(--muted);line-height:1.7;max-width:60ch;word-break:keep-all}
+/* 문장 단위 줄바꿈(각 문장은 좁은 화면에서 내부적으로만 줄바꿈) */
+.nf-desc span{display:block;text-wrap:balance}
 .nf-cta{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 .nf-cta .btn-ink{padding:15px 30px;font-size:16px}
 .nf-cta .btn-line{display:inline-flex;align-items:center;justify-content:center;padding:15px 28px;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;font-weight:700;font-size:15px;transition:border-color .2s var(--ease),transform .2s var(--ease)}
@@ -19,7 +27,11 @@
 .nf-card{position:relative;display:block;text-align:left;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 20px 20px;box-shadow:var(--shadow-1);overflow:hidden;transition:transform .25s var(--ease),box-shadow .3s var(--ease)}
 .nf-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--acc)}
 .nf-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-2)}
-.nf-card .no{font-size:12px;font-weight:800;color:var(--acc);letter-spacing:.04em}
-.nf-card h3{margin-top:8px;font-size:16.5px;font-weight:800;color:var(--ink)}
-.nf-card p{margin-top:6px;font-size:13px;color:var(--muted);line-height:1.55;word-break:keep-all}
+/* 아이콘 칩 — 사이트 .hx-ic 패턴(color-mix 11% 틴트) 재사용 */
+.nf-card .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
+  background:color-mix(in srgb,var(--acc) 11%,#fff);color:var(--acc);transition:background .25s var(--ease)}
+.nf-card .ic svg{width:21px;height:21px}
+.nf-card:hover .ic{background:color-mix(in srgb,var(--acc) 18%,#fff)}
+.nf-card h3{margin-top:14px;font-size:16.5px;font-weight:800;color:var(--ink)}
+.nf-card p{margin-top:6px;font-size:13px;color:var(--muted);line-height:1.55;word-break:keep-all;text-wrap:balance}
 .nf-card .go{margin-top:16px;display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:var(--acc)}
