@@ -20,6 +20,18 @@ function todayStr() {
   const d = new Date();
   return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
 }
+// 접수 시각 HH:mm (24시간제, 초 미노출). 신규 접수 건에만 실제 값이 생긴다.
+function nowTimeStr() {
+  const d = new Date();
+  return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2);
+}
+// 접수일시 표기 — time이 없는 건(프로토타입 시드)은 날짜만. 시:분을 임의로 만들어내지 않는다.
+function fmtReceivedAt(r: ReportRecord) {
+  return r.time ? r.date + ' ' + r.time : r.date;
+}
+
+// 비밀번호 인증 전 '내용' 자리에 노출되는 안내 문구
+const CONTENT_LOCKED_MSG = '비밀번호 확인 후 내용을 확인하실 수 있습니다.';
 // 전화 자동 하이픈은 lib/utils의 fmtPhone(정본)을 공유한다 — 상담 폼과 단일 기준.
 
 // ── 아이콘 ────────────────────────────────────────────────────────────────
@@ -187,7 +199,8 @@ export default function ReportModal({ open, onClose, initialTab = 'info' }: Repo
     reports.push({
       no, name: form.name.trim(), phone: form.phone.trim(), pw: form.pw, email: form.email.trim(),
       role: form.role, ttype: form.ttype, course: form.course.trim(), org: form.org.trim(),
-      target: form.target, title: form.title.trim(), content: form.content.trim(), status: 0, date: todayStr(),
+      target: form.target, title: form.title.trim(), content: form.content.trim(), status: 0,
+      date: todayStr(), time: nowTimeStr(),
     });
     setReceiptNo(no);
     setDone(true);
@@ -393,7 +406,10 @@ export default function ReportModal({ open, onClose, initialTab = 'info' }: Repo
                       <div className="pv-rc-top"><span className="pv-rc-no">{r.no}</span><span className={`pv-badge s${r.status}`}>{REPORT_STATUS[r.status]}</span><span className="pv-rc-chev">›</span></div>
                       <div className="pv-rc-title">{r.title}</div>
                       <div className="pv-rc-meta">{r.ttype || '훈련구분 미지정'} · {r.date} 접수</div>
-                      <div className="pv-rc-preview">{preview(r.content)}</div>
+                      {/* 내용은 비밀번호 인증 전 비노출 — 일부 발췌도 금지(문맥으로 신고 대상 유추 가능) */}
+                      {cardRevealed[i]
+                        ? <div className="pv-rc-preview">{preview(r.content)}</div>
+                        : <div className="pv-rc-preview pv-rc-locked">{CONTENT_LOCKED_MSG}</div>}
                     </div>
                     <div className={`pv-rc-detail${cardOpen[i] ? ' open' : ''}`}>
                       {!cardRevealed[i] ? (
@@ -409,7 +425,7 @@ export default function ReportModal({ open, onClose, initialTab = 'info' }: Repo
                         <div className="pv-rc-content">
                           <dl className="pv-dl2">
                             <dt>접수번호</dt><dd>{r.no}</dd>
-                            <dt>접수일</dt><dd>{r.date}</dd>
+                            <dt>접수일시</dt><dd>{fmtReceivedAt(r)}</dd>
                             <dt>신고자</dt><dd>{r.name} · {r.phone}</dd>
                             <dt>이메일</dt><dd>{r.email || '-'}</dd>
                             <dt>신고자 신분</dt><dd>{r.role || '-'}</dd>

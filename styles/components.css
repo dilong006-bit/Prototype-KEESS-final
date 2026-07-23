@@ -287,6 +287,11 @@
 @media(prefers-reduced-motion:reduce){.toast{transition:opacity .2s}}
 .pv-rc-meta{font-size:12.5px;color:var(--muted);margin-top:6px}
 .pv-rc-preview{font-size:13px;color:#6a6d73;margin-top:8px;line-height:1.55}
+/* 인증 전 '내용' 자리 안내 — 본문이 아님을 톤으로 구분 */
+.pv-rc-preview.pv-rc-locked{color:#8b8f96;font-size:12.5px;display:flex;align-items:center;gap:6px}
+.pv-rc-preview.pv-rc-locked::before{content:"";flex:none;width:13px;height:13px;background:currentColor;
+  -webkit-mask:var(--lock-ic) center/13px no-repeat;mask:var(--lock-ic) center/13px no-repeat}
+:root{--lock-ic:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='4' y='11' width='16' height='10' rx='2'/><path d='M8 11V7a4 4 0 0 1 8 0v4'/></svg>")}
 .pv-dl2{display:grid;grid-template-columns:84px 1fr;gap:9px 14px;font-size:13.5px;margin-bottom:12px}
 .pv-dl2 dt{color:var(--muted);font-weight:700}
 .pv-dl2 dd{color:#2a2a32;line-height:1.55}

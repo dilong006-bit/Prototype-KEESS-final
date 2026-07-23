@@ -14,6 +14,9 @@ export interface ReportRecord {
   content: string;
   status: number; // 0 접수 완료 · 1 검토 중 · 2 처리 완료 · 3 반려
   date: string;
+  // 접수 시각 'HH:mm'(24시간제·KST). 아래 시드 2건은 확정 프로토타입 원본이 날짜까지만
+  // 보유하므로 값이 없다. 임의 생성 금지 — 실제 시:분은 신규 접수 건에만 기록된다.
+  time?: string;
   answer?: string;
 }
 
