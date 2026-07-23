@@ -168,7 +168,7 @@ export const DOWNLOAD = {
 export const FINAL = {
   titleLead: '우리 조직에 맞는 교육을,',
   titleLine2: '함께 설계합니다',
-  sub: '조직 과제에 맞춰 8,426개에서 고르고, 필요하면 직접 만듭니다.',
+  sub: '8,426개 콘텐츠에서 우리 조직에 맞는 과정을 찾고, 필요한 교육은 맞춤형으로 설계해드립니다.',
   ctaPrimary: '콘텐츠 도입 문의',
 };
 

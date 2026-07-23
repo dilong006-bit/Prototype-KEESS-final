@@ -226,7 +226,8 @@
 .dl-file .xls{width:44px;height:44px;border-radius:11px;background:#1E6B41;color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
 .dl-file .xls svg{width:23px;height:23px;display:block;stroke:#fff;color:#fff}
 .dl-file .fh b{font-size:15px;font-weight:800}
-.dl-file .fh span{display:block;font-size:12px;color:var(--muted);margin-top:3px}
+/* 텍스트 span 전용 — .xls 아이콘 span까지 잡아 display:flex를 덮어쓰지 않도록 자식 div 하위로 한정 */
+.dl-file .fh > div span{display:block;font-size:12px;color:var(--muted);margin-top:3px}
 .dl-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
 @media(max-width:420px){.dl-stats{grid-template-columns:1fr 1fr}}
 .dst{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
@@ -239,7 +240,7 @@
 /* ── final + FAB ──────────────────────────────────────────────────── */
 .final{text-align:center;background:linear-gradient(150deg,var(--p4),color-mix(in srgb,var(--p4) 60%,var(--gov)) 85%);border-radius:24px;padding:56px 40px;color:#fff;box-shadow:var(--shadow-3)}
 .final h2{font-size:clamp(26px,3.6vw,40px);font-weight:800;letter-spacing:-.02em;line-height:1.2}
-.final p{margin-top:12px;color:rgba(255,255,255,.9);font-size:16px}
+.final p{margin-top:12px;color:rgba(255,255,255,.9);font-size:16px;word-break:keep-all;text-wrap:balance;max-width:34em;margin-inline:auto}
 .fbtns{margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .final .btn-ink{background:#fff;color:var(--ink)}
 .fab{position:fixed;right:22px;bottom:78px;z-index:55;padding:13px 20px;border-radius:999px;background:var(--p4);color:#fff;font-weight:800;font-size:14px;border:none;cursor:pointer;font-family:inherit;box-shadow:0 16px 34px -12px rgba(245,130,32,.7);display:inline-flex;align-items:center;gap:8px;transition:transform .3s var(--ease)}
