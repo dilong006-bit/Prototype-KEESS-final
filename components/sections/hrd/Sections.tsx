@@ -5,6 +5,7 @@ import { goToInquiry, scrollToId } from '@/lib/utils';
 import Link from 'next/link';
 import Img from '@/components/common/Img';
 import SubNav from '@/components/common/SubNav';
+import ConsentGroup from '@/components/common/ConsentGroup';
 import KgesaDemo from './KgesaDemo';
 import ModuleTabs from './ModuleTabs';
 import { useHdModal } from './HdModal';
@@ -225,13 +226,21 @@ function Inquiry({ preselect, nonce }: { preselect?: string; nonce: number }) {
   const upd = (k: keyof typeof v) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setV((s) => ({ ...s, [k]: e.target.value }));
 
+  // 개인정보 보호법 제15조 — 필수 동의
+  const [agree, setAgree] = useState(false);
+  const [agreeErr, setAgreeErr] = useState(false);
+
   function submit(e: React.FormEvent) {
     e.preventDefault();
     const next: Record<string, boolean> = {};
     let ok = true;
     (['company', 'name', 'contact'] as const).forEach((k) => { const bad = !(v[k] || '').trim(); next[k] = bad; if (bad) ok = false; });
     setErrs(next);
+    setAgreeErr(!agree);
+    if (!agree) ok = false;
     if (!ok) return;
+    // 제출 payload — 동의 사실 입증 기록(추후 연동 슬롯). 입력값은 분석 도구로 전송하지 않는다.
+    void { ...v, privacy_agreed: true, agreed_at: new Date().toISOString() };
     setDone(true);
   }
 
@@ -256,6 +265,7 @@ function Inquiry({ preselect, nonce }: { preselect?: string; nonce: number }) {
         <div className="field"><label>관심 영역</label><select id="fArea" aria-label="관심 영역" ref={areaRef} value={v.interest} onChange={upd('interest')}>{INQ.interests.map((o) => <option key={o}>{o}</option>)}</select></div>
       </div>
       <div className="field"><label>문의 내용</label><textarea aria-label="문의 내용" rows={3} placeholder="대상·인원·목표를 간단히 적어주세요" value={v.msg} onChange={upd('msg')} /></div>
+      <ConsentGroup formKey="hrd" idPrefix="hrd-" required={agree} onRequiredChange={(c) => { setAgree(c); if (c) setAgreeErr(false); }} error={agreeErr} />
       <button className="btn btn-ink" type="submit" style={{ width: '100%', marginTop: 20 }}>도입 문의 보내기</button>
     </form>
   );

@@ -3,6 +3,8 @@
 import { EMAIL_RE } from '@/lib/utils';
 import { createContext, useContext, useState } from 'react';
 import Modal from '@/components/common/Modal';
+import ConsentGroup from '@/components/common/ConsentGroup';
+import { CONSENT_TEXTS, DOWNLOAD_OPTIN_BANNER } from '@/data/consent';
 import { CONSULT_MODAL, DOWNLOAD_MODAL, DOWNLOAD } from '@/data/content';
 
 interface Ctx { openConsult: (axis?: string) => void; openDownload: () => void }
@@ -31,6 +33,8 @@ function triggerDL() {
 function ConsultBody({ axis, onClose }: { axis?: string; onClose: () => void }) {
   const [v, setV] = useState({ name: '', org: '', mail: '', msg: '' });
   const [errs, setErrs] = useState<Record<string, boolean>>({});
+  const [agree, setAgree] = useState(false);
+  const [agreeErr, setAgreeErr] = useState(false);
   const [done, setDone] = useState(false);
   const upd = (k: keyof typeof v) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setV((s) => ({ ...s, [k]: e.target.value }));
   function submit() {
@@ -40,7 +44,11 @@ function ConsultBody({ axis, onClose }: { axis?: string; onClose: () => void }) 
     const eok = EMAIL_RE.test((v.mail || '').trim());
     next.mail = !eok; if (!eok) ok = false;
     setErrs(next);
+    setAgreeErr(!agree);
+    if (!agree) ok = false;
     if (!ok) return;
+    // 제출 payload — 동의 사실 입증 기록(추후 연동 슬롯). 입력값은 분석 도구로 전송하지 않는다.
+    void { ...v, privacy_agreed: true, agreed_at: new Date().toISOString() };
     setDone(true);
   }
   if (done) return <div className="okmsg"><div className="ic">✓</div><h3>{CONSULT_MODAL.successTitle}</h3><p className="lead">{CONSULT_MODAL.successMsg}</p><button className="btn-line-dark" style={{ marginTop: 16 }} onClick={onClose}>닫기</button></div>;
@@ -52,14 +60,23 @@ function ConsultBody({ axis, onClose }: { axis?: string; onClose: () => void }) 
       <div className={fld('org')}><label>회사/기관 <span className="req">*</span></label><input aria-label="회사/기관" placeholder="회사명" value={v.org} onChange={upd('org')} /><span className="err">회사/기관을 입력해 주세요.</span></div>
       <div className={fld('mail')}><label>이메일 <span className="req">*</span></label><input aria-label="이메일" type="email" placeholder="name@company.com" value={v.mail} onChange={upd('mail')} /><span className="err">올바른 이메일을 입력해 주세요.</span></div>
       <div className="field"><label>필요한 콘텐츠·과제</label><textarea aria-label="필요한 콘텐츠·과제" rows={3} placeholder="예: 전 직원 법정의무 + 실무자 생성형 AI + 기업 맞춤 제작" value={v.msg} onChange={upd('msg')} /></div>
+      <ConsentGroup formKey="content" idPrefix="ct-" required={agree} onRequiredChange={(c) => { setAgree(c); if (c) setAgreeErr(false); }} error={agreeErr} />
       <button className="btn btn-ink" style={{ width: '100%', marginTop: 18 }} onClick={submit}>문의 보내기</button>
     </div>
   );
 }
 
+// 선택 동의(매월 리스트 수신)의 존재 여부 — 배너와 선택 동의 행이 이 한 값에 함께 종속된다.
+// CONSENT_TEXTS.download.optional 을 null 로 바꾸면 둘 다 사라지므로,
+// '배너만 남고 동의는 없는' 상태가 구조적으로 발생할 수 없다.
+const HAS_DL_OPTIN = CONSENT_TEXTS.download.optional !== null;
+
 function DownloadBody() {
   const [v, setV] = useState({ name: '', org: '', mail: '' });
   const [errs, setErrs] = useState<Record<string, boolean>>({});
+  const [agree, setAgree] = useState(false);
+  const [agreeErr, setAgreeErr] = useState(false);
+  const [optIn, setOptIn] = useState(false);
   const [done, setDone] = useState(false);
   const upd = (k: keyof typeof v) => (e: React.ChangeEvent<HTMLInputElement>) => setV((s) => ({ ...s, [k]: e.target.value }));
   function submit() {
@@ -69,7 +86,11 @@ function DownloadBody() {
     const eok = EMAIL_RE.test((v.mail || '').trim());
     next.mail = !eok; if (!eok) ok = false;
     setErrs(next);
+    setAgreeErr(!agree);
+    if (!agree) ok = false;
     if (!ok) return;
+    // 제출 payload — 선택 동의는 렌더된 경우에만 포함. 입력값은 분석 도구로 전송하지 않는다.
+    void { ...v, privacy_agreed: true, agreed_at: new Date().toISOString(), ...(HAS_DL_OPTIN ? { marketing_agreed: optIn } : {}) };
     setDone(true);
     triggerDL(); // 실제 xlsx 다운로드
   }
@@ -84,10 +105,12 @@ function DownloadBody() {
   const fld = (k: string) => `field${errs[k] ? ' invalid' : ''}`;
   return (
     <div>
-      <div className="ctx">{DOWNLOAD_MODAL.ctxNote}</div>
+      {/* 안내 배너 — 선택 동의와 한 스위치에 묶임(§3-3 히든 스위치) */}
+      {HAS_DL_OPTIN && <div className="ctx">{DOWNLOAD_OPTIN_BANNER}</div>}
       <div className={fld('name')}><label>담당자명 <span className="req">*</span></label><input aria-label="담당자명" placeholder="홍길동" value={v.name} onChange={upd('name')} /><span className="err">담당자명을 입력해 주세요.</span></div>
       <div className={fld('org')}><label>회사/기관 <span className="req">*</span></label><input aria-label="회사/기관" placeholder="회사명" value={v.org} onChange={upd('org')} /><span className="err">회사/기관을 입력해 주세요.</span></div>
       <div className={fld('mail')}><label>이메일 <span className="req">*</span></label><input aria-label="이메일" type="email" placeholder="name@company.com" value={v.mail} onChange={upd('mail')} /><span className="err">올바른 이메일을 입력해 주세요.</span></div>
+      <ConsentGroup formKey="download" idPrefix="dl-" required={agree} onRequiredChange={(c) => { setAgree(c); if (c) setAgreeErr(false); }} error={agreeErr} optional={optIn} onOptionalChange={setOptIn} />
       <button className="btn btn-ink" style={{ width: '100%', marginTop: 18 }} onClick={submit}>
         <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v12M7 11l5 5 5-5M4 20h16" /></svg> {DOWNLOAD_MODAL.submit}
       </button>
